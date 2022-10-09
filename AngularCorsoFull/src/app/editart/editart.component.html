@@ -1,0 +1,108 @@
+
+<app-jumbotron 
+[titolo]="'Dettaglio articolo'"
+[sottoTitolo]="'dettaglio di un articolo'"
+[show]="false"
+></app-jumbotron>
+
+<section class="container" *ngIf="articolo">
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-red-sunglo">
+                <i class="oi oi-pencil"></i>
+                <span class="caption-subject bold">Dati Articolo</span>
+            </div>
+        </div>
+        <div class="alert alert-success" *ngIf='conferma'>
+            {{conferma}}        
+        </div>
+        <div class="alert alert-danger" *ngIf='errore'>
+            {{errore}}        
+        </div>
+        <div class="portlet-body form">
+<form (ngSubmit)="artForm.valid && salva()" #artForm="ngForm">
+            <div class="form-body">
+                <div class="form-group">
+                    <label for="codArt">Codice Articolo:</label>
+                    <input type="codArt" name="codArt" type="text" 
+                        [(ngModel)]="articolo.codArt" class="form-control" placeholder="Codice articolo"
+                        required minlength="5" maxlength="30" #codArt="ngModel"
+                        [disabled]="isModifica" />
+                    <span style="color:red;" *ngIf="codArt.dirty && codArt.invalid">Codice obbligatorio tra 5 e 30 caratteri</span>
+                </div>
+                <div class="form-group">
+                    <label for="descrizione">Descrizione:</label>
+                    <input type="descrizione" name="descrizione" type="text" 
+                        [(ngModel)]="articolo.descrizione" class="form-control" placeholder="Descrizione articolo" 
+                        required maxlength="80" minlength="6" #desArt="ngModel" />
+                        <span style="color:red;" *ngIf="desArt.dirty && desArt.invalid">Il campo descrizione deve essere tra 6 e 80</span>
+                </div>
+                <div class="form-group">
+                    <label for="un">Unità misura:</label>
+                    <select class="form-control" [(ngModel)]="articolo.um" name="um">
+                        <option value="PZ">Pezzi</option>
+                        <option value="LT">Litri</option>
+                        <option value="KG">Kilogrammi</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="pzCart">Pezzi per cartone:</label>
+                        <input id="pzCart" name="pzCart" [(ngModel)]="articolo.pzCart" type="text" class="form-control"/>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="pesoNetto">Peso netto:</label>
+                        <input id="pesoNetto" name="pesoNetto" [(ngModel)]="articolo.pesoNetto" type="text" class="form-control"/>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="idIva">Iva:</label>
+                        <select class="form-control" [(ngModel)]="articolo.iva.idIva" name="idIva">
+                            <option [ngValue]="iva.id" *ngFor="let iva of Iva">{{iva.descrizione}}</option> 
+                        </select>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-check-inline">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" [(ngModel)]="articolo.idStatoArt" name="idStatoArt" value="1 " checked="true">Attivo
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" [(ngModel)]="articolo.idStatoArt" name="idStatoArt" value="2 ">Sospeso
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" [(ngModel)]="articolo.idStatoArt" name="idStatoArt" value="3 ">Eliminato
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="idFamAss">Famiglia Assortimento:</label>
+                    <select class="form-control" [(ngModel)]="articolo.famAssort.id" name="idFamAssort">
+                        <option [ngValue]="categoria.id" *ngFor="let categoria of FamAssort">{{categoria.descrizione}}</option> 
+                    </select>
+                  </div>
+    
+                  <hr class="line-form">
+    
+                  <button type="submit" id="btnAdd"  class="btn btn-primary form-buttons" [disabled]="artForm.invalid">
+                      <i class="fa fa-floppy-o" aria-hidden="true"></i>  Salva
+                  </button><!-- no (click)="salva()" perchè c'è il <form>-->
+                    
+                <button id="btnAbort" class="btn btn-info form-buttons" (click)="abort()">
+                    <i class="fa fa-sign-out" ></i> Annulla
+                </button>
+            </div>
+</form>
+        </div>
+    </div>
+</section>
+<div *ngIf="! articolo">
+    Nessun articolo trovato
+</div>
+
+

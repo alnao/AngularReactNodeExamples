@@ -1,0 +1,109 @@
+/* You can add global styles to this file, and also import other style files */
+.bellottaFont {
+    font-family: 'Bellota', cursive;
+  }
+  .btn-group-sm > .btn, .btn-sm {
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: .2rem;
+  }
+  .btn-group-sm > .btn, .btn-sm {
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: .2rem;
+  }
+  .list-group-item {
+    font-size: 0.75em;
+  }
+   
+  .list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: darkorange;
+    border-color: darkorange;
+  }
+  .bgImg {
+    /*background-image: url(../../../assets/img/home-bg.jpg);*/
+    max-height:450px;
+  }
+   
+  .fa.fa-book {
+    margin-right: 5px !important;
+    color: orange;
+  }
+   
+  .navbar-brand {
+    font-size: 2.5rem;
+    font-weight: 100 !important;
+    font-family: 'Amatic SC', cursive;
+  }
+  .title {
+    font-size: 7.2rem !important;
+    font-family: 'Amatic SC', cursive;
+  }
+  #mainNav .navbar-nav>li.nav-item>a {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  header.masthead .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    max-height:450px;
+    width: 100%;
+    background-color: #212529;
+    opacity: .5;
+  }
+
+
+  .ngx-pagination {
+    // border:1px solid #dadada;
+    margin:5px auto;
+    width: auto !important;
+    font-size: 1rem !important
+  }
+  .ngx-pagination li {
+    color:#0085A1;
+  }
+  .ngx-pagination a, .ngx-pagination button {
+    color:#0085A1 !important;
+    display: block;
+    padding: 0.1875rem 0.625rem;
+    border-radius: 2px !important;
+    border: 1px solid #dadada !important ;
+  }
+  .pagination-next.disabled {
+    border: 1px solid #dadada !important ;
+  }
+   
+  .pagination-previous.disabled {
+    border: 1px solid #dadada !important ;
+  }
+
+  .bellottaFont {
+    font-family: 'Bellota', cursive;
+  }
+  .btn-group-sm > .btn, .btn-sm {
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: .2rem;
+  }
+.anButton {
+  background: rgba(255,255,255,0.8);
+  border: 1px solid #222222;
+  color: #222222; 
+  text-align: center;
+  padding: 10px 22px;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 20px;
+  margin: 10px 2px;
+  outline: none;
+  cursor:pointer;
+}

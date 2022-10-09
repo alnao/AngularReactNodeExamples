@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "rest-on-mongo": "^2.4.0"
+  }
+}

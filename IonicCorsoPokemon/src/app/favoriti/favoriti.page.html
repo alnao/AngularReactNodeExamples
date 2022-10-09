@@ -1,0 +1,13 @@
+<app-toolbar pageTitle="Favoriti"></app-toolbar>
+
+<ion-content *ngIf="elencoFavoriti$ | async as favoriti">
+<ion-button (click)="share()">Share</ion-button>
+  <ion-item-sliding *ngFor="let pok of favoriti;let id = index ;" lines="none">
+    <ion-item-options side="end">
+        <ion-item-option color="warning" (click)="removeFavorites(pok)">
+          <ion-icon name="skull-outline"></ion-icon>
+        </ion-item-option>
+    </ion-item-options>
+    <ion-item>{{pok.name}} </ion-item>
+  </ion-item-sliding>
+</ion-content>

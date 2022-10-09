@@ -1,0 +1,17 @@
+{
+  "name": "places",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cosimo Palma",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2",
+    "body-parser": "^1.17.1",
+    "clone": "^2.1.1",
+    "cors": "^2.8.3"
+  }
+}
