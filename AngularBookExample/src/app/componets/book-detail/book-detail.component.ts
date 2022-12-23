@@ -10,9 +10,13 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 @Component({
     selector: 'app-book-detail',
     template: `
+    <div class="card text-center">
+      <div class="card-header">
+        Modifica/inserimento libro
+      </div>
+    <div class="card-body">
       <div *ngIf="book" class="row m-5" >
         <div class="col-12 _NO_mx-auto" [formGroup]="bookForm">
-
         <p>
           <label for="id">ID</label>
           <input type="text" id="id" name="id" formControlName="id">
@@ -57,25 +61,25 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
           <button type="submit" class="btn btn-primary" [disabled]="!bookForm.valid" (click)="onSubmit()">Submit</button>
         </p>
 
-      </div>
-      <button class="btn btn-info" (click)="goBack()">Indietro</button>
-      </div>
+        </div>
+          <button class="btn btn-info" (click)="goBack()">Indietro</button>
+        </div>
 
 
-    <div style=" m-5">
-      <h3>Form Status</h3>
-      <b>valid : </b>{{bookForm.valid}}
-      <b>invalid : </b>{{bookForm.invalid}}
-      <b>touched : </b>{{bookForm.touched}}
-      <b>untouched : </b>{{bookForm.untouched}}
-      <b>pristine : </b>{{bookForm.pristine}}
-      <b>dirty : </b>{{bookForm.dirty}}
-      <b>disabled : </b>{{bookForm.disabled}}
-      <b>enabled : </b>{{bookForm.enabled}}
-      <h3>Form Value</h3>
-      {{bookForm.value |json}}
-    </div>
- 
+        <div style=" m-5">
+          <h3>Form Status</h3>
+          <b>valid : </b>{{bookForm.valid}}
+          <b>invalid : </b>{{bookForm.invalid}}
+          <b>touched : </b>{{bookForm.touched}}
+          <b>untouched : </b>{{bookForm.untouched}}
+          <b>pristine : </b>{{bookForm.pristine}}
+          <b>dirty : </b>{{bookForm.dirty}}
+          <b>disabled : </b>{{bookForm.disabled}}
+          <b>enabled : </b>{{bookForm.enabled}}
+          <h3>Form Value</h3>
+          {{bookForm.value |json}}
+        </div>
+      </div></div>
     
     `,
     styles: [``]

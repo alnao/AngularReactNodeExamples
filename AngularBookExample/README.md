@@ -1,3 +1,15 @@
+# AngularBookExample
+Semplice esempio di applicatione Angular che mostra un elenco (di libri) e permette l'inserimento e la modifica degli elementi
+
+
+# ToRun
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
+
+
+Come esempio si può avviare il server npx con file json statico eseguendo il comando:
+```npx jsonserver --path jsonserver/server.json```
+
+
 # Book
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.

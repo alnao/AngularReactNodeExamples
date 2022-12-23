@@ -10,14 +10,14 @@ import { trigger,state,style,transition,animate } from '@angular/animations';
 
 @Component({
   selector: 'app-book',
-  template: `<h1>Books</h1>
-    <div class="conteiner"><div class="row"><div class="col-lg-6">
-      <div class="search-book">
-        <input type="text" [(ngModel)]="term" class="form-control" name="search" autocomplete="off" placeholder="&#1442; Cerca" >
+  template: `
+    <div class="conteiner m-2"><div class="row"><div class="col-lg-8 ">
+      <div class="search-book m-4">
+        <input type="text" [(ngModel)]="term" class="form-control" name="search" autocomplete="off" placeholder="&#1442; Filtro ricerca" >
       </div>
-      <ul class="list-group ml-2" *ngIf="! this.error" >
+      <ul class="list-group ml-2 m-4" *ngIf="! this.error" >
         <li *ngFor="let book of books | filter:term" class="list-group-item" 
-        [ngClass]="{'active' : bookEdit?.id===book?.id }">
+        [ngClass]="{'active' : bookEdit?.id===book?.id }" >
           <span (click)="setActive(book)">{{book.title}}</span>
           <div class="pull-right" >
             <span [style.color]="book.price > 15 ? 'red' : null">€ {{book.price | number:'1.2-2'}}</span>
@@ -28,24 +28,16 @@ import { trigger,state,style,transition,animate } from '@angular/animations';
       </ul>
       <div *ngIf="this.error" class="alert alert-danger">{{error.message}}</div>
     </div>
-      <div class="col-lg-6 " >
+      <div class="col-lg-4" >
         <app-form [bookEdit]="bookEdit" [books]="books"
-          (resetClick)="reset()"
+          (resetClick)="reset()"  *ngIf="mostraForm"
         ></app-form>
+        <button (click)="showNew()" class="btn btn-info"  *ngIf="!mostraForm">
+          Insert new</button>  
       </div>
+      
     </div></div>
-    <hr />
-    <app-an-button></app-an-button>
-    <hr />
-    <div class="card bg-dark text-white mb-1 mr-1">
-      <div class="card-headers" (click)="toogle()">
-        Titolo
-      </div>
-      <div class="card-body overflow-hidden" [@collapsable]='state'>
-        qui un bel testo<br />anche lungo<p>lungo</p>ma forse non troppo
-      </div>
-    </div>  
-    <hr />
+
 
   `,styles: []
   ,animations:[
@@ -64,9 +56,11 @@ export class BookComponent implements OnInit {
   error : any;
   term : string;
   bookEdit : Book;
+  mostraForm : boolean;
 
   constructor(private bookService : BookService) {}
   ngOnInit(): void {
+    this.mostraForm=false;
     this.bookService.getAll().subscribe ( (res : Book[]) =>{
         this.books = res;
       },(error) => { console.log(error); this.error=error;});
@@ -81,9 +75,15 @@ export class BookComponent implements OnInit {
   }
   setActive(book : Book){
     this.bookEdit = book;
+    this.mostraForm=true;
   }
   reset(){
     this.bookEdit = null;
+    this.mostraForm=false;
+  }
+  showNew(){
+    this.bookEdit = null;
+    this.mostraForm=true;
   }
   
 }
