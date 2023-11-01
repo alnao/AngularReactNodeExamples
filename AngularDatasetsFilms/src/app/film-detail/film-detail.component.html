@@ -1,0 +1,39 @@
+
+<form [formGroup]="filmForm" (ngSubmit)="save()">    
+  <div class="container-fluid py-3">
+    <div class="mb-2 alert alert-warning" role="alert" *ngIf="!filmForm.valid" >
+      Dati non validi: 
+      <ul>
+        <li [hidden]="!filmForm.get('name')?.errors">Nome obbligatorio di almeno 3 caratteri</li>
+        <li [hidden]="!filmForm.get('releaseDate')?.errors">Data non valida</li>
+      </ul>
+    </div>
+    <div class="row my-3">
+      <div class="col">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control form-control-sm" id="name" name="name" placeholder="" formControlName="name" >
+      </div>
+    </div>
+    <div class="row my-3">
+      <div class="col-5">
+        <label for="distributor" class="form-label">Distributor</label>
+        <input class="form-control form-control-sm" id="distributor" name="distributor" rows="3" formControlName="distributor" />
+      </div>
+      <div class="col-5">
+        <label for="genre" class="form-label">Genre</label>
+        <input class="form-control form-control-sm" id="genre" name="genre" rows="3"  formControlName="genre"/>
+      </div>
+      <div class="col-2">
+        <label for="releaseDate" class="form-label">Release Date</label>
+        <input class="form-control form-control-sm" id="releaseDate" name="releaseDate" rows="3" 
+            pattern="\d{1,2}/\d{1,2}/\d{4}"  formControlName="releaseDate" />
+      </div>
+    </div>
+    <div class="row my-3">
+      <div class="col">
+        <button class="btn btn-sm btn-outline-danger" type="button"  [disabled]="!film.id" (click)="delete()">Delete</button>
+        <button class="btn btn-sm btn-outline-primary float-end" type="submit" [disabled]="!filmForm.valid">Save</button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,14 @@
+<div class="container-fluid py-3">
+    <div *ngIf="loading">...loading...</div>
+    <ul *ngIf="!loading" class="list-group">
+        <li class="list-group-item list-group-item-action" *ngFor="let film of listaCompleta | slice:0:50 ; let i = index;"
+            [routerLink]="['/detail/'+film.id,film]" [state]="{film}"
+            >
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ film.name}}</h5>
+                <small>{{film.releaseDate}}</small>
+            </div>
+            <small class="text-muted">{{film.genre}} - {{film.distributor}}</small>
+        </li>
+    </ul>
+</div>
