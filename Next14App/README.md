@@ -24,6 +24,12 @@ https://localhost:3000
 ``` 
 
 
+Per compilare 
+
+```
+npm run build
+```
+
 ## Layouts e page
 Componenti globali per tutte le pagine, notare che esiste già il file `layout.tsx`  con dentro title e la dichiarazione del `<body>` della pagina
 
