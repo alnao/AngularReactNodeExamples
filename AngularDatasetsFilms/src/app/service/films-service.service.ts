@@ -8,13 +8,9 @@ import { Observable } from 'rxjs';
 export class FilmsServiceService {
   constructor(private http: HttpClient) { }
   getHeaderWithToken(): HttpHeaders{
-    const tokenJwt=environment.tokenJwt; //TODO: togliere la password del token
+    //const tokenJwt=environment.tokenJwt; //token dinamico aggiunto dall'interceptor
     const headers= new HttpHeaders()
-      .set('Authorization', tokenJwt)
-      //.set('Access-Control-Allow-Origin','*')
-      //.set('Access-Control-Allow-Methods','*')
-      //.set('Access-Control-Allow-Headers','*')
-      ;
+    //  .set('Authorization', tokenJwt);
     return headers;
   }
   getConfigEndpoint(){

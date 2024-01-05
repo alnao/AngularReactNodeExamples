@@ -39,7 +39,7 @@ export class FilmDetailComponent implements OnInit {
     this.film.distributor=""+this.filmForm.value.distributor;
     this.film.genre=""+this.filmForm.value.genre;
     this.service.sendFilm(this.film).subscribe ( (res : any) =>{console.log(res);
-      this.router.navigate(['/']);
+      this.router.navigate(['/lista']);
     },(error) => { console.log(error);
       alert("Errore: " + error.message);
     });
