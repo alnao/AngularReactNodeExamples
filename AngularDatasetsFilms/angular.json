@@ -4,6 +4,15 @@
   "newProjectRoot": "projects",
   "projects": {
     "AngularDatasetsFilms": {
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "it": {
+            "translation": "messages.xlf",
+            "baseHref": ""
+          }
+        }
+      },
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -59,6 +68,11 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "it": {
+              "localize": ["it"],
+              "outputPath": "dist/under-construction-it/",
+              "i18nMissingTranslation": "error"
             }
           },
           "defaultConfiguration": "production"
@@ -68,6 +82,9 @@
           "configurations": {
             "production": {
               "browserTarget": "AngularDatasetsFilms:build:production"
+            },
+            "it": {
+              "browserTarget": "AngularDatasetsFilms:build:it"
             },
             "development": {
               "browserTarget": "AngularDatasetsFilms:build:development"

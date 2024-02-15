@@ -23,4 +23,12 @@ ng g c FilmDetail
 ng g s service/FilmsService
 npm install bootstrap bootstrap-icons
 ng add @ng-bootstrap/schematics 
+ng serve 
+```
+
+## Internationalization
+To Italian title run command 
+```
+ng serve --configuration=it
+ng build --configuration=it
 ```

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <h1>Film list</h1>
+        <h1 i18n="Film list|Title for the project@@titleOnPage">Film list</h1>
       </a>
       <button class="btn btn-sm btn-outline-primary" type="button" [routerLink]="['/new/']" 
         *ngIf="this.basicAuth.isLogged()">Create new</button>
