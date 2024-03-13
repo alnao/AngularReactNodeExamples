@@ -15,4 +15,12 @@ export class AppComponent {
     this.basicAuth.clearAll();
     this.route.navigate (  ['login'] );
   }
+
+  isOn = false;
+  clicked() {
+    this.isOn = !this.isOn;
+  }
+  get message() {
+    return `The light is ${this.isOn ? 'On' : 'Off'}`;
+  }
 }
