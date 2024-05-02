@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={raleway.className}>
         <header>
           <Link href="/">Home</Link> -  
-          <Link href="/component">Api</Link> - 
+          <Link href="/component">component</Link> - 
           <Link href="/component/subcomponent">Subcomponent</Link>
         </header>
         <hr/>
