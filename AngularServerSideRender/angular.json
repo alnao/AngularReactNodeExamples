@@ -3,16 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "AngularDatasetsFilms": {
-      "i18n": {
-        "sourceLocale": "en-US",
-        "locales": {
-          "it": {
-            "translation": "messages.xlf",
-            "baseHref": ""
-          }
-        }
-      },
+    "AngularServerSideRender": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -22,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-datasets-films",
+            "outputPath": "dist/AngularServerSideRender/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -32,10 +23,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              {
-                "input": "./node_modules/bootstrap/dist/css/bootstrap.css"
-              }
+              "src/styles.css"
             ],
             "scripts": []
           },
@@ -68,11 +56,6 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
-            },
-            "it": {
-              "localize": ["it"],
-              "outputPath": "dist/under-construction-it/",
-              "i18nMissingTranslation": "error"
             }
           },
           "defaultConfiguration": "production"
@@ -81,13 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "AngularDatasetsFilms:build:production"
-            },
-            "it": {
-              "buildTarget": "AngularDatasetsFilms:build:it"
+              "buildTarget": "AngularServerSideRender:build:production"
             },
             "development": {
-              "buildTarget": "AngularDatasetsFilms:build:development"
+              "buildTarget": "AngularServerSideRender:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -95,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "AngularDatasetsFilms:build"
+            "buildTarget": "AngularServerSideRender:build"
           }
         },
         "test": {
@@ -110,14 +90,70 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/scss/bootstrap.scss",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
-              "src/styles.scss"
+              "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-            ]
+            "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/AngularServerSideRender/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@angular-devkit/build-angular:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "AngularServerSideRender:build:development",
+              "serverTarget": "AngularServerSideRender:server:development"
+            },
+            "production": {
+              "browserTarget": "AngularServerSideRender:build:production",
+              "serverTarget": "AngularServerSideRender:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@angular-devkit/build-angular:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "AngularServerSideRender:build:production",
+              "serverTarget": "AngularServerSideRender:server:production"
+            },
+            "development": {
+              "browserTarget": "AngularServerSideRender:build:development",
+              "serverTarget": "AngularServerSideRender:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
