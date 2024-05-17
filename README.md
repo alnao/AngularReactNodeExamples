@@ -29,11 +29,14 @@ Questi esempi necessitano tutti `npm` e `node` installati nel sistema.
 - [Come gestire moduli e componenti standalone](#Come-gestire-moduli-e-componenti-standalone)
 - [Come internazionalizzare un progetto Angular](#Come-internazionalizzare-un-progetto-Angular)
 - [Come gestire i test nei progetti Angular](#Come-gestire-i-test-nei-progetti-Angular)
+- [Come attivare il server side rendering](#Come-attivare-il-server-side-rendering)
 
 # Esempi
+- **AngularServerSideRender**: applicazione di esempio con il server-side rendering attivato, vedere [articolo dedicato](#Come-attivare-il-server-side-rendering)
 - **AngularDatasetsFilms**: applicazione realizzata in angular per gestire un piccolo DB di Films, il backend corrispondente è realizzato in AWS-Lambda [Esempio12lambdaAuthorizer](https://github.com/alnao/AWSCloudFormationExamples/tree/master/Esempio12lambdaAuthorizer) 
 - **Next14App**: applicazione di esempio creata con Next14 seguendo la guida ['Creare un progetto con Next (v.14)'](https://www.youtube.com/watch?v=MER4bmh_s78) 
 - **NodeApiSqlLite**: piccola applicazione per l'esecuzione di API Crud su una tabella SqlLite interna al progetto
+- **NodeAwsAlNaoManager**: esempio di piccola applicazione che usa la [libreria SDK di AWS](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_s3_code_examples.html)
 
 ## Esempi in fase di revisione
 - **AngularBookExample** e **AngularBookExamplePhpServer**
@@ -59,6 +62,7 @@ Questi esempi necessitano tutti `npm` e `node` installati nel sistema.
 
 
 # Angular 
+Questa serie di articoli sono presi dalla vecchia versione di [alnao.it](https://alnao.it)
 
 ## Come gestire i dati con Typescript e Json
 
@@ -1087,6 +1091,63 @@ L'intero codice di esempio può essere trovato al solito repository:
 ```
 https://github.com/alnao/AngularReactNodeExamples/tree/master/AngularDatasetsFilms
 ```
+
+## Come attivare il server side rendering
+Il server side render (spesso abbreviato con la sigla **SSR**) è la tecnica messa a disposizione dalla versione 17 di Angular per attivare il render lato Server ed evitare di delegare al Client l'onere di eseguire il render dei componenti Javascript generati dalla compilazione del codice Typescript. A detta di molti la tecnica del Server-Side Rendering offre una serie di vantaggi significativi rispetto al Client-Side Rendering (CSR), tra cui: 
+- migliori prestazioni per la navigabilità, specialmente per i dispositivi mobile che, con il CSR, sono costretti ad eseguire il rendering dell'intera applicazione nel browser del dispositivo
+- miglioramenti delle prestazioni come la riduzione del First Contentful Paint (detto FCP) e de Largest Contentful Paint (detto LCP), cioè il primo accesso risulta molto più veloce
+- miglior Seo: la Search Engine Optimization delle applicazioni viene facilitata migliorando l'indicizzazione dei contenuto dell'applicazione da parte dei motori di ricerca
+Si fa sempre riferimento alla guida ufficiale per tutti i dettagli riguardo a questa tecnica
+  https://angular.io/guide/ssr
+Prima di procedere bisogna ricordare che è necessario avere la versione 17 di Angular e di Anglar/CLI quinbi bisogna aggiornare tutte le librerie prima di procedere, per esempio passando dalla versione 14 alle 17 bisogna eseguire i passi:
+```
+ng update @angular/core@15
+ng update @angular/core@16
+ng update @angular/core@17
+ng version
+ng update @angular/cli@15
+ng update @angular/cli@16
+ng update @angular/cli@17
+ng version
+```
+Si rimanda alla [documentazione ufficiale](https://docs.angular.lat/cli/update) per maggiori dettagli riguardo al processo di aggiornamento
+e alla [pagina specifica](https://angular.io/guide/versions) riguardo alla versioni disponibili e alla loro compabilità. Una volta pronti è possibile creare il progetto con li comando
+```
+ng new AngularServerSideRender
+cd AngularServerSideRender
+```
+Con un comando specifico è possibile aggiungere ad un progetto la libreria necessaria
+```
+ng add @angular/ssr
+```
+Comando che va a creare dei nuovi files:
+```
+my-app
+|-- server.ts                       # application server
+└── src
+    |-- app
+    |   └── app.config.server.ts    # server application configuration
+    └── main.server.ts              # main server application bootstrapping
+```
+E' possibile verificare immediatamente il corretto funzionamento della libreria.
+Con il comando
+```
+$ ng serve
+```
+si esegue la compilazione e il render lato client (CSR), infatti l'HTML visualizzato nel browser conterrà solamente i javascript ed un tag principale
+```
+<body>
+  <app-root></app-root>
+  <script src="runtime.js" type="module"></script>...
+</body>
+```
+Mentre con il comando
+```
+$ npm run dev:ssr
+```
+sarà possibile constatare come il HTML generato e messo a disposizione dal server contiene l'effettivo codice HTML del componente angular visualizzato.
+Per maggiori dettagli si rimanda alla [documentazione ufficiale](https://angular.io/guide/ssr) e alla pagina specifica riguardo alla tecnica del [hydration](https://angular.io/guide/hydration) utilizzata dai server per passare i componenti al browser.
+
 
 # AlNao.it
 Nessun contenuto in questo repository è stato creato con IA o automaticamente, tutto il codice è stato scritto con molta pazienza da Alberto Nao. Se il codice è stato preso da altri siti/progetti è sempre indicata la fonte. Per maggior informazioni visitare il sito [alnao.it](https://www.alnao.it/).
