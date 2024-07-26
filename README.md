@@ -37,6 +37,7 @@ Questi esempi necessitano tutti `npm` e `node` installati nel sistema.
 - **Next14App**: applicazione di esempio creata con Next14 seguendo la guida ['Creare un progetto con Next (v.14)'](https://www.youtube.com/watch?v=MER4bmh_s78) 
 - **NodeApiSqlLite**: piccola applicazione per l'esecuzione di API Crud su una tabella SqlLite interna al progetto
 - **NodeAwsAlNaoManager**: esempio di piccola applicazione che usa la [libreria SDK di AWS](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_s3_code_examples.html)
+- **IonicReactPhotoGallery**: progetto per la creazione di una PhotoGallery, progetto preso dalla [documentazione ufficiale](https://ionicframework.com/docs/react/your-first-app)
 
 ## Esempi in fase di revisione
 - **AngularBookExample** e **AngularBookExamplePhpServer**
