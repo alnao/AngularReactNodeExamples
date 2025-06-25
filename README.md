@@ -15,22 +15,6 @@ Vari esempi di progetti web sviluppati nei vari linguaggi by [AlNao](https://www
 
 Questi esempi necessitano tutti `npm` e `node` installati nel sistema.
 
-# Indice
-**Angular**
-- [Come gestire i dati con Typescript e Json](#Come-gestire-i-dati-con-Typescript-e-Json)
-- [Come creare un progetto Angular](#Come-creare-un-progetto-Angular)
-- [Come creare componenti in un progetto Angular](#Come-creare-componenti-in-un-progetto-Angular)
-- [Come creare template dinamici e gestire eventi](#Come-creare-template-dinamici-e-gestire-eventi)
-- [Come usare le annotation @Input e @Output](#Come-usare-le-annotation-Input-e-Output)
-- [Come creare form reattivi con il template driven](#Come-creare-form-reattivi-con-il-template-driven)
-- [Come gestire dati con operatore pipe di Angular](#Come-gestire-dati-con-operatore-pipe-di-Angular)
-- [Come gestire esecuzioni di servizi in maniera asincrona](#Come-gestire-esecuzioni-di-servizi-in-maniera-asincrona)
-- [Come gestire la navigazione in rotte con Angular](#Come-gestire-la-navigazione-in-rotte-con-Angular)
-- [Come gestire moduli e componenti standalone](#Come-gestire-moduli-e-componenti-standalone)
-- [Come internazionalizzare un progetto Angular](#Come-internazionalizzare-un-progetto-Angular)
-- [Come gestire i test nei progetti Angular](#Come-gestire-i-test-nei-progetti-Angular)
-- [Come attivare il server side rendering](#Come-attivare-il-server-side-rendering)
-
 # Esempi
 - **AngularServerSideRender**: applicazione di esempio con il server-side rendering attivato, vedere [articolo dedicato](#Come-attivare-il-server-side-rendering)
 - **AngularDatasetsFilms**: applicazione realizzata in angular per gestire un piccolo DB di Films, il backend corrispondente è realizzato in AWS-Lambda [Esempio12lambdaAuthorizer](https://github.com/alnao/AWSCloudFormationExamples/tree/master/Esempio12lambdaAuthorizer) 
@@ -38,6 +22,7 @@ Questi esempi necessitano tutti `npm` e `node` installati nel sistema.
 - **NodeApiSqlLite**: piccola applicazione per l'esecuzione di API Crud su una tabella SqlLite interna al progetto
 - **NodeAwsAlNaoManager**: esempio di piccola applicazione che usa la [libreria SDK di AWS](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_s3_code_examples.html)
 - **IonicReactPhotoGallery**: progetto per la creazione di una PhotoGallery, progetto preso dalla [documentazione ufficiale](https://ionicframework.com/docs/react/your-first-app)
+- **ReactAwsConsole**: progetto Web scrittto in React per  con il progetto JavaExamples/AWS/SDK
 
 ## Esempi in fase di revisione
 - **AngularBookExample** e **AngularBookExamplePhpServer**
@@ -64,6 +49,20 @@ Questi esempi necessitano tutti `npm` e `node` installati nel sistema.
 
 # Angular 
 Questa serie di articoli sono presi dalla vecchia versione di [alnao.it](https://alnao.it)
+- [Come gestire i dati con Typescript e Json](#Come-gestire-i-dati-con-Typescript-e-Json)
+- [Come creare un progetto Angular](#Come-creare-un-progetto-Angular)
+- [Come creare componenti in un progetto Angular](#Come-creare-componenti-in-un-progetto-Angular)
+- [Come creare template dinamici e gestire eventi](#Come-creare-template-dinamici-e-gestire-eventi)
+- [Come usare le annotation @Input e @Output](#Come-usare-le-annotation-Input-e-Output)
+- [Come creare form reattivi con il template driven](#Come-creare-form-reattivi-con-il-template-driven)
+- [Come gestire dati con operatore pipe di Angular](#Come-gestire-dati-con-operatore-pipe-di-Angular)
+- [Come gestire esecuzioni di servizi in maniera asincrona](#Come-gestire-esecuzioni-di-servizi-in-maniera-asincrona)
+- [Come gestire la navigazione in rotte con Angular](#Come-gestire-la-navigazione-in-rotte-con-Angular)
+- [Come gestire moduli e componenti standalone](#Come-gestire-moduli-e-componenti-standalone)
+- [Come internazionalizzare un progetto Angular](#Come-internazionalizzare-un-progetto-Angular)
+- [Come gestire i test nei progetti Angular](#Come-gestire-i-test-nei-progetti-Angular)
+- [Come attivare il server side rendering](#Come-attivare-il-server-side-rendering)
+
 
 ## Come gestire i dati con Typescript e Json
 
