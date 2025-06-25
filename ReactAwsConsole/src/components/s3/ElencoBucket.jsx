@@ -2,25 +2,25 @@ import { useEffect, useState } from "react";
 import AwsS3ConsoleServices from '../services/s3.js';
 
 export const ElencoBucket = ({ onBucketSelect }) => {
-  const [buckets, setBuckets] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+    const [buckets, setBuckets] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const fetchBuckets = () => {
         setLoading(true);
         setError(null);
-        try {// Chiama il metodo getBuckets dalla classe AwsS3ConsoleServices
-            const response = /*await*/ AwsS3ConsoleServices.getBuckets();
-            setBuckets(response.data);
-            setLoading(false);
-        } catch (err) {
-            console.error("Errore nel recupero dei bucket:", err); // Log dell'errore per debugging
-            setError('Errore durante il recupero dei bucket. Riprova più tardi.');
-            setLoading(false);
-        }
-    };
-  useEffect(() => {
-    fetchBuckets();
-  }, []); // Esegui solo al montaggio del componente
+        AwsS3ConsoleServices.getBuckets().then(response => {
+          console.log(response);
+          setBuckets(response.data);
+          setLoading(false);
+        }).catch(err => {
+          console.error("Errore nel recupero dei bucket:", err); // Log dell'errore per debugging
+          setError('Errore durante il recupero dei bucket. Riprova più tardi.');
+          setLoading(false);
+        });
+    }
+    useEffect(() => {
+      fetchBuckets();
+    }, []); // Esegui solo al montaggio del componente
 
   if (loading) {
     return (
@@ -41,6 +41,8 @@ export const ElencoBucket = ({ onBucketSelect }) => {
       </div>
     );
   }
+
+  
 
   return (
     <div className="card shadow-sm p-4 rounded-lg bg-light">

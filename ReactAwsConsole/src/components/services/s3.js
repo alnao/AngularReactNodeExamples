@@ -9,8 +9,8 @@ class AwsS3ConsoleServices {
         return axios.get (`${this.state.server}${this.state.baseUrl}/listBuckets`);
     }
 
-    getFiles = (bucketName,previx) => {
-        const request = { bucketName , previx };
+    getFiles = (bucketName,prefix) => {
+        const request = { bucketName , prefix };
         return axios.post (`${this.state.server}${this.state.baseUrl}/listFiles`,request);
     }
 

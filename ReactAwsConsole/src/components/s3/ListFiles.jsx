@@ -12,15 +12,14 @@ export const S3ListFiles = ({ bucketName, currentPath, onPathSelect, onUploadReq
     const fetchBuckets = () => {
         setLoading(true);
         setError(null);
-        try {// Chiama il metodo getBuckets dalla classe AwsS3ConsoleServices
-            const response = /*await*/ AwsS3ConsoleServices.getFiles(bucketName, currentPath);
+        AwsS3ConsoleServices.getFiles(bucketName, currentPath).then(response => {
             setContents(response.data);
             setLoading(false);
-        } catch (err) {
+        }).catch (err =>{
             console.error("Errore nel recupero dei bucket:", err); // Log dell'errore per debugging
             setError('Errore durante il recupero dei bucket. Riprova più tardi.');
             setLoading(false);
-        }
+        });
     };
     useEffect(() => {
         fetchBuckets();
