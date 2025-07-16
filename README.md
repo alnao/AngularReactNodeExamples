@@ -22,7 +22,7 @@ Questi esempi necessitano tutti `npm` e `node` installati nel sistema.
 - **NodeApiSqlLite**: piccola applicazione per l'esecuzione di API Crud su una tabella SqlLite interna al progetto
 - **NodeAwsAlNaoManager**: esempio di piccola applicazione che usa la [libreria SDK di AWS](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_s3_code_examples.html)
 - **IonicReactPhotoGallery**: progetto per la creazione di una PhotoGallery, progetto preso dalla [documentazione ufficiale](https://ionicframework.com/docs/react/your-first-app)
-- **ReactAwsConsole**: progetto Web scrittto in React per  con il progetto JavaExamples/AWS/SDK
+- **ReactAwsConsole**: progetto Web scrittto in React per funzionare assieme al progetto JavaExamples/AWS/SDK disponibile nel repository `https://github.com/alnao/JavaExamples`
 
 ## Esempi in fase di revisione
 - **AngularBookExample** e **AngularBookExamplePhpServer**
@@ -138,7 +138,23 @@ getGiovane = (lista) => {
   return Math.max( l.reduce((a, b) => Math.max(a, b), 0) );
 }
 ```
-L'elenco completo di tutti i metodi usabili è facilmente recuperabile con una ricerca in internet, per esempio nel sito ufficiale di mozilla.org è disponibile una documentazione. La gestione delle date è sempre un tema particolare in informatica in quanto ogni linguaggio ha il suo standard e i suoi metodi, Typescript eredita da Javascript la classe Date che rappresenta data e ora assieme:
+
+
+Un altro esempio è prendere tutti gli eventi di una certa data (tutti gli eventi del sedici ottobre) se la lista contiene un campo `dataInt` in formato `YYYYMMDD`:
+```
+const today = new Date();
+const currentMonth = (today.getMonth() + 1).toString().padStart(2, '0'); // +1 perché getMonth() è 0-based
+const currentDay = today.getDate().toString().padStart(2, '0');
+const currentDayRegex = new RegExp(`^\\d{4}${currentMonth}${currentDay}$`);
+const listaFiltrata = listaRitornataDalServizio.filter ( el => currentDayRegex.test(el.dataInt) )
+```
+
+
+L'elenco completo di tutti i metodi usabili è facilmente recuperabile con una ricerca in internet, per esempio nel sito ufficiale di mozilla.org è disponibile una documentazione. 
+
+---
+
+La gestione delle **date** è sempre un tema particolare in informatica in quanto ogni linguaggio ha il suo standard e i suoi metodi, Typescript eredita da Javascript la classe Date che rappresenta data e ora assieme:
 ```
 let date:  Date = new Date();
 let date2: Date = new Date("2042-10-16");
