@@ -9,7 +9,7 @@ export const S3ListFiles = ({ bucketName, currentPath, onPathSelect, onUploadReq
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const fetchBuckets = () => {
+    const fetchBuckets = async () => {
         setLoading(true);
         setError(null);
         AwsS3ConsoleServices.getFiles(bucketName, currentPath).then(response => {
@@ -22,7 +22,7 @@ export const S3ListFiles = ({ bucketName, currentPath, onPathSelect, onUploadReq
         });
     };
     useEffect(() => {
-        fetchBuckets();
+      fetchBuckets();
     }, []); // Esegui solo al montaggio del componente
 
 

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 //import FileExplorer from "./S3/FileExplorer";
-import { EC2ListInstances, EC2StartInstance, EC2StopInstance, EC2TerminateInstance } from "./Todo";
 import { S3CreateBucket, S3DestroyBucket, S3UploadFile} from "./S3";
 import { ElencoBucket } from "./s3/ElencoBucket";
 import { S3ListFiles } from "./s3/ListFiles";
+import EC2InstanceManager from "./ec2/EC2InstanceManager";
+import KeyPairViewer from "./ec2/KeyPairViewer";
+import SecurityGroupManager from "./ec2/SecurityGroupManager";
 
 // Il componente Home principale
 const Home = () => {
@@ -27,10 +29,9 @@ const Home = () => {
       { name: 'Elimina Bucket', component: S3DestroyBucket, key: 's3-destroy', needsBucket: true },
     ],
     EC2: [
-      { name: 'Elenco Istanze', component: EC2ListInstances, key: 'ec2-list', needsBucket: false },
-      { name: 'Avvia Istanza', component: EC2StartInstance, key: 'ec2-start', needsBucket: false },
-      { name: 'Ferma Istanza', component: EC2StopInstance, key: 'ec2-stop', needsBucket: false },
-      { name: 'Termina Istanza', component: EC2TerminateInstance, key: 'ec2-terminate', needsBucket: false },
+      { name: 'Elenco Istanze', component: EC2InstanceManager, key: 'ec2-list', needsBucket: false },
+      { name: 'Security group', component: KeyPairViewer, key: 'ec2-start', needsBucket: false },
+      { name: 'Key pair', component: SecurityGroupManager, key: 'ec2-stop', needsBucket: false },
     ],
   };
 

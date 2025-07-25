@@ -48,7 +48,7 @@ export const ElencoBucket = ({ onBucketSelect }) => {
     <div className="card shadow-sm p-4 rounded-lg bg-light">
       <h4 className="text-info">Elenco Bucket S3</h4>
       <p className="text-muted">Clicca su un bucket per visualizzarne i file.</p>
-      {buckets.length > 0 ? (
+      {buckets!==undefined && buckets.length > 0 ? (
         <ul className="list-group list-group-flush">
           {buckets.map((bucket, index) => (
             <li
