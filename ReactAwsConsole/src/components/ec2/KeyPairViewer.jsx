@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import AwsEC2ConsoleServices from '../services/ec2.js';
+
 
 export default function KeyPairViewer() {
-  const [region, setRegion] = useState('');
+  const [region, setRegion] = useState('eu-central-1');
   const [keys, setKeys] = useState([]);
 
   const fetchKeys = async () => {
     if (!region) return;
-    const res = await axios.get(`/aws/ec2/key-pairs?region=${region}`);
+    const res = AwsEC2ConsoleServices.fetchKeys(region);
     setKeys(res.data);
   };
 
@@ -23,13 +24,14 @@ export default function KeyPairViewer() {
         value={region}
         onChange={(e) => setRegion(e.target.value)}
       />
-
-      {keys.map((key) => (
-        <div key={key.keyName} className="border p-2 mb-2">
-          <div><strong>Name:</strong> {key.keyName}</div>
-          <div><strong>Fingerprint:</strong> {key.keyFingerprint}</div>
-        </div>
-      ))}
+      {keys!==undefined && <div>
+        {keys.map((key) => (
+          <div key={key.keyName} className="border p-2 mb-2">
+            <div><strong>Name:</strong> {key.keyName}</div>
+            <div><strong>Fingerprint:</strong> {key.keyFingerprint}</div>
+          </div>
+        ))}
+      </div>}
     </div>
   );
 }

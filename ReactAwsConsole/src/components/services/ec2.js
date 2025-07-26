@@ -26,5 +26,24 @@ class AwsEC2ConsoleServices {
     terminateInstance = async (region,id) => {
         return axios.delete(`${this.state.server}${this.state.baseUrl}/terminate/${region}/${id}`);
     };
+
+    fetchGroups = async (region) => {
+        const res = await axios.get(`${this.state.server}${this.state.baseUrl}/security-groups`);
+        return res;
+    };
+
+    authorize = async (region,groupId) => {
+        return await axios.post(`${this.state.server}${this.state.baseUrl}/${groupId}/authorize`);
+    };
+
+    revoke = async (region,groupId) => {
+        return await axios.post(`${this.state.server}${this.state.baseUrl}/${groupId}/revoke`);
+    };
+
+    fetchKeys = async (region) => {
+        const res = await axios.get(`${this.state.server}${this.state.baseUrl}/key-pairs?region=${region}`);
+        return res;
+    };
+
 }
 export default new AwsEC2ConsoleServices();

@@ -1,7 +1,18 @@
-# 
-```
-npx create-react-app reactawsconsole
-```
+# ReactAWSConsole
+
+Progetto Web scrittto in React per funzionare assieme al progetto JavaExamples/AWS/SDK disponibile nel repository `https://github.com/alnao/JavaExamples`
+
+*In fase di sviluppo*
+
+## Comandi vari
+- Creazione del progetto
+    ```
+    npx create-react-app reactawsconsole
+    ```
+- Avvio dell'applicazione
+    ```
+    npm start
+    ```
 
 
 
@@ -75,3 +86,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+# AlNao.it
+Nessun contenuto in questo repository è stato creato con IA o automaticamente, tutto il codice è stato scritto con molta pazienza da Alberto Nao. Se il codice è stato preso da altri siti/progetti è sempre indicata la fonte. Per maggior informazioni visitare il sito [alnao.it](https://www.alnao.it/).
+
+
+## License
+Public projects 
+<a href="https://it.wikipedia.org/wiki/GNU_General_Public_License"  valign="middle"><img src="https://img.shields.io/badge/License-GNU-blue" style="height:22px;"  valign="middle"></a> 
+*Free Software!*

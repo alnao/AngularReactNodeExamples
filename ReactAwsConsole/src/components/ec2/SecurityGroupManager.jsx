@@ -1,25 +1,30 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import AwsEC2ConsoleServices from '../services/ec2.js';
 
 export default function SecurityGroupManager() {
-  const [region, setRegion] = useState('');
+  const [region, setRegion] = useState('eu-central-1');
   const [groups, setGroups] = useState([]);
 
   const fetchGroups = async () => {
     if (!region) return;
-    const res = await axios.get(`/aws/ec2/security-groups?region=${region}`);
+    const res = AwsEC2ConsoleServices.fetchGroups(region);
     setGroups(res.data);
   };
 
   const authorize = async (groupId) => {
-    await axios.post(`/aws/ec2/security-groups/${groupId}/authorize?region=${region}`);
+    AwsEC2ConsoleServices.authorize(region, groupId);
     fetchGroups();
   };
 
   const revoke = async (groupId) => {
-    await axios.post(`/aws/ec2/security-groups/${groupId}/revoke?region=${region}`);
+    AwsEC2ConsoleServices.revoke(region, groupId);
     fetchGroups();
   };
+  useEffect(() => {
+    fetchGroups();
+    setRegion('eu-central-1'); // Set default region
+  }, []); // Esegui solo al montaggio del componente
+
 
   return (
     <div className="p-4">
@@ -32,15 +37,16 @@ export default function SecurityGroupManager() {
         onChange={(e) => setRegion(e.target.value)}
         onBlur={fetchGroups}
       />
-
-      {groups.map(group => (
-        <div key={group.groupId} className="border p-2 mb-2">
-          <div><strong>ID:</strong> {group.groupId}</div>
-          <div><strong>Name:</strong> {group.groupName}</div>
-          <button onClick={() => authorize(group.groupId)} className="text-green-600 mr-2">Authorize SSH</button>
-          <button onClick={() => revoke(group.groupId)} className="text-red-600">Revoke SSH</button>
-        </div>
-      ))}
+      {groups!==undefined && <div>
+        {groups.map(group => (
+          <div key={group.groupId} className="border p-2 mb-2">
+            <div><strong>ID:</strong> {group.groupId}</div>
+            <div><strong>Name:</strong> {group.groupName}</div>
+            <button onClick={() => authorize(group.groupId)} className="text-green-600 mr-2">Authorize SSH</button>
+            <button onClick={() => revoke(group.groupId)} className="text-red-600">Revoke SSH</button>
+          </div>
+        ))}
+      </div>}
     </div>
   );
 }
