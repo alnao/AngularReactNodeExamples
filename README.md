@@ -7,48 +7,133 @@
     <img src="https://img.shields.io/badge/React-61DBFB?style=plastic&logo=react&logoColor=white"  style="height:28px;" />
     <img src="https://img.shields.io/badge/Node.js-43853D?style=plastic&logo=node.js&logoColor=white"  style="height:28px;" />
     <img src="https://img.shields.io/badge/Npm-cb3837?style=plastic&logo=npm&logoColor=white"  style="height:28px;" />
+    <img src="https://img.shields.io/badge/TypeScript-007ACC?style=plastic&logo=typescript&logoColor=white"  style="height:28px;" />
   </a>
 </p>
 
-Vari esempi di progetti web sviluppati nei vari linguaggi by [AlNao](https://www.alnao.it/angular-ionic/).
-
-
-Questi esempi necessitano tutti `npm` e `node` installati nel sistema.
-
 # Esempi
-- **AngularServerSideRender**: applicazione di esempio con il server-side rendering attivato, vedere [articolo dedicato](#Come-attivare-il-server-side-rendering)
-- **AngularDatasetsFilms**: applicazione realizzata in angular per gestire un piccolo DB di Films, il backend corrispondente è realizzato in AWS-Lambda [Esempio12lambdaAuthorizer](https://github.com/alnao/AWSCloudFormationExamples/tree/master/Esempio12lambdaAuthorizer) 
-- **Next14App**: applicazione di esempio creata con Next14 seguendo la guida ['Creare un progetto con Next (v.14)'](https://www.youtube.com/watch?v=MER4bmh_s78) 
-- **NodeApiSqlLite**: piccola applicazione per l'esecuzione di API Crud su una tabella SqlLite interna al progetto
-- **NodeAwsAlNaoManager**: esempio di piccola applicazione che usa la [libreria SDK di AWS](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_s3_code_examples.html)
-- **IonicReactPhotoGallery**: progetto per la creazione di una PhotoGallery, progetto preso dalla [documentazione ufficiale](https://ionicframework.com/docs/react/your-first-app)
-- **ReactAwsConsole**: progetto Web scrittto in React per funzionare assieme al progetto JavaExamples/AWS/SDK disponibile nel repository `https://github.com/alnao/JavaExamples`
-
-## Esempi in fase di revisione
-- **AngularBookExample** e **AngularBookExamplePhpServer**
-- **AngularCorsoFull**
-- **AngularExampleListPassword**
-- **AngularFileManager**
-- **AngularSouthAfricanMobileNumbers**
-- **AngularTemplateExample1**
-- **ES6Example**
-- **IonicCorsoPokemon**
-- **IonicExampleUsers**
-- **NodeDbExamples**
-- **NodeRestOnMongo**
-- **ReactCorsoReduxClient**
-- **ReactCorsoReduxClient2MUI**
-- **ReactCorsoReduxServer**
-- **ReactExample1**
-- **ReactExample2lambdaClient**
-- **ReactExample2lambdaClientWithAuth**
-- **ReactReduxExample**
-- **ReactReduxHello**
 
 
+- **🚀 Angular18NgrxReduxExample** [`📁`](./Angular18NgrxReduxExample/)
+  - **Tecnologie**: Angular 18, NgRx, TypeScript
+  - **Caratteristiche**: State management con NgRx, architettura scalabile
+  - **Avvio**: `ng serve` → http://localhost:4200
+- **🎬 AngularDatasetsFilms** [`📁`](./AngularDatasetsFilms/)
+  - **Tecnologie**: Angular, TypeScript, AWS Lambda integration
+  - **Caratteristiche**: CRUD operations, gestione dataset films, internazionalizzazione
+  - **Backend**: AWS Lambda [Esempio10lambdaAuthorizer](https://github.com/alnao/AwsCloudFormationExamples/blob/master/Esempio10lambdaAuthorizer/template.yaml)
+  - **Avvio**: `ng serve` → http://localhost:4200
+- **⚡ AngularServerSideRender** [`📁`](./AngularServerSideRender/)
+  - **Tecnologie**: Angular Universal, SSR
+  - **Caratteristiche**: Server-side rendering, SEO optimization
+  - **Avvio**: `ng serve` → http://localhost:4200
+  - **Documentazione**: [Articolo dedicato](#Come-attivare-il-server-side-rendering)
+- **⚛️ ReactAwsConsole** [`📁`](./ReactAwsConsole/)
+  - **Tecnologie**: React, AWS SDK, TypeScript
+  - **Caratteristiche**: Console per gestione servizi AWS
+  - **Integrazione**: Funziona con [JavaExamples/AWS/SDK](https://github.com/alnao/JavaExamples)
+  - **Avvio**: `npm start` → http://localhost:3000
+- **🔥 Next14App** [`📁`](./Next14App/)
+  - **Tecnologie**: Next.js 14, React 18, TypeScript, TailwindCSS
+  - **Caratteristiche**: SSR, routing automatico, ottimizzazioni performance
+  - **Guida**: [Video tutorial](https://www.youtube.com/watch?v=MER4bmh_s78)
+  - **Avvio**: `npm run dev` → http://localhost:3000
+- **💾 NodeApiSqlLite** [`📁`](./NodeApiSqlLite/)
+  - **Tecnologie**: Node.js, Express, SQLite3
+  - **Caratteristiche**: API REST CRUD, database embedded
+  - **Endpoints**: GET/POST/PUT/DELETE su `/employees`
+  - **Avvio**: `node restwithnodejssqlite3.js` → http://localhost:8000
+- **☁️ NodeAwsAlNaoManager** [`📁`](./NodeAwsAlNaoManager/)
+  - **Tecnologie**: Node.js, AWS SDK v3
+  - **Caratteristiche**: Gestione servizi AWS (S3, EC2, Lambda)
+  - **Documentazione**: [AWS SDK per JavaScript](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_s3_code_examples.html)
+- **📸 IonicReactPhotoGallery** [`📁`](./IonicReactPhotoGallery/)
+  - **Tecnologie**: Ionic, React, Capacitor
+  - **Caratteristiche**: Photo gallery, camera integration, cross-platform
+  - **Fonte**: [Documentazione ufficiale Ionic](https://ionicframework.com/docs/react/your-first-app)
+  - **Avvio**: `ionic serve` → http://localhost:8100
 
-# Angular 
-Questa serie di articoli sono presi dalla vecchia versione di [alnao.it](https://alnao.it)
+
+## 🔧 Esempi in fase di revisione
+- **☁️ AWSLambda** [`📁`](./AWSLambda/) - Esempi di AWS Lambda Function (Node.js, DynamoDB, API Gateway)
+- **📚 AngularBookExample** [`📁`](./AngularBookExample/) & **🔧 AngularBookExamplePhpServer** [`📁`](./AngularBookExamplePhpServer/) - Gestione libreria con backend PHP
+- **🎓 AngularCorsoFull** [`📁`](./AngularCorsoFull/) - Corso completo Angular con esempi pratici  
+- **🔐 AngularExampleListPassword** [`📁`](./AngularExampleListPassword/) - Gestione password e autenticazione
+- **📁 AngularFileManager** [`📁`](./AngularFileManager/) - File manager con Angular
+- **📱 AngularSouthAfricanMobileNumbers** [`📁`](./AngularSouthAfricanMobileNumbers/) - Validazione numeri telefonici
+- **🎨 AngularTemplateExample1** [`📁`](./AngularTemplateExample1/) - Template dashboard con Bootstrap
+- **🔄 ReactCorsoReduxClient** [`📁`](./ReactCorsoReduxClient/) - Client Redux base
+- **🎨 ReactCorsoReduxClient2MUI** [`📁`](./ReactCorsoReduxClient2MUI/) - Client Redux con Material-UI
+- **🖥️ ReactCorsoReduxServer** [`📁`](./ReactCorsoReduxServer/) - Server per progetti Redux
+- **⭐ ReactExample1** [`📁`](./ReactExample1/) - Primo esempio React
+- **🚀 ReactExample2lambdaClient** [`📁`](./ReactExample2lambdaClient/) - Client per AWS Lambda
+- **🔐 ReactExample2lambdaClientWithAuth** [`📁`](./ReactExample2lambdaClientWithAuth/) - Client Lambda con autenticazione
+- **📊 ReactReduxExample** [`📁`](./ReactReduxExample/) - Esempio Redux completo
+- **👋 ReactReduxHello** [`📁`](./ReactReduxHello/) - Hello World con Redux
+- **🎮 IonicCorsoPokemon** [`📁`](./IonicCorsoPokemon/) - App Pokemon con Ionic
+- **👥 IonicExampleUsers** [`📁`](./IonicExampleUsers/) - Gestione utenti con Ionic
+- **💿 NodeDbExamples** [`📁`](./NodeDbExamples/) - Esempi database con Node.js
+- **🍃 NodeRestOnMongo** [`📁`](./NodeRestOnMongo/) - API REST con MongoDB
+- **⚡ ES6Example** [`📁`](./ES6Example/) - Esempi moderni JavaScript ES6+
+
+
+## Prerequisiti
+
+### 🔧 Software richiesto
+
+Questi esempi necessitano *quasi* tutti do questi software:
+
+| Software | Versione minima | Comando di verifica | Link download |
+|----------|----------------|---------------------|---------------|
+| **Node.js** | 16.x+ | `node --version` | [nodejs.org](https://nodejs.org/) |
+| **npm** | 8.x+ | `npm --version` | Incluso con Node.js |
+| **Angular CLI** | 16.x+ | `ng version` | `npm install -g @angular/cli` |
+| **Ionic CLI** | 7.x+ | `ionic --version` | `npm install -g @ionic/cli` |
+
+### 🔨 Strumenti opzionali (consigliati)
+
+| Tool | Descrizione | Installazione |
+|------|-------------|---------------|
+| **VS Code** | Editor di codice consigliato | [code.visualstudio.com](https://code.visualstudio.com/) |
+| **Git** | Controllo versione | [git-scm.com](https://git-scm.com/) |
+| **AWS CLI** | Per esempi AWS | [docs.aws.amazon.com](https://docs.aws.amazon.com/cli/) |
+
+### 📦 Estensioni VS Code consigliate
+
+- Angular Language Service
+- TypeScript Importer  
+- Prettier - Code formatter
+- GitLens
+- AWS Toolkit
+
+### 🚀 Quick Start
+
+Per iniziare rapidamente con uno dei progetti:
+
+```bash
+# 1. Clona il repository
+git clone https://github.com/alnao/AngularReactNodeExamples.git
+cd AngularReactNodeExamples
+
+# 2. Scegli un progetto e naviga nella cartella
+cd [Nome-del-Progetto]
+
+# 3. Installa le dipendenze
+npm install
+
+# 4. Avvia il progetto
+npm start
+# oppure per progetti Angular:
+ng serve
+# oppure per progetti Node:
+node server.js
+```
+
+
+# Appunti Angular 
+
+*Writted by AlNao*. Questo README raccoglie una selezione di articoli tecnici originariamente pubblicati nella vecchia versione del blog personale [alnao.it](https://www.alnao.it). Sono riproposti in formato Markdown per conservarli e renderli facilmente consultabili. Alcuni contenuti potrebbero essere datati, ma possono ancora fornire spunti e soluzioni interessanti. Tutti gli articoli sono distribuiti sotto licenza *GNU GPL-3.0*, salvo diversa indicazione.
+
 - [Come gestire i dati con Typescript e Json](#Come-gestire-i-dati-con-Typescript-e-Json)
 - [Come creare un progetto Angular](#Come-creare-un-progetto-Angular)
 - [Come creare componenti in un progetto Angular](#Come-creare-componenti-in-un-progetto-Angular)
@@ -287,7 +372,7 @@ Per richiamare il secondo componente nel primo bisogna aggiungerlo nel template:
   contenuto del uno passato al componente due
 </app-nome-componente-due>
 ```
-La tecnica multipla e la tecnica condizionale sono ben descritti con esempi nel sito ufficiale, queste tecniche sono molto usate nei progetti proprio nella filosofia della struttura ad albero dei componenti, la gestione di dati e degli eventi vengono gestiti con le annotation Input/Output e gli eventEmitter descritti nei prossimi articoli.
+La tecnica multipla e la tecnica condizionale sono ben descritte con esempi nel sito ufficiale, queste tecniche sono molto usate nei progetti proprio nella filosofia della struttura ad albero dei componenti, la gestione di dati e degli eventi vengono gestiti con le annotation Input/Output e gli eventEmitter descritti nei prossimi articoli.
 
 ## Come creare template dinamici e gestire eventi
 In Angular, un template è un frammento di un'interfaccia grafica utente (UI), spesso in italiano viene confuso con il nome "modulo" ma conviene abituarsi ad usare il termine originale in inglese. I template sono scritti in HTML e all'interno è possibile utilizzare una sintassi speciale per sfruttare molte delle funzionalità di Angular che estende la sintassi HTML, questa tecnica permette di creare contenuti dinamici modificando le proprietà del documento (DOM). La sintassi HTML deve essere valida e il fratello non deve includere tag base come html e body visto che sono gestiti dal framework.
@@ -627,7 +712,7 @@ Un'altra applicazione delle pipe è realizzare filtri sugli elenchi nei cicli ng
 ...
 </li>
 ```
-Ma è possibile usare anche slice personalizzare definire da classi specifiche, per esempio per eseguire un filter su una lista si può definre una espressione personalizzata:
+Ma è possibile usare anche slice personalizzata definire da classi specifiche, per esempio per eseguire un filter su una lista si può definre una espressione personalizzata:
 ```
 @Pipe({ name: 'flyingHeroes' })
 export class FlyingHeroesPipe implements PipeTransform {
@@ -1165,11 +1250,24 @@ sarà possibile constatare come il HTML generato e messo a disposizione dal serv
 Per maggiori dettagli si rimanda alla [documentazione ufficiale](https://angular.io/guide/ssr) e alla pagina specifica riguardo alla tecnica del [hydration](https://angular.io/guide/hydration) utilizzata dai server per passare i componenti al browser.
 
 
+
 # AlNao.it
-Nessun contenuto in questo repository è stato creato con IA o automaticamente, tutto il codice è stato scritto con molta pazienza da Alberto Nao. Se il codice è stato preso da altri siti/progetti è sempre indicata la fonte. Per maggior informazioni visitare il sito [alnao.it](https://www.alnao.it/).
+Tutti i codici sorgente e le informazioni presenti in questo repository sono frutto di un attento e paziente lavoro di sviluppo da parte di Alberto Nao, che si è impegnato a verificarne la correttezza nella misura massima possibile. Qualora parte del codice o dei contenuti sia stato tratto da fonti esterne, la relativa provenienza viene sempre citata, nel rispetto della trasparenza e della proprietà intellettuale. 
+
+
+Alcuni contenuti e porzioni di codice presenti in questo repository sono stati realizzati anche grazie al supporto di strumenti di intelligenza artificiale, il cui contributo ha permesso di arricchire e velocizzare la produzione del materiale. Ogni informazione e frammento di codice è stato comunque attentamente verificato e validato, con l’obiettivo di garantire la massima qualità e affidabilità dei contenuti offerti. 
+
+
+Per ulteriori dettagli, approfondimenti o richieste di chiarimento, si invita a consultare il sito [alnao.it](https://www.alnao.it/).
 
 
 ## License
 Public projects 
-<a href="https://it.wikipedia.org/wiki/GNU_General_Public_License"  valign="middle"><img src="https://img.shields.io/badge/License-GNU-blue" style="height:22px;"  valign="middle"></a> 
+<a href="https://it.wikipedia.org/wiki/GNU_General_Public_License"  valign="middle"> <img src="https://img.shields.io/github/license/alnao/AngularReactNodeExamples?style=plastic" alt="License" valign="middle" /></a> 
 *Free Software!*
+
+
+Il software è distribuito secondo i termini della GNU General Public License v3.0. L'uso, la modifica e la ridistribuzione sono consentiti, a condizione che ogni copia o lavoro derivato sia rilasciato con la stessa licenza. Il contenuto è fornito "così com'è", senza alcuna garanzia, esplicita o implicita.
+
+
+The software is distributed under the terms of the GNU General Public License v3.0. Use, modification, and redistribution are permitted, provided that any copy or derivative work is released under the same license. The content is provided "as is", without any warranty, express or implied.
