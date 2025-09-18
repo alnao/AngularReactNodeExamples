@@ -52,6 +52,11 @@
   - **Caratteristiche**: Photo gallery, camera integration, cross-platform
   - **Fonte**: [Documentazione ufficiale Ionic](https://ionicframework.com/docs/react/your-first-app)
   - **Avvio**: `ionic serve` → http://localhost:8100
+- **🎮 Ionic8CorsoPokemon** [`📁`](./Ionic8CorsoPokemon/)
+  - **Tecnologie**: Ionic8, Angular20 e le PokeAPI
+  - **Caratteristiche**: Una moderna applicazione mobile sviluppata con **Ionic 8** e **Angular 20** per esplorare il mondo dei Pokemon utilizzando le **PokeAPI**. Esempio liberamente ispirata alle guide [Building an Ionic 4 Pokédex](https://www.youtube.com/watch?v=Nc1RqvDY-B8) e [devdactic.com](https://devdactic.com/ionic-4-pokedex-search-scroll), aggiornato alla versione 8 di Ionic nell'estate 2025.
+  - **Fonte**: [devdactic.com](https://devdactic.com/ionic-4-pokedex-search-scroll)
+  - **Avvio**: `ionic serve` → http://localhost:8100
 
 
 ## 🔧 Esempi in fase di revisione
@@ -61,7 +66,6 @@
 - **🔐 AngularExampleListPassword** [`📁`](./AngularExampleListPassword/) - Gestione password e autenticazione
 - **📁 AngularFileManager** [`📁`](./AngularFileManager/) - File manager con Angular
 - **📱 AngularSouthAfricanMobileNumbers** [`📁`](./AngularSouthAfricanMobileNumbers/) - Validazione numeri telefonici
-- **🎨 AngularTemplateExample1** [`📁`](./AngularTemplateExample1/) - Template dashboard con Bootstrap
 - **🔄 ReactCorsoReduxClient** [`📁`](./ReactCorsoReduxClient/) - Client Redux base
 - **🎨 ReactCorsoReduxClient2MUI** [`📁`](./ReactCorsoReduxClient2MUI/) - Client Redux con Material-UI
 - **🖥️ ReactCorsoReduxServer** [`📁`](./ReactCorsoReduxServer/) - Server per progetti Redux
@@ -70,7 +74,6 @@
 - **🔐 ReactExample2lambdaClientWithAuth** [`📁`](./ReactExample2lambdaClientWithAuth/) - Client Lambda con autenticazione
 - **📊 ReactReduxExample** [`📁`](./ReactReduxExample/) - Esempio Redux completo
 - **👋 ReactReduxHello** [`📁`](./ReactReduxHello/) - Hello World con Redux
-- **🎮 IonicCorsoPokemon** [`📁`](./IonicCorsoPokemon/) - App Pokemon con Ionic
 - **👥 IonicExampleUsers** [`📁`](./IonicExampleUsers/) - Gestione utenti con Ionic
 - **💿 NodeDbExamples** [`📁`](./NodeDbExamples/) - Esempi database con Node.js
 - **🍃 NodeRestOnMongo** [`📁`](./NodeRestOnMongo/) - API REST con MongoDB
@@ -1251,19 +1254,21 @@ Per maggiori dettagli si rimanda alla [documentazione ufficiale](https://angular
 
 
 
-# AlNao.it
-Tutti i codici sorgente e le informazioni presenti in questo repository sono frutto di un attento e paziente lavoro di sviluppo da parte di Alberto Nao, che si è impegnato a verificarne la correttezza nella misura massima possibile. Qualora parte del codice o dei contenuti sia stato tratto da fonti esterne, la relativa provenienza viene sempre citata, nel rispetto della trasparenza e della proprietà intellettuale. 
+# &lt; AlNao /&gt;
+Tutti i codici sorgente e le informazioni presenti in questo repository sono frutto di un attento e paziente lavoro di sviluppo da parte di AlNao, che si è impegnato a verificarne la correttezza nella misura massima possibile. Qualora parte del codice o dei contenuti sia stato tratto da fonti esterne, la relativa provenienza viene sempre citata, nel rispetto della trasparenza e della proprietà intellettuale. 
 
 
 Alcuni contenuti e porzioni di codice presenti in questo repository sono stati realizzati anche grazie al supporto di strumenti di intelligenza artificiale, il cui contributo ha permesso di arricchire e velocizzare la produzione del materiale. Ogni informazione e frammento di codice è stato comunque attentamente verificato e validato, con l’obiettivo di garantire la massima qualità e affidabilità dei contenuti offerti. 
 
 
-Per ulteriori dettagli, approfondimenti o richieste di chiarimento, si invita a consultare il sito [alnao.it](https://www.alnao.it/).
+Per ulteriori dettagli, approfondimenti o richieste di chiarimento, si invita a consultare il sito [AlNao.it](https://www.alnao.it/).
 
 
 ## License
+Made with ❤️ by <a href="https://www.alnao.it">AlNao</a>
+&bull; 
 Public projects 
-<a href="https://it.wikipedia.org/wiki/GNU_General_Public_License"  valign="middle"> <img src="https://img.shields.io/github/license/alnao/AngularReactNodeExamples?style=plastic" alt="License" valign="middle" /></a> 
+<a href="https://www.gnu.org/licenses/gpl-3.0"  valign="middle"> <img src="https://img.shields.io/badge/License-GPL%20v3-blue?style=plastic" alt="GPL v3" valign="middle" /></a>
 *Free Software!*
 
 
@@ -1271,3 +1276,6 @@ Il software è distribuito secondo i termini della GNU General Public License v3
 
 
 The software is distributed under the terms of the GNU General Public License v3.0. Use, modification, and redistribution are permitted, provided that any copy or derivative work is released under the same license. The content is provided "as is", without any warranty, express or implied.
+
+
+
