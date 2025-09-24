@@ -1,0 +1,110 @@
+<div class="pokemon-detail-container" *ngIf="selectedPokemon$ | async as pokemon">
+  <div class="detail-card">
+    <button (click)="goBack()" class="back-btn">← Torna alla Lista</button>
+    
+    <div class="pokemon-header">
+      <div class="pokemon-image">
+        <img 
+          [src]="pokemon.sprites?.front_default || '/assets/pokemon-placeholder.png'" 
+          [alt]="pokemon.name">
+        <img 
+          *ngIf="pokemon.sprites?.front_shiny"
+          [src]="pokemon.sprites.front_shiny" 
+          [alt]="pokemon.name + ' (shiny)'"
+          class="shiny-sprite">
+      </div>
+      
+      <div class="pokemon-basic-info">
+        <h1>{{pokemon.name | titlecase}}</h1>
+        <p class="pokemon-id">#{{pokemon.id.toString().padStart(3, '0')}}</p>
+        
+        <div class="pokemon-types">
+          <span 
+            *ngFor="let typeInfo of pokemon.types" 
+            class="type-badge"
+            [attr.data-type]="typeInfo.type.name">
+            {{typeInfo.type.name | titlecase}}
+          </span>
+        </div>
+
+        <button 
+          (click)="toggleFavorite(pokemon.id)"
+          class="favorite-btn"
+          [class.is-favorite]="isFavorite$ | async">
+          {{ (isFavorite$ | async) ? '⭐ Rimuovi dai Preferiti' : '☆ Aggiungi ai Preferiti' }}
+        </button>
+      </div>
+    </div>
+
+    <div class="pokemon-stats">
+      <h2>Statistiche</h2>
+      <div class="stats-grid">
+        <div class="stat-row" *ngFor="let stat of pokemon.stats">
+          <div class="stat-name">{{formatStatName(stat.stat.name)}}</div>
+          <div class="stat-value">{{stat.base_stat}}</div>
+          <div class="stat-bar">
+            <div class="stat-fill" [style.width.%]="(stat.base_stat / 255) * 100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pokemon-abilities" *ngIf="pokemon.abilities && pokemon.abilities.length > 0">
+      <h2>Abilità</h2>
+      <div class="abilities-list">
+        <div 
+          *ngFor="let abilityInfo of pokemon.abilities" 
+          class="ability-item"
+          [class.hidden]="abilityInfo.is_hidden">
+          <span class="ability-name">{{abilityInfo.ability.name | titlecase}}</span>
+          <span *ngIf="abilityInfo.is_hidden" class="hidden-label">(Nascosta)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pokemon-physical-info">
+      <h2>Informazioni Fisiche</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-label">Altezza</div>
+          <div class="info-value">{{(pokemon.height / 10).toFixed(1)}} m</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Peso</div>
+          <div class="info-value">{{(pokemon.weight / 10).toFixed(1)}} kg</div>
+        </div>
+        <div class="info-item" *ngIf="pokemon.base_experience">
+          <div class="info-label">Esperienza Base</div>
+          <div class="info-value">{{pokemon.base_experience}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pokemon-moves" *ngIf="pokemon.moves && pokemon.moves.length > 0">
+      <h2>Prime Mosse</h2>
+      <div class="moves-list">
+        <span 
+          *ngFor="let moveInfo of pokemon.moves.slice(0, 10)" 
+          class="move-item">
+          {{moveInfo.move.name | titlecase}}
+        </span>
+      </div>
+      <p *ngIf="pokemon.moves.length > 10" class="moves-more">
+        E altre {{pokemon.moves.length - 10}} mosse...
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="loading-section" *ngIf="isLoadingDetail$ | async">
+  <div class="loading-spinner"></div>
+  <p>Caricamento dettagli Pokemon...</p>
+</div>
+
+<div class="error-section" *ngIf="error$ | async as error">
+  <div class="error-message">
+    <h2>Errore nel caricamento</h2>
+    <p>{{error}}</p>
+    <button (click)="retry()" class="retry-btn">Riprova</button>
+  </div>
+</div>

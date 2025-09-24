@@ -1,62 +1,66 @@
+# Angular React Node Examples ✨
+
 <p align="center">
-  <a href="https://www.alnao.it/angular-ionic/">
-    <img src="https://img.shields.io/badge/Angular-DD0031?style=plastic&logo=angular&logoColor=angular"  style="height:28px;" />
-    <img src="https://img.shields.io/badge/Ionic-3880FF?style=plastic&logo=ionic&logoColor=white"  style="height:28px;"  />
-    <img src="https://img.shields.io/badge/Redux-764abc?style=plastic&logo=redux&logoColor=white"  style="height:28px;" />
-    <img src="https://img.shields.io/badge/NgRx-72427c?style=plastic&logo=NgRx&logoColor=white"  style="height:28px;" />
-    <img src="https://img.shields.io/badge/React-61DBFB?style=plastic&logo=react&logoColor=white"  style="height:28px;" />
-    <img src="https://img.shields.io/badge/Node.js-43853D?style=plastic&logo=node.js&logoColor=white"  style="height:28px;" />
-    <img src="https://img.shields.io/badge/Npm-cb3837?style=plastic&logo=npm&logoColor=white"  style="height:28px;" />
-    <img src="https://img.shields.io/badge/TypeScript-007ACC?style=plastic&logo=typescript&logoColor=white"  style="height:28px;" />
-  </a>
+  <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=angular"  style="height:28px;" />
+  <img src="https://img.shields.io/badge/Ionic-3880FF?style=for-the-badge&logo=ionic&logoColor=white"  style="height:28px;"  />
+  <img src="https://img.shields.io/badge/Redux-764abc?style=for-the-badge&logo=redux&logoColor=white"  style="height:28px;" />
+  <img src="https://img.shields.io/badge/NgRx-72427c?style=for-the-badge&logo=NgRx&logoColor=white"  style="height:28px;" />
+  <img src="https://img.shields.io/badge/React-61DBFB?style=for-the-badge&logo=react&logoColor=white"  style="height:28px;" />
+  <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"  style="height:28px;" />
+  <img src="https://img.shields.io/badge/Npm-cb3837?style=for-the-badge&logo=npm&logoColor=white"  style="height:28px;" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"  style="height:28px;" />
 </p>
+
+## ✨ Panoramica
+
+Benvenuti nella **collezione completa di esempi pratici** per lo sviluppo web moderno! Questa collezione by [**AlNao.it**](https://www.alnao.it) include **oltre 25 progetti pratici** organizzati per tecnologia e livello di complessità. Ogni progetto è accompagnato da documentazione dettagliata, istruzioni di setup e guide per l'estensione delle funzionalità.
+
+- 🅰️ **Ecosistema Angular**
+  - **Applicazioni moderne** con Angular 18+ e TypeScript
+  - **State management avanzato** con NgRx e Redux patterns  
+  - **Server-side rendering** con Angular Universal
+  - **Internazionalizzazione** e gestione multilingua
+  - **Integrazione cloud** con servizi AWS
+  - **Testing completo** e best practices
+- ⚛️ **Stack React** 
+  - **Applicazioni SPA** con React 18+ e hooks moderni
+  - **Gestione stato** con Redux e Context API
+  - **Framework full-stack** con Next.js 14 e SSR
+  - **Architetture serverless** con AWS Lambda
+  - **UI responsive** e moderne con Bootstrap/TailwindCSS
+- 🟢 **Backend Node.js**
+  - **API REST** scalabili con Express.js
+  - **Database integration** (SQLite, MongoDB, DynamoDB)
+  - **Cloud services** e AWS SDK v3
+  - **Microservizi** e architetture distribuite
+  - **Serverless functions** e Lambda
+- 📱 **Mobile Hybrid**
+  - **App cross-platform** con Ionic + Angular/React
+  - **PWA** e applicazioni offline-first  
+  - **Integrazione hardware** (camera, geolocalizzazione)
+  - **UI native** e performance ottimizzate
 
 # Esempi
 
 
-- **🚀 Angular18NgrxReduxExample** [`📁`](./Angular18NgrxReduxExample/)
-  - **Tecnologie**: Angular 18, NgRx, TypeScript
-  - **Caratteristiche**: State management con NgRx, architettura scalabile
-  - **Avvio**: `ng serve` → http://localhost:4200
-- **🎬 AngularDatasetsFilms** [`📁`](./AngularDatasetsFilms/)
-  - **Tecnologie**: Angular, TypeScript, AWS Lambda integration
-  - **Caratteristiche**: CRUD operations, gestione dataset films, internazionalizzazione
-  - **Backend**: AWS Lambda [Esempio10lambdaAuthorizer](https://github.com/alnao/AwsCloudFormationExamples/blob/master/Esempio10lambdaAuthorizer/template.yaml)
-  - **Avvio**: `ng serve` → http://localhost:4200
-- **⚡ AngularServerSideRender** [`📁`](./AngularServerSideRender/)
-  - **Tecnologie**: Angular Universal, SSR
-  - **Caratteristiche**: Server-side rendering, SEO optimization
-  - **Avvio**: `ng serve` → http://localhost:4200
-  - **Documentazione**: [Articolo dedicato](#Come-attivare-il-server-side-rendering)
-- **⚛️ ReactAwsConsole** [`📁`](./ReactAwsConsole/)
-  - **Tecnologie**: React, AWS SDK, TypeScript
-  - **Caratteristiche**: Console per gestione servizi AWS
-  - **Integrazione**: Funziona con [JavaExamples/AWS/SDK](https://github.com/alnao/JavaExamples)
-  - **Avvio**: `npm start` → http://localhost:3000
-- **🔥 Next14App** [`📁`](./Next14App/)
-  - **Tecnologie**: Next.js 14, React 18, TypeScript, TailwindCSS
-  - **Caratteristiche**: SSR, routing automatico, ottimizzazioni performance
-  - **Guida**: [Video tutorial](https://www.youtube.com/watch?v=MER4bmh_s78)
-  - **Avvio**: `npm run dev` → http://localhost:3000
-- **💾 NodeApiSqlLite** [`📁`](./NodeApiSqlLite/)
-  - **Tecnologie**: Node.js, Express, SQLite3
-  - **Caratteristiche**: API REST CRUD, database embedded
-  - **Endpoints**: GET/POST/PUT/DELETE su `/employees`
-  - **Avvio**: `node restwithnodejssqlite3.js` → http://localhost:8000
-- **☁️ NodeAwsAlNaoManager** [`📁`](./NodeAwsAlNaoManager/)
-  - **Tecnologie**: Node.js, AWS SDK v3
-  - **Caratteristiche**: Gestione servizi AWS (S3, EC2, Lambda)
-  - **Documentazione**: [AWS SDK per JavaScript](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_s3_code_examples.html)
-- **📸 IonicReactPhotoGallery** [`📁`](./IonicReactPhotoGallery/)
-  - **Tecnologie**: Ionic, React, Capacitor
-  - **Caratteristiche**: Photo gallery, camera integration, cross-platform
-  - **Fonte**: [Documentazione ufficiale Ionic](https://ionicframework.com/docs/react/your-first-app)
-  - **Avvio**: `ionic serve` → http://localhost:8100
-- **🎮 Ionic8CorsoPokemon** [`📁`](./Ionic8CorsoPokemon/)
-  - **Tecnologie**: Ionic8, Angular20 e le PokeAPI
-  - **Caratteristiche**: Una moderna applicazione mobile sviluppata con **Ionic 8** e **Angular 20** per esplorare il mondo dei Pokemon utilizzando le **PokeAPI**. Esempio liberamente ispirata alle guide [Building an Ionic 4 Pokédex](https://www.youtube.com/watch?v=Nc1RqvDY-B8) e [devdactic.com](https://devdactic.com/ionic-4-pokedex-search-scroll), aggiornato alla versione 8 di Ionic nell'estate 2025.
-  - **Fonte**: [devdactic.com](https://devdactic.com/ionic-4-pokedex-search-scroll)
-  - **Avvio**: `ionic serve` → http://localhost:8100
+- **🚀 Angular18NgrxReduxExample** [`📁`](./Angular18NgrxReduxExample/) State management con Redux e NgRx (Angular 18, Redux, NgRx, TypeScript)
+  - *Backend*: Utilizza delle API free di [https://pokeapi.co/](pokeapi.co)
+- **🎬 AngularDatasetsFilms** [`📁`](./AngularDatasetsFilms/) CRUD operations e gestione dataset films con internazionalizzazione (Angular, TypeScript, AWS Lambda integration).
+  - *Backend*: L'esempio si integra con l'esempio di AWS CloudForamtion Lambda-Authorizer disponibile nel repository [Esempio10lambdaAuthorizer](https://github.com/alnao/AwsCloudFormationExamples/blob/master/Esempio10lambdaAuthorizer/)
+- **⚡ AngularServerSideRender** [`📁`](./AngularServerSideRender/) Server-side rendering con SEO optimization (Angular Universal, SSR)
+  - Documentazione: [Come attivare il server-side rendering](#Come-attivare-il-server-side-rendering)
+- **📸 IonicReactPhotoGallery** [`📁`](./IonicReactPhotoGallery/) Photo gallery con camera integration cross-platform (Ionic, React, Capacitor)
+  - Fonte: [Documentazione ufficiale Ionic](https://ionicframework.com/docs/react/your-first-app)
+- **🎮 Ionic8CorsoPokemon** [`📁`](./Ionic8CorsoPokemon/) Una moderna applicazione mobile sviluppata per esplorare il mondo dei Pokemon utilizzando le **PokeAPI** (Ionic8, Angular20 e le PokeAPI)
+  - Fonte: Esempio liberamente ispirata alle guide [Building an Ionic 4 Pokédex](https://www.youtube.com/watch?v=Nc1RqvDY-B8) e [devdactic.com](https://devdactic.com/ionic-4-pokedex-search-scroll), aggiornato alla versione 8 di Ionic nell'estate 2025.
+- **🔥 Next14App** [`📁`](./Next14App/) SSR e routing automatico per l'ottimizzazione delle performance (Next.js 14, React 18, TypeScript, TailwindCSS)
+  - Fonte: [Video tutorial](https://www.youtube.com/watch?v=MER4bmh_s78)
+- **💾 NodeApiSqlLite** [`📁`](./NodeApiSqlLite/) API REST CRUD, database embedded (Node.js, Express, SQLite3)
+  - Comando di avvio specifico: `node restwithnodejssqlite3.js` → http://localhost:8000
+- **☁️ NodeAwsAlNaoManager** [`📁`](./NodeAwsAlNaoManager/) Gestione servizi AWS come S3, EC2 e Lambda (Node.js, AWS SDK v3)
+  - Documentazione: [AWS SDK per JavaScript](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_s3_code_examples.html)
+- **⚛️ ReactAwsConsole** [`📁`](./ReactAwsConsole/) Console per gestione servizi AWS (React, AWS SDK, TypeScript)
+  - Integrazione: Sviluppato come frontend del backend disponibile nel repository [JavaExamples/AWS/SDK](https://github.com/alnao/JavaExamples/AWS/SDK)
 
 
 ## 🔧 Esempi in fase di revisione

@@ -1,0 +1,188 @@
+<div class="pokemon-list-container">
+  <!-- Header con filtri -->
+  <div class="filters-section">
+    <h2>🔍 Esplora Pokémon</h2>
+    
+    <div class="filter-controls">
+      <!-- Ricerca -->
+      <div class="search-control">
+        <input 
+          type="text" 
+          placeholder="Cerca Pokémon..." 
+          [value]="(filters$ | async)?.searchTerm || ''"
+          (input)="onSearch($event)"
+          class="search-input">
+      </div>
+
+      <!-- Filtro per tipo -->
+      <div class="type-filter">
+        <select 
+          [value]="(filters$ | async)?.selectedType || ''"
+          (change)="onTypeFilter($event)"
+          class="type-select">
+          <option value="">Tutti i tipi</option>
+          <option 
+            *ngFor="let type of sortedTypes$ | async" 
+            [value]="type.name">
+            {{type.name | titlecase}}
+          </option>
+        </select>
+      </div>
+
+      <!-- Toggle favoriti -->
+      <div class="favorites-toggle">
+        <label>
+          <input 
+            type="checkbox" 
+            [checked]="(filters$ | async)?.showFavoritesOnly || false"
+            (change)="onToggleFavorites()">
+          Solo Favoriti ⭐
+        </label>
+      </div>
+
+      <!-- Items per pagina -->
+      <div class="items-per-page">
+        <select 
+          [value]="(pagination$ | async)?.itemsPerPage || 20"
+          (change)="onItemsPerPageChange($event)"
+          class="items-select">
+          <option value="10">10 per pagina</option>
+          <option value="20">20 per pagina</option>
+          <option value="50">50 per pagina</option>
+        </select>
+      </div>
+
+      <!-- Clear filters -->
+      <button 
+        *ngIf="(activeFiltersCount$ | async)! > 0"
+        (click)="onClearFilters()"
+        class="clear-filters-btn">
+        Pulisci Filtri ({{activeFiltersCount$ | async}})
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading Indicator -->
+  <div *ngIf="isLoading$ | async" class="loading-section">
+    <div class="loading-spinner">🔄 Caricamento Pokémon...</div>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="error$ | async as error" class="error-section">
+    <div class="error-message">❌ {{error}}</div>
+    <button (click)="onRetry()" class="retry-btn">Riprova</button>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-section" *ngIf="stats$ | async as stats">
+    <div class="stat-item">
+      <span class="stat-label">Totali:</span>
+      <span class="stat-value">{{stats.total}}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Favoriti:</span>
+      <span class="stat-value">{{stats.favorites}}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Tipi:</span>
+      <span class="stat-value">{{stats.types}}</span>
+    </div>
+  </div>
+
+  <!-- Pokemon Grid -->
+  <div class="pokemon-grid" *ngIf="!(isLoading$ | async)">
+    <div 
+      *ngFor="let pokemon of paginatedPokemon$ | async" 
+      class="pokemon-card"
+      (click)="onSelectPokemon(pokemon.id)">
+      
+      <div class="pokemon-image">
+        <img 
+          [src]="pokemon.sprites?.front_default || '/assets/pokemon-placeholder.png'" 
+          [alt]="pokemon.name"
+          onerror="this.src='/assets/pokemon-placeholder.png'">
+      </div>
+
+      <div class="pokemon-info">
+        <h3 class="pokemon-name">{{pokemon.name | titlecase}}</h3>
+        <p class="pokemon-id">#{{pokemon.id.toString().padStart(3, '0')}}</p>
+        
+        <div class="pokemon-types" *ngIf="pokemon.types">
+          <span 
+            *ngFor="let typeInfo of pokemon.types" 
+            class="type-badge"
+            [attr.data-type]="typeInfo.type.name">
+            {{typeInfo.type.name}}
+          </span>
+        </div>
+
+        <div class="pokemon-stats" *ngIf="pokemon.height && pokemon.weight">
+          <span class="stat">📏 {{pokemon.height / 10}}m</span>
+          <span class="stat">⚖️ {{pokemon.weight / 10}}kg</span>
+        </div>
+
+        <button 
+          (click)="onToggleFavorite(pokemon.id, $event)"
+          class="favorite-btn"
+          [class.is-favorite]="isFavorite(pokemon.id) | async">
+          {{ (isFavorite(pokemon.id) | async) ? '⭐' : '☆' }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="(paginatedPokemon$ | async)?.length === 0" class="empty-state">
+      <div class="empty-content">
+        <h3>🔍 Nessun Pokémon trovato</h3>
+        <p>Prova a modificare i filtri di ricerca</p>
+        <button (click)="onClearFilters()" class="clear-filters-btn">
+          Pulisci Filtri
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination-section" *ngIf="paginationInfo$ | async as paginationInfo">
+    <div class="pagination-info">
+      Mostrando {{paginationInfo.startItem}} - {{paginationInfo.endItem}} 
+      di {{paginationInfo.filteredTotal}} Pokémon
+    </div>
+
+    <div class="pagination-controls">
+      <button 
+        (click)="onPreviousPage()"
+        [disabled]="!paginationInfo.hasPrevious"
+        class="nav-btn">
+        ⬅️ Precedente
+      </button>
+
+      <div class="page-numbers">
+        <button 
+          *ngFor="let page of getPageNumbers(paginationInfo.totalPages, paginationInfo.currentPage)" 
+          (click)="onNavigateToPage(page)"
+          [class.active]="page === paginationInfo.currentPage"
+          class="page-btn">
+          {{page}}
+        </button>
+      </div>
+
+      <button 
+        (click)="onNextPage()"
+        [disabled]="!paginationInfo.hasNext"
+        class="nav-btn">
+        Successivo ➡️
+      </button>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="quick-actions">
+    <button (click)="onLoadRandomPokemon()" class="action-btn">
+      🎲 Pokémon Casuale
+    </button>
+    <button (click)="onLoadAllTypes()" class="action-btn">
+      🏷️ Carica Tutti i Tipi
+    </button>
+  </div>
+</div>
