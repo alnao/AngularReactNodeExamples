@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
+  imports: [RouterOutlet],
   template: `
     <div class="app-container">
       <header class="app-header">
-        <h1>🚀 Angular 18 NgRx Redux Example</h1>
-        <p>Gestione state con NgRx, Pokemon API e paginazione</p>
+        <h1>🚀 Angular 20 NgRx Redux Example</h1>
+        <p>Gestione state con NgRx, Pokemon API e paginazione - Aggiornato ad Angular 20</p>
       </header>
       
       <main class="app-main">
@@ -62,5 +64,5 @@ import { Component } from '@angular/core';
   `]
 })
 export class AppComponent {
-  title = 'Angular 18 NgRx Redux Pokemon Example';
+  title = 'Angular 20 NgRx Redux Pokemon Example';
 }

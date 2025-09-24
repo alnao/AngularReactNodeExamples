@@ -43,15 +43,15 @@ Benvenuti nella **collezione completa di esempi pratici** per lo sviluppo web mo
 # Esempi
 
 
-- **🚀 Angular18NgrxReduxExample** [`📁`](./Angular18NgrxReduxExample/) State management con Redux e NgRx (Angular 18, Redux, NgRx, TypeScript)
-  - *Backend*: Utilizza delle API free di [https://pokeapi.co/](pokeapi.co)
+- **🚀 Angular20NgrxReduxExample** [`📁`](./Angular18NgrxReduxExample/) State management con Redux e NgRx (Angular 20, Redux, NgRx, TypeScript)
+  - *Backend*: Utilizza delle API free di [pokeapi.co](https://pokeapi.co/)
 - **🎬 AngularDatasetsFilms** [`📁`](./AngularDatasetsFilms/) CRUD operations e gestione dataset films con internazionalizzazione (Angular, TypeScript, AWS Lambda integration).
   - *Backend*: L'esempio si integra con l'esempio di AWS CloudForamtion Lambda-Authorizer disponibile nel repository [Esempio10lambdaAuthorizer](https://github.com/alnao/AwsCloudFormationExamples/blob/master/Esempio10lambdaAuthorizer/)
 - **⚡ AngularServerSideRender** [`📁`](./AngularServerSideRender/) Server-side rendering con SEO optimization (Angular Universal, SSR)
   - Documentazione: [Come attivare il server-side rendering](#Come-attivare-il-server-side-rendering)
 - **📸 IonicReactPhotoGallery** [`📁`](./IonicReactPhotoGallery/) Photo gallery con camera integration cross-platform (Ionic, React, Capacitor)
   - Fonte: [Documentazione ufficiale Ionic](https://ionicframework.com/docs/react/your-first-app)
-- **🎮 Ionic8CorsoPokemon** [`📁`](./Ionic8CorsoPokemon/) Una moderna applicazione mobile sviluppata per esplorare il mondo dei Pokemon utilizzando le **PokeAPI** (Ionic8, Angular20 e le PokeAPI)
+- **🎮 Ionic8CorsoPokemon** [`📁`](./Ionic8CorsoPokemon/) Una moderna applicazione mobile sviluppata per esplorare il mondo dei Pokemon utilizzando le [pokeapi](https://pokeapi.co/) (Ionic8, Angular20)
   - Fonte: Esempio liberamente ispirata alle guide [Building an Ionic 4 Pokédex](https://www.youtube.com/watch?v=Nc1RqvDY-B8) e [devdactic.com](https://devdactic.com/ionic-4-pokedex-search-scroll), aggiornato alla versione 8 di Ionic nell'estate 2025.
 - **🔥 Next14App** [`📁`](./Next14App/) SSR e routing automatico per l'ottimizzazione delle performance (Next.js 14, React 18, TypeScript, TailwindCSS)
   - Fonte: [Video tutorial](https://www.youtube.com/watch?v=MER4bmh_s78)

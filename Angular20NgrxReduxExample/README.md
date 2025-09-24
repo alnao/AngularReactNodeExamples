@@ -22,39 +22,14 @@
 ### 🛠️ **Stack Tecnologico**
   | Tecnologia | Versione | Descrizione |
   |-----------|----------|-------------|
-  | **Angular** | 18.x | Framework frontend reattivo con standalone components |
-  | **NgRx Store** | 18.x | State management avanzato con pattern Redux |
-  | **NgRx Effects** | 18.x | Gestione side effects e operazioni asincrone |
-  | **NgRx DevTools** | 18.x | Debug e monitoring dello store in tempo reale |
-  | **TypeScript** | 5.5.x | Linguaggio tipizzato per sviluppo scalabile |
+  | **Angular** | 20.x | Framework frontend reattivo con standalone components |
+  | **NgRx Store** | 20.x | State management avanzato con pattern Redux |
+  | **NgRx Effects** | 20.x | Gestione side effects e operazioni asincrone |
+  | **NgRx DevTools** | 20.x | Debug e monitoring dello store in tempo reale |
+  | **TypeScript** | 5.9.x | Linguaggio tipizzato per sviluppo scalabile |
   | **RxJS** | 7.8.x | Programmazione reattiva con observable streams |
-  | **Jasmine/Karma** | Latest | Framework di testing con 120+ test cases |
+  | **Jasmine/Karma** | Latest | Framework di testing con molti test cases |
 
-### 🏗️ **Architettura Componenti Separati**
-Il progetto utilizza una **moderna architettura a componenti separati**:
-
-```
-src/app/components/
-├── pokemon-list/
-│   ├── pokemon-list.component.ts    # Logica e NgRx integration
-│   ├── pokemon-list.component.html  # Template responsive con filtri avanzati
-│   └── pokemon-list.component.css   # Styling completo con type-specific colors
-├── pokemon-detail/  
-│   ├── pokemon-detail.component.ts  # Detail logic con favorites management
-│   ├── pokemon-detail.component.html # Template dettagliato con stats visuali
-│   └── pokemon-detail.component.css # Styling responsive per detail view
-```
-
-**Vantaggi dell'architettura separata**:
-- 🎯 **Separation of Concerns**: Ogni file ha una responsabilità specifica
-- 👥 **Collaborazione Team**: Sviluppatori possono lavorare su file diversi contemporaneamente  
-- 📈 **Manutenibilità**: Più facile localizzare e modificare aspetti specifici
-- ⚡ **Performance**: Lazy loading ottimizzato con componenti standalone
-- 🧪 **Testing**: Miglior isolamento per unit testing
-### 🚀 **Prerequisiti**
-- **Node.js** 18.x o superiore (LTS consigliato)
-- **npm** 9.x o superiore  
-- **Angular CLI** 18.x o superiore
 
 ### 📦 **Installazione e avvio**
 ```bash
@@ -74,6 +49,8 @@ npm start
 npm test
 # oppure per esecuzione singola
 npm run test:ci
+# oppure tutti i test i maniera sileziosa
+npm test -- --no-watch --browsers=ChromeHeadless
 
 # 5. Build per produzione  
 npm run build
@@ -92,7 +69,7 @@ npm run build
 | `npm run lint` | Controllo codice | ESLint + Prettier |
 
 ### ⚠️ **Note Importanti Post-Refactor**
-- ✅ **Componenti Standalone**: I componenti utilizzano la nuova sintassi standalone di Angular 18
+- ✅ **Componenti Standalone**: I componenti utilizzano la nuova sintassi standalone di Angular 20
 - ✅ **Lazy Loading**: Tutti i componenti sono caricati dinamicamente per performance ottimali
 - ✅ **CSS Bundle Size**: Warnings sui bundle CSS sono normali (file separati più grandi)
 - ✅ **Test Suite**: 87 su 88 test passano (1 test pagination temporaneamente disabilitato)
@@ -119,15 +96,18 @@ npm run build
   src/
   ├── app/
   │   ├── components/                    # Componenti condivisi
-  │   │   └── pokemon-list/              # Lista Pokemon con paginazione
-  │   │       └── pokemon-list.component.ts
+  │   │   ├── pokemon-list/
+  │   │   │   ├── pokemon-list.component.ts     # Logica e NgRx integration
+  │   │   │   ├── pokemon-list.component.html   # Template responsive con filtri avanzati
+  │   │   │   └── pokemon-list.component.css    # Styling completo con type-specific colors
+  │   │   └── pokemon-detail/  
+  │   │       ├── pokemon-detail.component.ts   # Detail logic con favorites management
+  │   │       ├── pokemon-detail.component.html # Template dettagliato con stats visuali
+  │   │       └── pokemon-detail.component.css  # Styling responsive per detail view
   │   │
   │   ├── features/                      # Feature modules (lazy loaded)
   │   │   └── pokemon/
-  │   │       ├── pokemon.module.ts      # Feature module con routing
-  │   │       └── components/
-  │   │           └── pokemon-detail/    # Dettaglio Pokemon
-  │   │               └── pokemon-detail.component.ts
+  │   │       └── pokemon.module.ts      # Feature module con routing
   │   │
   │   ├── guards/                        # Route guards integrati con NgRx
   │   │   └── pokemon.guards.ts          # Guards per data loading e validazione
@@ -154,6 +134,7 @@ npm run build
   ├── main.ts                           # Bootstrap dell'applicazione  
   └── styles.css                        # Stili globali
   ```
+  
 ### 📦 **Componenti implementati**
 
 #### 🎯 **NgRx Store Management (Completo)**

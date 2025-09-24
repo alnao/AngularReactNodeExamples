@@ -32,12 +32,13 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    // AppComponent è ora standalone, rimosso dalle declarations
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
+    AppComponent, // Importato come standalone component
     
     // Store root configuration
     StoreModule.forRoot({
@@ -51,7 +52,7 @@ const routes: Routes = [
     StoreDevtoolsModule.instrument({ 
       maxAge: 25, 
       logOnly: !isDevMode()
-    })
+    , connectInZone: true})
   ],
   providers: [],
   bootstrap: [AppComponent]
