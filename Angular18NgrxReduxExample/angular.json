@@ -87,10 +87,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ngrx-demo:build:production"
+              "buildTarget": "ngrx-demo:build:production"
             },
             "development": {
-              "browserTarget": "ngrx-demo:build:development"
+              "buildTarget": "ngrx-demo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -98,7 +98,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngrx-demo:build"
+            "buildTarget": "ngrx-demo:build"
           }
         },
         "test": {
