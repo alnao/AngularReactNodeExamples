@@ -5,42 +5,65 @@ import { BookService } from 'src/app/services/book.service';
 import { trigger,state,style,transition,animate } from '@angular/animations';
 
 
-
-
-
 @Component({
   selector: 'app-book',
   template: `
-    <div class="conteiner m-2"><div class="row"><div class="col-lg-8 ">
-      <div class="search-book m-4">
-        <input type="text" [(ngModel)]="term" class="form-control" name="search" autocomplete="off" placeholder="&#1442; Filtro ricerca" >
-      </div>
-      <ul class="list-group ml-2 m-4" *ngIf="! this.error" >
-        <li *ngFor="let book of books | filter:term" class="list-group-item" 
-        [ngClass]="{'active' : bookEdit?.id===book?.id }" >
-          <span (click)="setActive(book)">{{book.title}}</span>
-          <div class="pull-right" >
-            <span [style.color]="book.price > 15 ? 'red' : null">€ {{book.price | number:'1.2-2'}}</span>
-            <i class="fa fa-info-circle ml-2" aria-hidden="true" [routerLink]="['/book',book.id]" ></i> 
-            <i class="fa fa-trash ml-2" (click)="cancella($event,book)"></i>
+    <div class="container my-4">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="input-group mb-4">
+            <span class="input-group-text bg-primary text-white"><i class="fa fa-search"></i></span>
+            <input type="text" [(ngModel)]="term" class="form-control" name="search" autocomplete="off" placeholder="Cerca libro..." >
           </div>
-        </li>
-      </ul>
-      <div *ngIf="this.error" class="alert alert-danger">{{error.message}}</div>
-    </div>
-      <div class="col-lg-4" >
-        <app-form [bookEdit]="bookEdit" [books]="books"
-          (resetClick)="reset()"  *ngIf="mostraForm"
-        ></app-form>
-        <button (click)="showNew()" class="btn btn-info"  *ngIf="!mostraForm">
-          Insert new</button>  
+          <ul class="list-group shadow-sm" *ngIf="!error">
+            <li *ngFor="let book of books | filter:term" 
+                class="list-group-item d-flex justify-content-between align-items-center"
+                [ngClass]="{'active': bookEdit?.id===book?.id }">
+              <div (click)="setActive(book)" class="flex-grow-1 cursor-pointer">
+                <strong>{{book.title}}</strong>
+                <span class="text-muted d-block small">{{book.author}}</span>
+              </div>
+              <div class="d-flex align-items-center">
+                <span class="badge bg-{{book.price > 15 ? 'info' : 'success'}} me-2">
+                  € {{book.price | number:'1.2-2'}}
+                </span>
+                <button class="btn btn-outline-info btn-sm me-2" [routerLink]="['/book',book.id]" title="Dettagli">
+                  <i class="fa fa-info-circle"></i>
+                </button>
+                <button class="btn btn-outline-danger btn-sm" (click)="cancella($event,book)" title="Elimina">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
+            </li>
+          </ul>
+          <div *ngIf="error" class="alert alert-danger mt-3">{{error.message}}</div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <app-form [bookEdit]="bookEdit" [books]="books"
+                (resetClick)="reset()" *ngIf="mostraForm"></app-form>
+              <button (click)="showNew()" class="btn btn-primary w-100" *ngIf="!mostraForm">
+                <i class="fa fa-plus"></i> Inserisci nuovo libro
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      
-    </div></div>
-
-
-  `,styles: []
-  ,animations:[
+    </div>
+  `,
+  styles: [`
+    .cursor-pointer { cursor: pointer; }
+    .list-group-item.active, .list-group-item.active:focus {
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+      color: #fff;
+    }
+    .list-group-item .badge {
+      font-size: 1em;
+    }
+  `],
+  animations:[
     trigger('collapsable',[
       state('opened',style({height:'*'})),
       state('closed',style({height:0,padding:0})),

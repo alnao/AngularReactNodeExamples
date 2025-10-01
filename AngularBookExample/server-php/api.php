@@ -7,13 +7,19 @@ header("Access-Control-Allow-Headers: X-Requested-With, Content-Type, Origin, Ca
 header("Access-Control-Allow-Methods: PUT,PATCH, POST, GET, OPTIONS, DELETE");
 
 /*CONN DB*/
-$host = 'localhost';
-$dbname = 'newdb';
-$user = 'root';
-$pass = 'A.1234qaz';
+	require_once __DIR__ . '/env.php';
+	loadEnv(__DIR__ . '/.env');
+
+	$host = $_ENV['DB_HOST'];
+	$dbname = $_ENV['DB_NAME'];
+	$user = $_ENV['DB_USER'];
+	$pass = $_ENV['DB_PASS'];
+    $port = isset($_ENV['DB_PORT']) ? $_ENV['DB_PORT'] : 3306;
 
 try {
-    $dbh = new PDO ("mysql:host = $host;dbname=$dbname", $user, $pass);
+    $dbh = new PDO ("mysql:host=$host;dbname=$dbname;port=$port", $user, $pass, [
+		PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
+	]);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     echo 'Errore connessione al database !' . $e->getMessage();

@@ -13,61 +13,52 @@
 
 ## ✨ Panoramica
 
-Benvenuti nella **collezione completa di esempi pratici** per lo sviluppo web moderno! Questa collezione by [**AlNao.it**](https://www.alnao.it) include **oltre 25 progetti pratici** organizzati per tecnologia e livello di complessità. Ogni progetto è accompagnato da documentazione dettagliata, istruzioni di setup e guide per l'estensione delle funzionalità.
+Benvenuti nella **collezione completa di esempi pratici** per lo sviluppo web moderno! Questa collezione by [**AlNao.it**](https://www.alnao.it) include progetti *pratici* organizzati per tecnologia e livello di complessità. Ogni progetto è accompagnato da documentazione dettagliata, istruzioni di setup e guide per l'estensione delle funzionalità.
 
-- 🅰️ **Ecosistema Angular**
-  - **Applicazioni moderne** con Angular 18+ e TypeScript
-  - **State management avanzato** con NgRx e Redux patterns  
-  - **Server-side rendering** con Angular Universal
-  - **Internazionalizzazione** e gestione multilingua
-  - **Integrazione cloud** con servizi AWS
-  - **Testing completo** e best practices
-- ⚛️ **Stack React** 
-  - **Applicazioni SPA** con React 18+ e hooks moderni
-  - **Gestione stato** con Redux e Context API
-  - **Framework full-stack** con Next.js 14 e SSR
-  - **Architetture serverless** con AWS Lambda
-  - **UI responsive** e moderne con Bootstrap/TailwindCSS
-- 🟢 **Backend Node.js**
-  - **API REST** scalabili con Express.js
-  - **Database integration** (SQLite, MongoDB, DynamoDB)
-  - **Cloud services** e AWS SDK v3
-  - **Microservizi** e architetture distribuite
-  - **Serverless functions** e Lambda
-- 📱 **Mobile Hybrid**
-  - **App cross-platform** con Ionic + Angular/React
-  - **PWA** e applicazioni offline-first  
-  - **Integrazione hardware** (camera, geolocalizzazione)
-  - **UI native** e performance ottimizzate
-
-# Esempi
+- 🅰️ **Ecosistema Angular**: Applicazioni moderne con Angular 18+ e TypeScript, State management avanzato con NgRx e Redux patterns, Server-side rendering con Angular Universal, Internazionalizzazione e gestione multilingua, Integrazione cloud con servizi AWS & Testing completo con best practices
+- ⚛️ **Stack React**: Applicazioni con React 18+ e hooks, Gestione stato con Redux e Context API, UI responsive e moderne con Bootstrap e/o TailwindCSS
+- 🔧 **Framework full-stack** con Next.js 14 e SSR
+- ☁️ **Architetture serverless** con AWS Lambda e **Cloud services** con AWS SDK v3
+- 🟢 **Backend Node.js**: API REST scalabili con Express.js, Database integration (SQLite, MongoDB, DynamoDB), Microservizi con architetture distribuite
+- 📱 **Mobile Hybrid**: App cross-platform con Ionic + Angular/React, PWA e applicazioni offline-first, Integrazione hardware, UI native e performance ottimizzate
 
 
-- **🚀 Angular20NgrxReduxExample** [`📁`](./Angular18NgrxReduxExample/) State management con Redux e NgRx (Angular 20, Redux, NgRx, TypeScript)
+# Progetti di esempio
+- **🚀 Angular20NgrxReduxExample** [`📁`](./Angular18NgrxReduxExample/) State management con Redux e NgRx
+  - Tecnologie usate: Angular 20, Redux, NgRx, TypeScript - aggiornato nel settembre 2025
   - *Backend*: Utilizza delle API free di [pokeapi.co](https://pokeapi.co/)
-- **🎬 AngularDatasetsFilms** [`📁`](./AngularDatasetsFilms/) CRUD operations e gestione dataset films con internazionalizzazione (Angular, TypeScript, AWS Lambda integration).
+- **📚 AngularBookExample** [`📁`](./AngularBookExample/) Gestione di un elenco di libri con Angular 9
+  - Tecnologie usate: Angular 9, Php - sviluppato in estate 2022 e verificato nell'ottobre 2025
+  - *Backend*: Disponibile un server-json oppure delle semplici API scritte in PHP e database MySql
+- **🎬 AngularDatasetsFilms** [`📁`](./AngularDatasetsFilms/) CRUD operations e gestione dataset films con internazionalizzazione
+  - Tecanologie usate Angular 17, TypeScript, AWS Lambda integration - aprile 2024.
   - *Backend*: L'esempio si integra con l'esempio di AWS CloudForamtion Lambda-Authorizer disponibile nel repository [Esempio10lambdaAuthorizer](https://github.com/alnao/AwsCloudFormationExamples/blob/master/Esempio10lambdaAuthorizer/)
-- **⚡ AngularServerSideRender** [`📁`](./AngularServerSideRender/) Server-side rendering con SEO optimization (Angular Universal, SSR)
+- **⚡ AngularServerSideRender** [`📁`](./AngularServerSideRender/) Server-side rendering con SEO optimization
+  - Tecnologie Angular 17 Universal, SSR - aprile 2024
   - Documentazione: [Come attivare il server-side rendering](#Come-attivare-il-server-side-rendering)
-- **📸 IonicReactPhotoGallery** [`📁`](./IonicReactPhotoGallery/) Photo gallery con camera integration cross-platform (Ionic, React, Capacitor)
+- **📸 IonicReactPhotoGallery** [`📁`](./IonicReactPhotoGallery/) Photo gallery con camera integration cross-platform 
+  - Tecnologie: Ionic 8, React, Capacitor 6 - giugno 2024
   - Fonte: [Documentazione ufficiale Ionic](https://ionicframework.com/docs/react/your-first-app)
-- **🎮 Ionic8CorsoPokemon** [`📁`](./Ionic8CorsoPokemon/) Una moderna applicazione mobile sviluppata per esplorare il mondo dei Pokemon utilizzando le [pokeapi](https://pokeapi.co/) (Ionic8, Angular20)
+- **🎮 Ionic8CorsoPokemon** [`📁`](./Ionic8CorsoPokemon/) Una moderna applicazione mobile sviluppata per esplorare il mondo dei Pokemon utilizzando le [pokeapi](https://pokeapi.co/) 
+  - Tecnologie: Ionic 8.7, Angular20 - aggiornato nel settembre 2025
   - Fonte: Esempio liberamente ispirata alle guide [Building an Ionic 4 Pokédex](https://www.youtube.com/watch?v=Nc1RqvDY-B8) e [devdactic.com](https://devdactic.com/ionic-4-pokedex-search-scroll), aggiornato alla versione 8 di Ionic nell'estate 2025.
-- **🔥 Next14App** [`📁`](./Next14App/) SSR e routing automatico per l'ottimizzazione delle performance (Next.js 14, React 18, TypeScript, TailwindCSS)
+- **🔥 Next14App** [`📁`](./Next14App/) SSR e routing automatico per l'ottimizzazione delle performance 
+  - Tecnologie: Next.js 14, React 18, TypeScript, TailwindCSS - maggio 2024
   - Fonte: [Video tutorial](https://www.youtube.com/watch?v=MER4bmh_s78)
-- **💾 NodeApiSqlLite** [`📁`](./NodeApiSqlLite/) API REST CRUD, database embedded (Node.js, Express, SQLite3)
+- **💾 NodeApiSqlLite** [`📁`](./NodeApiSqlLite/) API REST CRUD, database embedded 
+  - Tecnologie: Node.js, Express, SQLite3 - maggio 2024
   - Comando di avvio specifico: `node restwithnodejssqlite3.js` → http://localhost:8000
-- **☁️ NodeAwsAlNaoManager** [`📁`](./NodeAwsAlNaoManager/) Gestione servizi AWS come S3, EC2 e Lambda (Node.js, AWS SDK v3)
+- **☁️ NodeAwsAlNaoManager** [`📁`](./NodeAwsAlNaoManager/) Semplice API per l'integrazione con il servizio S3 di AWS
+  - Tecnologie: Node.js, AWS SDK v3 - maggio 2024
   - Documentazione: [AWS SDK per JavaScript](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_s3_code_examples.html)
-- **⚛️ ReactAwsConsole** [`📁`](./ReactAwsConsole/) Console per gestione servizi AWS (React, AWS SDK, TypeScript)
-  - Integrazione: Sviluppato come frontend del backend disponibile nel repository [JavaExamples/AWS/SDK](https://github.com/alnao/JavaExamples/AWS/SDK)
+- **⚛️ ReactAwsConsole** [`📁`](./ReactAwsConsole/) Piccola console per gestione servizi AWS (per ora solo S3 e EC2)
+  - Tecnologie React 19, AWS SDK v3, TypeScript - luglio 2025
+  - Integrazione: Sviluppato come frontend del backend disponibile nel repository [JavaExamples/AWS/Sdk](https://github.com/alnao/JavaExamples/tree/master/AWS/Sdk)
 
 
 ## 🔧 Esempi in fase di revisione
 - **☁️ AWSLambda** [`📁`](./AWSLambda/) - Esempi di AWS Lambda Function (Node.js, DynamoDB, API Gateway)
-- **📚 AngularBookExample** [`📁`](./AngularBookExample/) & **🔧 AngularBookExamplePhpServer** [`📁`](./AngularBookExamplePhpServer/) - Gestione libreria con backend PHP
 - **🎓 AngularCorsoFull** [`📁`](./AngularCorsoFull/) - Corso completo Angular con esempi pratici  
-- **🔐 AngularExampleListPassword** [`📁`](./AngularExampleListPassword/) - Gestione password e autenticazione
 - **📁 AngularFileManager** [`📁`](./AngularFileManager/) - File manager con Angular
 - **📱 AngularSouthAfricanMobileNumbers** [`📁`](./AngularSouthAfricanMobileNumbers/) - Validazione numeri telefonici
 - **🔄 ReactCorsoReduxClient** [`📁`](./ReactCorsoReduxClient/) - Client Redux base
@@ -88,7 +79,7 @@ Benvenuti nella **collezione completa di esempi pratici** per lo sviluppo web mo
 
 ### 🔧 Software richiesto
 
-Questi esempi necessitano *quasi* tutti do questi software:
+Questi esempi necessitano *quasi* tutti di questi software:
 
 | Software | Versione minima | Comando di verifica | Link download |
 |----------|----------------|---------------------|---------------|
@@ -104,6 +95,10 @@ Questi esempi necessitano *quasi* tutti do questi software:
 | **VS Code** | Editor di codice consigliato | [code.visualstudio.com](https://code.visualstudio.com/) |
 | **Git** | Controllo versione | [git-scm.com](https://git-scm.com/) |
 | **AWS CLI** | Per esempi AWS | [docs.aws.amazon.com](https://docs.aws.amazon.com/cli/) |
+| **Docker** | Per database MySQL/PostgreSQL | [docker.com](https://www.docker.com/) |
+| **PHP** | Per backend PHP (versione 7.4+) | [php.net](https://www.php.net/) |
+
+
 
 ### 📦 Estensioni VS Code consigliate
 
@@ -112,6 +107,8 @@ Questi esempi necessitano *quasi* tutti do questi software:
 - Prettier - Code formatter
 - GitLens
 - AWS Toolkit
+- ES7+ React/Redux/React-Native snippets
+
 
 ### 🚀 Quick Start
 
@@ -135,6 +132,7 @@ ng serve
 # oppure per progetti Node:
 node server.js
 ```
+
 
 
 # Appunti Angular 

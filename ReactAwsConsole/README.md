@@ -1,8 +1,23 @@
 # ReactAWSConsole
-
-Progetto Web scrittto in React per funzionare assieme al progetto JavaExamples/AWS/SDK disponibile nel repository `https://github.com/alnao/JavaExamples`
+Una moderna applicazione web React per la gestione e il monitoraggio dei servizi AWS, progettata per funzionare in sinergia con il backend Java disponibile nel repository [JavaExamples/AWS/Sdk](https://github.com/alnao/JavaExamples/tree/master/AWS/Sdk)
 
 *In fase di sviluppo*
+
+## 🏗️ Architettura 
+
+```
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   React App     │◄──►│   Java Backend   │◄──►│   AWS Services  │
+│  (Frontend)     │    │   (AWS SDK)      │    │   (Cloud)       │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+```
+
+- **Frontend**: React 18+ con hooks moderni e Context API
+- **Backend**: Java con AWS SDK v2 (repository separato)
+- **Comunicazione**: RESTful API con autenticazione JWT
+- **Cloud**: Integrazione diretta con servizi AWS
+
+
 
 ## Comandi vari
 - Creazione del progetto
@@ -11,12 +26,16 @@ Progetto Web scrittto in React per funzionare assieme al progetto JavaExamples/A
     ```
 - Avvio dell'applicazione
     ```
+    npm install
     npm start
     ```
+- L'applicazione sarà disponibile su [http://localhost:3000](http://localhost:3000)
 
 
 
-# Getting Started with Create React App
+# Original README
+
+**Getting Started with Create React App**
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -89,11 +108,29 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 
-# AlNao.it
-Nessun contenuto in questo repository è stato creato con IA o automaticamente, tutto il codice è stato scritto con molta pazienza da Alberto Nao. Se il codice è stato preso da altri siti/progetti è sempre indicata la fonte. Per maggior informazioni visitare il sito [alnao.it](https://www.alnao.it/).
+
+# &lt; AlNao /&gt;
+Tutti i codici sorgente e le informazioni presenti in questo repository sono frutto di un attento e paziente lavoro di sviluppo da parte di AlNao, che si è impegnato a verificarne la correttezza nella misura massima possibile. Qualora parte del codice o dei contenuti sia stato tratto da fonti esterne, la relativa provenienza viene sempre citata, nel rispetto della trasparenza e della proprietà intellettuale. 
+
+
+Alcuni contenuti e porzioni di codice presenti in questo repository sono stati realizzati anche grazie al supporto di strumenti di intelligenza artificiale, il cui contributo ha permesso di arricchire e velocizzare la produzione del materiale. Ogni informazione e frammento di codice è stato comunque attentamente verificato e validato, con l’obiettivo di garantire la massima qualità e affidabilità dei contenuti offerti. 
+
+
+Per ulteriori dettagli, approfondimenti o richieste di chiarimento, si invita a consultare il sito [AlNao.it](https://www.alnao.it/).
 
 
 ## License
+Made with ❤️ by <a href="https://www.alnao.it">AlNao</a>
+&bull; 
 Public projects 
-<a href="https://it.wikipedia.org/wiki/GNU_General_Public_License"  valign="middle"><img src="https://img.shields.io/badge/License-GNU-blue" style="height:22px;"  valign="middle"></a> 
+<a href="https://www.gnu.org/licenses/gpl-3.0"  valign="middle"> <img src="https://img.shields.io/badge/License-GPL%20v3-blue?style=plastic" alt="GPL v3" valign="middle" /></a>
 *Free Software!*
+
+
+Il software è distribuito secondo i termini della GNU General Public License v3.0. L'uso, la modifica e la ridistribuzione sono consentiti, a condizione che ogni copia o lavoro derivato sia rilasciato con la stessa licenza. Il contenuto è fornito "così com'è", senza alcuna garanzia, esplicita o implicita.
+
+
+The software is distributed under the terms of the GNU General Public License v3.0. Use, modification, and redistribution are permitted, provided that any copy or derivative work is released under the same license. The content is provided "as is", without any warranty, express or implied.
+
+
+
