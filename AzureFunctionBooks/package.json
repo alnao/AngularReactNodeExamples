@@ -1,0 +1,28 @@
+{
+  "name": "azure-function-books-crud",
+  "version": "1.0.0",
+  "description": "Azure Functions CRUD service for Books using TypeScript",
+  "main": "dist/src/index.js",
+  "author": "alnao",
+  "license": "GPL-3.0-only",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "clean": "rimraf dist",
+    "prestart": "npm run clean && npm run build",
+    "start": "func start",
+    "test": "echo \"No tests yet\""
+  },
+  "dependencies": {
+    "@azure/cosmos": "^4.0.0",
+    "@azure/functions": "^4.0.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.2",
+    "@types/uuid": "^9.0.2",
+    "azure-functions-core-tools": "^4.0.5000",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.1.6"
+  }
+}

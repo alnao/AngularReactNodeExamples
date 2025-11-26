@@ -1,0 +1,82 @@
+service: aws-lambda-books-crud
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'eu-central-1'} #ex eu-west-1
+  profile: default #serverless-admin
+  lambdaHashingVersion: 20201221
+  environment:
+    DYNAMODB_TABLE: ${self:service}-${self:provider.stage}
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+
+plugins:
+  - serverless-plugin-typescript
+
+functions:
+  createBook:
+    handler: src/handlers/createBook.handler
+    events:
+      - http:
+          path: books
+          method: post
+          cors: true
+
+  listBooks:
+    handler: src/handlers/listBooks.handler
+    events:
+      - http:
+          path: books
+          method: get
+          cors: true
+
+  getBook:
+    handler: src/handlers/getBook.handler
+    events:
+      - http:
+          path: books/{id}
+          method: get
+          cors: true
+
+  updateBook:
+    handler: src/handlers/updateBook.handler
+    events:
+      - http:
+          path: books/{id}
+          method: put
+          cors: true
+
+  deleteBook:
+    handler: src/handlers/deleteBook.handler
+    events:
+      - http:
+          path: books/{id}
+          method: delete
+          cors: true
+
+resources:
+  Resources:
+    BooksDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}

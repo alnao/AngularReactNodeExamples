@@ -30,6 +30,7 @@ Benvenuti nella **collezione completa di esempi pratici** per lo sviluppo web mo
 - **📚 AngularBookExample** [`📁`](./AngularBookExample/) Gestione di un elenco di libri con Angular 9
   - Tecnologie usate: Angular 9, Php - sviluppato in estate 2022 e verificato nell'ottobre 2025
   - *Backend*: Disponibile un server-json oppure delle semplici API scritte in PHP e database MySql
+  - *Backend su Cloud*: Disponibile semplice esempio di backend on-cloud nelle cartelle `AWSLambdaBooks` e `AzureFunctionBooks`
 - **🎬 AngularDatasetsFilms** [`📁`](./AngularDatasetsFilms/) CRUD operations e gestione dataset films con internazionalizzazione
   - Tecanologie usate Angular 17, TypeScript, AWS Lambda integration - aprile 2024.
   - *Backend*: L'esempio si integra con l'esempio di AWS CloudForamtion Lambda-Authorizer disponibile nel repository [Esempio10lambdaAuthorizer](https://github.com/alnao/AwsCloudFormationExamples/blob/master/Esempio10lambdaAuthorizer/)
@@ -39,6 +40,9 @@ Benvenuti nella **collezione completa di esempi pratici** per lo sviluppo web mo
 - **📸 IonicReactPhotoGallery** [`📁`](./IonicReactPhotoGallery/) Photo gallery con camera integration cross-platform 
   - Tecnologie: Ionic 8, React, Capacitor 6 - giugno 2024
   - Fonte: [Documentazione ufficiale Ionic](https://ionicframework.com/docs/react/your-first-app)
+- **☁️ AWSLambdaBooks** [`📁`](./AWSLambdaBooks/) - Esempio di backend per il progetto `AngularBookExample` usando le tecnologie del cloud AWS
+  - Tecnologie: AWS, AWS Lambda Function in Typescript, Node.js con libreria `www.serverless`, AWS DynamoDB, AWS API Gateway
+  - Fonte: [serverless.com](https://www.serverless.com/) & [Documentazione ufficiale AWS](https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html)
 - **🎮 Ionic8CorsoPokemon** [`📁`](./Ionic8CorsoPokemon/) Una moderna applicazione mobile sviluppata per esplorare il mondo dei Pokemon utilizzando le [pokeapi](https://pokeapi.co/) 
   - Tecnologie: Ionic 8.7, Angular20 - aggiornato nel settembre 2025
   - Fonte: Esempio liberamente ispirata alle guide [Building an Ionic 4 Pokédex](https://www.youtube.com/watch?v=Nc1RqvDY-B8) e [devdactic.com](https://devdactic.com/ionic-4-pokedex-search-scroll), aggiornato alla versione 8 di Ionic nell'estate 2025.
@@ -61,7 +65,8 @@ Benvenuti nella **collezione completa di esempi pratici** per lo sviluppo web mo
 
 
 ## 🔧 Esempi in fase di revisione
-- **☁️ AWSLambda** [`📁`](./AWSLambda/) - Esempi di AWS Lambda Function (Node.js, DynamoDB, API Gateway)
+- **☁️ AzureFunctionBooks** [`📁`](./AzureFunctionBooks/) - Esempio di backend per il progetto `AngularBookExample` usando le tecnologie del cloud Azure 
+  - *progetto in fase di revisione perchè non funziona!*
 - **🎓 AngularCorsoFull** [`📁`](./AngularCorsoFull/) - Corso completo Angular con esempi pratici  
 - **📁 AngularFileManager** [`📁`](./AngularFileManager/) - File manager con Angular
 - **📱 AngularSouthAfricanMobileNumbers** [`📁`](./AngularSouthAfricanMobileNumbers/) - Validazione numeri telefonici

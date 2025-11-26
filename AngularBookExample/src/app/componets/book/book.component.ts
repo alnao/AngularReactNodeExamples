@@ -86,6 +86,7 @@ export class BookComponent implements OnInit {
     this.mostraForm=false;
     this.bookService.getAll().subscribe ( (res : Book[]) =>{
         this.books = res;
+        console.log(this.books);
       },(error) => { console.log(error); this.error=error;});
   }
   cancella(event ,book : Book){console.log(book)

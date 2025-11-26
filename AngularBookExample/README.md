@@ -1,12 +1,18 @@
 # Angular BookExample
-Questo **BookExample** è una semplice applicazione Angular 9 (datato 2022) per la gestione di una libreria di libri, con backend selezionabile tra mock JSON server e PHP/MySQL. Il progetto mostra come integrare frontend moderno, API REST e backend multipli in modo flessibile.
+Questo **BookExample** è una semplice applicazione Angular 9 (datato 2022) per la gestione di una libreria di libri, con backend selezionabile tra:
+- Server mock con un semplice file JSON
+- Server PHP con database MySQL.
+- API esposte da servizi serverless nel cloud AWS
+- API esposte da servizi serverless nel cloud Azure
+
+Il progetto mostra come integrare frontend moderno, API REST e backend multipli in modo flessibile.
 
 - 🖥️ Demo UI
     - Ricerca e filtro in tempo reale
     - Card e lista libri con badge prezzo, autore, azioni rapide
     - Form di inserimento/modifica integrato nella UI
 - ⚙️ Come eseguire il progetto
-    - Scegliere se eseguire con la versione json oppure php, modificare di conseguenza il file `environemnts.ts` 
+    - Scegliere se eseguire quale versione backend eseguire e modificare il file `environemnts.ts` di conseguenza.
         - nota: andrebbe fatto un `.env` nel progetto web ma per ora lasciato solo il file typescript
     - Eseguire il frotend con il comando
         ```
@@ -14,6 +20,8 @@ Questo **BookExample** è una semplice applicazione Angular 9 (datato 2022) per 
         ng serve
         ```
         che sarà disponibile al `http://localhost:4200/`
+    - Se si è scelto la versione cloud AWS seguire le indicazioni indicate nella cartella `AWSLambdaBooks`
+    - Se si è scelto la versione cloud Azure seguire le indicazioni indicate nella cartella `AzureFunctionBooks`
     - Se si è scelto la versione con il **json server**, per lanciare il backend, eseguire il comando
         ```sh
         npx jsonserver --path server-json-mock/server.json
@@ -21,13 +29,13 @@ Questo **BookExample** è una semplice applicazione Angular 9 (datato 2022) per 
         - Le API saranno disponibili su `http://localhost:3000/books`.
     - Se si è scelto la versione con il mysql server, per lanciare il backend, eseguire i passi
         - Identificare il server Mysql, oppure lanciare un server tramite docker con il comando
-            ```
+            ```bash
             docker run --name mysql4242 -e MYSQL_ROOT_PASSWORD=xxxx -e MYSQL_DATABASE=bookexample -p 4242:3306 -d mysql:8 mysqld 
             ```
             - comandi utili per il docker
                 ```sh
                 # Eseguire sql dentro al server, per esempio creare un utente nel caso root non funzionasse
-                docker exec -it mysql4242 mysql -uroot -pxxxx -e "
+                docker exec -it mysql4242 mysql -u"root" -p"xxxx" -e "
                     CREATE USER 'bookuser'@'%' IDENTIFIED BY 'bookpass';
                     GRANT ALL PRIVILEGES ON *.* TO 'bookuser'@'%';
                     FLUSH PRIVILEGES;
@@ -61,40 +69,6 @@ Questo **BookExample** è una semplice applicazione Angular 9 (datato 2022) per 
             - Test: [http://localhost:8000/test.php](http://localhost:8000/test.php)
 
         - Se usato Apache, è possibile rinominare htaccess.txt in .htaccess per applicare le regole sugli header.
-
-
-
-# Original README by Angular CLI
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-Run `npx jsonserver --path jsonserver/server.json` to execute local server with book list
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-
-
 
 
 # &lt; AlNao /&gt;

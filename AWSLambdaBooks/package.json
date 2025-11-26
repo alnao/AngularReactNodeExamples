@@ -1,0 +1,26 @@
+{
+  "name": "aws-lambda-books-crud",
+  "version": "1.0.0",
+  "description": "Serverless CRUD service for Books using TypeScript with DynamoDB",
+  "author": "alnao",
+  "license": "GPL-3.0-only",
+  "scripts": {
+    "deploy": "serverless deploy",
+    "remove": "serverless remove",
+    "logs": "serverless logs -f",
+    "invoke": "serverless invoke -f"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.370.0",
+    "@aws-sdk/lib-dynamodb": "^3.370.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.119",
+    "@types/node": "^20.4.2",
+    "@types/uuid": "^9.0.2",
+    "serverless": "^3.33.0",
+    "serverless-plugin-typescript": "^2.1.5",
+    "typescript": "^5.1.6"
+  }
+}

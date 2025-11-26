@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.vscode/
+*.log
+.env
+.DS_Store
+local.settings.json
+.funcignore
+.azure-config
+.func.pid

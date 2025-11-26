@@ -96,6 +96,13 @@ switch ($method) {
 
     case 'DELETE':
         $id = $_GET['id'];
+        // Metodo 2: REST style (/api/123 o /api.php/123)
+        if (!$id && isset($_SERVER['PATH_INFO'])) {
+            $pathInfo = trim($_SERVER['PATH_INFO'], '/');
+            if (!empty($pathInfo)) {
+                $id = $pathInfo;
+            }
+        }
         try {
             $sql = "Delete From book WHERE id= :id";
             $stmt = $dbh->prepare($sql);
