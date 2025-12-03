@@ -1279,7 +1279,7 @@ Per ulteriori dettagli, approfondimenti o richieste di chiarimento, si invita a 
 
 
 ## License
-Made with ❤️ by <a href="https://www.alnao.it">AlNao</a>
+Made with ❤️ by Made with ❤️ by [@alnao](https://github.com/alnao)
 &bull; 
 Public projects 
 <a href="https://www.gnu.org/licenses/gpl-3.0"  valign="middle"> <img src="https://img.shields.io/badge/License-GPL%20v3-blue?style=plastic" alt="GPL v3" valign="middle" /></a>
