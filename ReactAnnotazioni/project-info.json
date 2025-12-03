@@ -1,0 +1,118 @@
+{
+  "name": "alnao-tazioni-frontend",
+  "version": "1.0.0",
+  "description": "Frontend React per gestione annotazioni",
+  "author": "AlNao",
+  "features": {
+    "authentication": "JWT with localStorage",
+    "stateManagement": "Redux Toolkit",
+    "routing": "React Router v7",
+    "ui": "Bootstrap 5",
+    "api": "Axios with interceptors"
+  },
+  "pages": [
+    {
+      "name": "Login",
+      "path": "/login",
+      "description": "Autenticazione utente con username e password"
+    },
+    {
+      "name": "Elenco Annotazioni",
+      "path": "/annotazioni",
+      "description": "Gestione annotazioni con select ricercabile e modifica con lock",
+      "features": [
+        "React Select con ricerca",
+        "Lock temporaneo (120s)",
+        "Textarea fullwidth",
+        "Bottoni salva sopra e sotto",
+        "Validazione campi"
+      ]
+    },
+    {
+      "name": "Cambio Stato",
+      "path": "/cambio-stato",
+      "description": "Cambio stato massivo con filtri e validazione transizioni",
+      "features": [
+        "Filtro per stato",
+        "Ricerca full-text",
+        "Selezione multipla",
+        "Cambio stato A→B",
+        "Validazione transizioni",
+        "Report risultati"
+      ]
+    }
+  ],
+  "states": [
+    "INSERITA",
+    "MODIFICATA",
+    "CONFERMATA",
+    "RIFIUTATA",
+    "DAINVIARE",
+    "INVIATA",
+    "SCADUTA",
+    "BANNATA",
+    "ERRORE"
+  ],
+  "apiEndpoints": {
+    "baseUrl": "http://localhost:8080",
+    "auth": {
+      "login": "/api/auth/login",
+      "logout": "/api/auth/logout",
+      "profile": "/api/auth/me"
+    },
+    "annotazioni": {
+      "getAll": "/api/annotazioni",
+      "getById": "/api/annotazioni/:id",
+      "create": "/api/annotazioni",
+      "update": "/api/annotazioni/:id",
+      "delete": "/api/annotazioni/:id",
+      "search": "/api/annotazioni/cerca",
+      "changeState": "/api/annotazioni/:id/stato",
+      "lock": "/api/annotazioni/:id/prenota",
+      "unlock": "/api/annotazioni/:id/prenota",
+      "transitions": "/api/annotazioni/transizioni-stato"
+    }
+  },
+  "components": {
+    "Navbar": "Barra navigazione con logo, link e dropdown utente",
+    "PrivateRoute": "HOC per protezione route autenticate",
+    "Login": "Form di autenticazione",
+    "ElencoAnnotazioni": "Gestione completa annotazioni",
+    "CambioStato": "Cambio stato massivo con filtri"
+  },
+  "redux": {
+    "slices": [
+      {
+        "name": "auth",
+        "state": ["token", "user", "isAuthenticated", "loading", "error"],
+        "actions": ["login", "logout", "getProfile"]
+      },
+      {
+        "name": "annotazioni",
+        "state": ["items", "selectedAnnotazione", "transizioni", "loading", "error", "prenotazioni"],
+        "actions": [
+          "fetchAnnotazioni",
+          "fetchAnnotazioneById",
+          "createAnnotazione",
+          "updateAnnotazione",
+          "deleteAnnotazione",
+          "prenotaAnnotazione",
+          "rilasciaPrenotazione",
+          "cambiaStato",
+          "fetchTransizioniStato"
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "start": "Avvia server sviluppo (porta 3000)",
+    "build": "Build produzione",
+    "test": "Esegue test",
+    "eject": "Eject configurazione (irreversibile)"
+  },
+  "requirements": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0",
+    "backend": "API su http://localhost:8080"
+  }
+}

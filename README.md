@@ -2,13 +2,13 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=angular"   height=60/>
+  <img src="https://img.shields.io/badge/React-61DBFB?style=for-the-badge&logo=react&logoColor=white"    height=60/>
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"    height=60/>
   <img src="https://img.shields.io/badge/Ionic-3880FF?style=for-the-badge&logo=ionic&logoColor=white"    height=60/>
   <img src="https://img.shields.io/badge/Redux-764abc?style=for-the-badge&logo=redux&logoColor=white"    height=60/>
-  <img src="https://img.shields.io/badge/NgRx-72427c?style=for-the-badge&logo=NgRx&logoColor=white"    height=60/>
-  <img src="https://img.shields.io/badge/React-61DBFB?style=for-the-badge&logo=react&logoColor=white"    height=60/>
   <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"    height=60/>
-  <img src="https://img.shields.io/badge/Npm-cb3837?style=for-the-badge&logo=npm&logoColor=white"   height=60/>
-  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"    height=60/>
+  <!--<img src="https://img.shields.io/badge/NgRx-72427c?style=for-the-badge&logo=NgRx&logoColor=white"    height=60/>
+  <img src="https://img.shields.io/badge/Npm-cb3837?style=for-the-badge&logo=npm&logoColor=white"   height=60/>--> 
 </p>
 
 ## ✨ Panoramica
@@ -55,6 +55,9 @@ Benvenuti nella **collezione completa di esempi pratici** per lo sviluppo web mo
 - **☁️ NodeAwsAlNaoManager** [`📁`](./NodeAwsAlNaoManager/) Semplice API per l'integrazione con il servizio S3 di AWS
   - Tecnologie: Node.js, AWS SDK v3 - maggio 2024
   - Documentazione: [AWS SDK per JavaScript](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_s3_code_examples.html)
+- **📖 ReactAnnotazioni** [`📁`](./ReactAnnotazioni/) Piccola applicatione web per gestione di annotazioni
+  - Tecnologie React 19, TypeScript, Redux 9, Bootstrap 5 - dicembre 2025
+  - Integrazione: Sviluppato come front-end della applicazione back-end [Annotazioni](https://github.com/alnao/JavaSpringBootExample) *il progetto è stato creato/sviluppato con la IA*
 - **⚛️ ReactAwsConsole** [`📁`](./ReactAwsConsole/) Piccola console per gestione servizi AWS (per ora solo S3 e EC2)
   - Tecnologie React 19, AWS SDK v3, TypeScript - luglio 2025
   - Integrazione: Sviluppato come frontend del backend disponibile nel repository [JavaExamples/AWS/Sdk](https://github.com/alnao/JavaExamples/tree/master/AWS/Sdk)
