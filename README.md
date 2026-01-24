@@ -32,37 +32,46 @@ Benvenuti nella **collezione completa di esempi pratici** per lo sviluppo web mo
   - *Backend*: Disponibile un server-json oppure delle semplici API scritte in PHP e database MySql
   - *Backend su Cloud*: Disponibile semplice esempio di backend on-cloud nelle cartelle `AWSLambdaBooks` e `AzureFunctionBooks`
 - **🎬 AngularDatasetsFilms** [`📁`](./AngularDatasetsFilms/) CRUD operations e gestione dataset films con internazionalizzazione
-  - Tecanologie usate Angular 17, TypeScript, AWS Lambda integration - aprile 2024.
+  - Tecanologie usate Angular 17, TypeScript, AWS Lambda integration - verificato nel aprile 2024.
   - *Backend*: L'esempio si integra con l'esempio di AWS CloudForamtion Lambda-Authorizer disponibile nel repository [Esempio10lambdaAuthorizer](https://github.com/alnao/AwsCloudFormationExamples/blob/master/Esempio10lambdaAuthorizer/)
 - **⚡ AngularServerSideRender** [`📁`](./AngularServerSideRender/) Server-side rendering con SEO optimization
-  - Tecnologie Angular 17 Universal, SSR - aprile 2024
+  - Tecnologie Angular 17 Universal, SSR - verificato nel aprile 2024
   - Documentazione: [Come attivare il server-side rendering](#Come-attivare-il-server-side-rendering)
 - **📸 IonicReactPhotoGallery** [`📁`](./IonicReactPhotoGallery/) Photo gallery con camera integration cross-platform 
-  - Tecnologie: Ionic 8, React, Capacitor 6 - giugno 2024
+  - Tecnologie: Ionic 8, React, Capacitor 6 - verificato nel giugno 2024
   - Fonte: [Documentazione ufficiale Ionic](https://ionicframework.com/docs/react/your-first-app)
 - **☁️ AWSLambdaBooks** [`📁`](./AWSLambdaBooks/) - Esempio di backend per il progetto `AngularBookExample` usando le tecnologie del cloud AWS
-  - Tecnologie: AWS, AWS Lambda Function in Typescript, Node.js con libreria `www.serverless`, AWS DynamoDB, AWS API Gateway
+  - Tecnologie: AWS, AWS Lambda Function in Typescript, Node.js con libreria `www.serverless`, AWS DynamoDB, AWS API Gateway - aggiornato nel novembre 2025
   - Fonte: [serverless.com](https://www.serverless.com/) & [Documentazione ufficiale AWS](https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html)
+- **☁️ AzureFunctionBooks** [`📁`](./AzureFunctionBooks/) - Esempio di backend per il progetto `AngularBookExample` usando le tecnologie del cloud Azure
+  - Tecnologie: Azure, Azure Functions, Node.js, Cosmos DB - aggiornato nel novembre 2025
+  - Fonte: [Documentazione ufficiale Azure](https://azure.microsoft.com/en-us/products/functions)
+- **☁️ GitHub Copilot SDK - esempio** [`📁`](./GitHubCopilotSDK_1Simple/) - esempio di utilizzo di GitHub Copilot SDK per la chiamata agli engine di Copilot
+  - Tecnologie: Copilot SDK, Node.js - sviluppato a gennaio 2026
+  - Fonte: [Copilot SDK - Getting Started](https://github.com/github/copilot-sdk/blob/main/docs/getting-started.md)
+- **☁️ GitHub Copilot SDK - tools** [`📁`](./GitHubCopilotSDK_2Tools/) - esempio di utilizzo di GitHub Copilot SDK per la chiamata agli engine di Copilot e sviluppo di tools specifici che iteragiscono con gli engine
+  - Tecnologie: Copilot SDK, Node.js - sviluppato a gennaio 2026
+  - Fonte: [Copilot SDK - Add a custom tool](https://github.com/github/copilot-sdk/blob/main/docs/getting-started.md#step-4-add-a-custom-tool)
 - **🎮 Ionic8CorsoPokemon** [`📁`](./Ionic8CorsoPokemon/) Una moderna applicazione mobile sviluppata per esplorare il mondo dei Pokemon utilizzando le [pokeapi](https://pokeapi.co/) 
   - Tecnologie: Ionic 8.7, Angular20 - aggiornato nel settembre 2025
   - Fonte: Esempio liberamente ispirata alle guide [Building an Ionic 4 Pokédex](https://www.youtube.com/watch?v=Nc1RqvDY-B8) e [devdactic.com](https://devdactic.com/ionic-4-pokedex-search-scroll), aggiornato alla versione 8 di Ionic nell'estate 2025.
 - **🔥 Next14App** [`📁`](./Next14App/) SSR e routing automatico per l'ottimizzazione delle performance 
-  - Tecnologie: Next.js 14, React 18, TypeScript, TailwindCSS - maggio 2024
+  - Tecnologie: Next.js 14, React 18, TypeScript, TailwindCSS - verificato nel maggio 2024
   - Fonte: [Video tutorial](https://www.youtube.com/watch?v=MER4bmh_s78)
 - **💾 NodeApiSqlLite** [`📁`](./NodeApiSqlLite/) API REST CRUD, database embedded 
-  - Tecnologie: Node.js, Express, SQLite3 - maggio 2024
+  - Tecnologie: Node.js, Express, SQLite3 - verificato nel maggio 2024
   - Comando di avvio specifico: `node restwithnodejssqlite3.js` → http://localhost:8000
 - **☁️ NodeAwsAlNaoManager** [`📁`](./NodeAwsAlNaoManager/) Semplice API per l'integrazione con il servizio S3 di AWS
-  - Tecnologie: Node.js, AWS SDK v3 - maggio 2024
+  - Tecnologie: Node.js, AWS SDK v3 - verificato nel  maggio 2024
   - Documentazione: [AWS SDK per JavaScript](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_s3_code_examples.html)
 - **📖 ReactAnnotazioni** [`📁`](./ReactAnnotazioni/) Piccola applicatione web per gestione di annotazioni
-  - Tecnologie React 19, TypeScript, Redux 9, Bootstrap 5 - dicembre 2025
+  - Tecnologie React 19, TypeScript, Redux 9, Bootstrap 5 - verificato nel dicembre 2025
   - Integrazione: Sviluppato come front-end della applicazione back-end [Annotazioni](https://github.com/alnao/JavaSpringBootExample) *il progetto è stato creato/sviluppato con la IA*
 - **⚛️ ReactAwsConsole** [`📁`](./ReactAwsConsole/) Piccola console per gestione servizi AWS (per ora solo S3 e EC2)
-  - Tecnologie React 19, AWS SDK v3, TypeScript - luglio 2025
+  - Tecnologie React 19, AWS SDK v3, TypeScript - verificato nel luglio 2025
   - Integrazione: Sviluppato come frontend del backend disponibile nel repository [JavaExamples/AWS/Sdk](https://github.com/alnao/JavaExamples/tree/master/AWS/Sdk)
 - **⭐ ReactNativePocketApp** [`📁`](./ReactNativePocketApp/) piccola applicazione *Pocket-style save-for-later app*
-  - Tecnologie usate: React 19, Expo, SQLite, Reanimated, API Routes, IAP - inverno 2025
+  - Tecnologie usate: React 19, Expo, SQLite, Reanimated, API Routes, IAP - verificato nell'inverno 2025
   - Fonte: video tutorial [Build Your Own Pocket Clone with React Native (Expo, SQLite, Reanimated, API Routes, IAP)](https://www.youtube.com/watch?v=GSs4Dnz274k)
   - *progetto ancora in fase di sviluppo*
 
