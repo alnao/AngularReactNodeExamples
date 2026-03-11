@@ -1,84 +1,44 @@
 # Angular React Node Examples ✨
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=angular"   height=60/>
-  <img src="https://img.shields.io/badge/React-61DBFB?style=for-the-badge&logo=react&logoColor=white"    height=60/>
-  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"    height=60/>
-  <img src="https://img.shields.io/badge/Ionic-3880FF?style=for-the-badge&logo=ionic&logoColor=white"    height=60/>
-  <img src="https://img.shields.io/badge/Redux-764abc?style=for-the-badge&logo=redux&logoColor=white"    height=60/>
-  <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"    height=60/>
+  <img src="https://img.shields.io/badge/Angular-DD0031?logo=angular&logoColor=angular"   height=32/>
+  <img src="https://img.shields.io/badge/React-61DBFB?logo=react&logoColor=black"    height=32/>
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white"    height=32/>
+  <img src="https://img.shields.io/badge/Ionic-3880FF?logo=ionic&logoColor=white"    height=32/>
+  <img src="https://img.shields.io/badge/Redux-764abc?logo=redux&logoColor=white"    height=32/>
+  <img src="https://img.shields.io/badge/Node.js-43853D?logo=node.js&logoColor=white"    height=32/>
   <!--<img src="https://img.shields.io/badge/NgRx-72427c?style=for-the-badge&logo=NgRx&logoColor=white"    height=60/>
   <img src="https://img.shields.io/badge/Npm-cb3837?style=for-the-badge&logo=npm&logoColor=white"   height=60/>--> 
 </p>
 
-## ✨ Panoramica
-
-Benvenuti nella **collezione completa di esempi pratici** per lo sviluppo web moderno! Questa collezione by [**AlNao.it**](https://www.alnao.it) include progetti *pratici* organizzati per tecnologia e livello di complessità. Ogni progetto è accompagnato da documentazione dettagliata, istruzioni di setup e guide per l'estensione delle funzionalità.
-
-- 🅰️ **Ecosistema Angular**: Applicazioni moderne con Angular 18+ e TypeScript, State management avanzato con NgRx e Redux patterns, Server-side rendering con Angular Universal, Internazionalizzazione e gestione multilingua, Integrazione cloud con servizi AWS & Testing completo con best practices
-- ⚛️ **Stack React**: Applicazioni con React 18+ e hooks, Gestione stato con Redux e Context API, UI responsive e moderne con Bootstrap e/o TailwindCSS
-- 🔧 **Framework full-stack** con Next.js 14 e SSR
-- ☁️ **Architetture serverless** con AWS Lambda e **Cloud services** con AWS SDK v3
-- 🟢 **Backend Node.js**: API REST scalabili con Express.js, Database integration (SQLite, MongoDB, DynamoDB), Microservizi con architetture distribuite
-- 📱 **Mobile Hybrid**: App cross-platform con Ionic + Angular/React, PWA e applicazioni offline-first, Integrazione hardware, UI native e performance ottimizzate
+Questa collezione by [**AlNao.it**](https://www.alnao.it) include progetti *pratici* organizzati per tecnologia e livello di complessità. Ogni progetto è accompagnato da documentazione dettagliata, istruzioni di setup e guide per l'estensione delle funzionalità.
 
 
-# Progetti di esempio
-- **🚀 Angular20NgrxReduxExample** [`📁`](./Angular18NgrxReduxExample/) State management con Redux e NgRx
-  - Tecnologie usate: Angular 20, Redux, NgRx, TypeScript - aggiornato nel settembre 2025
-  - *Backend*: Utilizza delle API free di [pokeapi.co](https://pokeapi.co/)
-- **📚 AngularBookExample** [`📁`](./AngularBookExample/) Gestione di un elenco di libri con Angular 9
-  - Tecnologie usate: Angular 9, Php - sviluppato in estate 2022 e verificato nell'ottobre 2025
-  - *Backend*: Disponibile un server-json oppure delle semplici API scritte in PHP e database MySql
-  - *Backend su Cloud*: Disponibile semplice esempio di backend on-cloud nelle cartelle `AWSLambdaBooks` e `AzureFunctionBooks`
-- **🎬 AngularDatasetsFilms** [`📁`](./AngularDatasetsFilms/) CRUD operations e gestione dataset films con internazionalizzazione
-  - Tecanologie usate Angular 17, TypeScript, AWS Lambda integration - verificato nel aprile 2024.
-  - *Backend*: L'esempio si integra con l'esempio di AWS CloudForamtion Lambda-Authorizer disponibile nel repository [Esempio10lambdaAuthorizer](https://github.com/alnao/AwsCloudFormationExamples/blob/master/Esempio10lambdaAuthorizer/)
-- **⚡ AngularServerSideRender** [`📁`](./AngularServerSideRender/) Server-side rendering con SEO optimization
-  - Tecnologie Angular 17 Universal, SSR - verificato nel aprile 2024
-  - Documentazione: [Come attivare il server-side rendering](#Come-attivare-il-server-side-rendering)
-- **📸 IonicReactPhotoGallery** [`📁`](./IonicReactPhotoGallery/) Photo gallery con camera integration cross-platform 
-  - Tecnologie: Ionic 8, React, Capacitor 6 - verificato nel giugno 2024
-  - Fonte: [Documentazione ufficiale Ionic](https://ionicframework.com/docs/react/your-first-app)
-- **☁️ AWSLambdaBooks** [`📁`](./AWSLambdaBooks/) - Esempio di backend per il progetto `AngularBookExample` usando le tecnologie del cloud AWS
-  - Tecnologie: AWS, AWS Lambda Function in Typescript, Node.js con libreria `www.serverless`, AWS DynamoDB, AWS API Gateway - aggiornato nel novembre 2025
-  - Fonte: [serverless.com](https://www.serverless.com/) & [Documentazione ufficiale AWS](https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html)
-- **☁️ AzureFunctionBooks** [`📁`](./AzureFunctionBooks/) - Esempio di backend per il progetto `AngularBookExample` usando le tecnologie del cloud Azure
-  - Tecnologie: Azure, Azure Functions, Node.js, Cosmos DB - aggiornato nel novembre 2025
-  - Fonte: [Documentazione ufficiale Azure](https://azure.microsoft.com/en-us/products/functions)
-- **☁️ GitHub Copilot SDK - esempio** [`📁`](./GitHubCopilotSDK_1Simple/) - esempio di utilizzo di GitHub Copilot SDK per la chiamata agli engine di Copilot
-  - Tecnologie: Copilot SDK, Node.js - sviluppato a gennaio 2026
-  - Fonte: [Copilot SDK - Getting Started](https://github.com/github/copilot-sdk/blob/main/docs/getting-started.md)
-- **☁️ GitHub Copilot SDK - tools** [`📁`](./GitHubCopilotSDK_2Tools/) - esempio di utilizzo di GitHub Copilot SDK per la chiamata agli engine di Copilot e sviluppo di tools specifici che iteragiscono con gli engine
-  - Tecnologie: Copilot SDK, Node.js - sviluppato a gennaio 2026
-  - Fonte: [Copilot SDK - Add a custom tool](https://github.com/github/copilot-sdk/blob/main/docs/getting-started.md#step-4-add-a-custom-tool)
-- **🎮 Ionic8CorsoPokemon** [`📁`](./Ionic8CorsoPokemon/) Una moderna applicazione mobile sviluppata per esplorare il mondo dei Pokemon utilizzando le [pokeapi](https://pokeapi.co/) 
-  - Tecnologie: Ionic 8.7, Angular20 - aggiornato nel settembre 2025
-  - Fonte: Esempio liberamente ispirata alle guide [Building an Ionic 4 Pokédex](https://www.youtube.com/watch?v=Nc1RqvDY-B8) e [devdactic.com](https://devdactic.com/ionic-4-pokedex-search-scroll), aggiornato alla versione 8 di Ionic nell'estate 2025.
-- **🔥 Next14App** [`📁`](./Next14App/) SSR e routing automatico per l'ottimizzazione delle performance 
-  - Tecnologie: Next.js 14, React 18, TypeScript, TailwindCSS - verificato nel maggio 2024
-  - Fonte: [Video tutorial](https://www.youtube.com/watch?v=MER4bmh_s78)
-- **💾 NodeApiSqlLite** [`📁`](./NodeApiSqlLite/) API REST CRUD, database embedded 
-  - Tecnologie: Node.js, Express, SQLite3 - verificato nel maggio 2024
-  - Comando di avvio specifico: `node restwithnodejssqlite3.js` → http://localhost:8000
-- **☁️ NodeAwsAlNaoManager** [`📁`](./NodeAwsAlNaoManager/) Semplice API per l'integrazione con il servizio S3 di AWS
-  - Tecnologie: Node.js, AWS SDK v3 - verificato nel  maggio 2024
-  - Documentazione: [AWS SDK per JavaScript](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_s3_code_examples.html)
-- **📖 ReactAnnotazioni** [`📁`](./ReactAnnotazioni/) Piccola applicatione web per gestione di annotazioni
-  - Tecnologie React 19, TypeScript, Redux 9, Bootstrap 5 - verificato nel dicembre 2025
-  - Integrazione: Sviluppato come front-end della applicazione back-end [Annotazioni](https://github.com/alnao/JavaSpringBootExample) *il progetto è stato creato/sviluppato con la IA*
-- **⚛️ ReactAwsConsole** [`📁`](./ReactAwsConsole/) Piccola console per gestione servizi AWS (per ora solo S3 e EC2)
-  - Tecnologie React 19, AWS SDK v3, TypeScript - verificato nel luglio 2025
-  - Integrazione: Sviluppato come frontend del backend disponibile nel repository [JavaExamples/AWS/Sdk](https://github.com/alnao/JavaExamples/tree/master/AWS/Sdk)
-- **⭐ ReactNativePocketApp** [`📁`](./ReactNativePocketApp/) piccola applicazione *Pocket-style save-for-later app*
-  - Tecnologie usate: React 19, Expo, SQLite, Reanimated, API Routes, IAP - verificato nell'inverno 2025
-  - Fonte: video tutorial [Build Your Own Pocket Clone with React Native (Expo, SQLite, Reanimated, API Routes, IAP)](https://www.youtube.com/watch?v=GSs4Dnz274k)
-  - *progetto ancora in fase di sviluppo*
+
+# Table of examples
+
+| Section | Name | Description |
+|-----|----|----|
+| <img src="https://img.shields.io/badge/Angular-DD0031?logo=angular&logoColor=angular"   height=24/> <br />   <img src="https://img.shields.io/badge/Redux-764abc?logo=redux&logoColor=white"    height=24/> | [`📁` Angular20 Ngrx Redux](./Angular20NgrxReduxExample/README.md) | Esempio base di uso di angular e redux per visualizzare una lista di pokemon!<br />  - Tecnologie usate: Angular 20, Redux, NgRx, TypeScript - aggiornato nel settembre 2025<br />- *Backend*: Utilizza delle API free di [pokeapi.co](https://pokeapi.co/) | 
+| <img src="https://img.shields.io/badge/Angular-DD0031?logo=angular&logoColor=angular"   height=24/> | [`📁` Angular Books](./AngularBookExample/README.md) | Gestione di un elenco di libri con Angular 9 <br />- Tecnologie usate: Angular 9, Php - sviluppato in estate 2022 e verificato nell'inverno 2026<br />- *Backend*: Disponibile un server-json oppure delle semplici API scritte in PHP e database MySql <br />- *Backend su Cloud*: Disponibile semplice esempio di backend on-cloud nelle cartelle `AWSLambdaBooks` e `AzureFunctionBooks` |
+| <img src="https://img.shields.io/badge/Angular-DD0031?logo=angular&logoColor=angular"   height=24/> | [`📁` Datasets Films](./AngularDatasetsFilms/README.md) | CRUD operations e gestione dataset films con internazionalizzazione <br />- Tecanologie usate Angular 17, TypeScript, AWS Lambda integration - verificato nel aprile 2024 <br />- *Backend*: AWS CloudForamtion Lambda-Authorizer nel repository [Esempio10lambdaAuthorizer](https://github.com/alnao/AwsCloudFormationExamples/blob/master/Esempio10lambdaAuthorizer/)
+| <img src="https://img.shields.io/badge/Angular-DD0031?logo=angular&logoColor=angular"   height=24/> | [`📁` ServerSide Render](./AngularServerSideRender/README.md) | Server-side rendering con SEO optimization <br />- Tecnologie Angular 17 Universal, SSR - verificato nel aprile 2024 <br />- Documentazione: [Come attivare il server side rendering](#Come-attivare-il-server-side-rendering)
+| <img src="https://img.shields.io/badge/AWS-FF9900?logo=AmazonAWS&logoColor=white" height=24/> <br />   <img src="https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white"    height=24/> | [`📁` AWS Lambda Books](./AwsLambdaBooks/README.md) | Esempio di backend per il progetto `AngularBookExample` usando le tecnologie del cloud AWS <br />- Tecnologie: AWS, Lambda Function in Typescript, libreria **serverless** - aggiornato nell'inverno 2026 <br />- Fonte: [serverless.com](https://www.serverless.com/) & [Documentazione ufficiale AWS](https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html) |
+| <img src="https://img.shields.io/badge/AWS-FF9900?logo=AmazonAWS&logoColor=white" height=24/> <br /> <img src="https://img.shields.io/badge/Node.js-43853D?logo=node.js&logoColor=white"    height=24/> | [`📁` AWS S3 Manager](./AwsS3Manager/README.md) | Semplice API per l'integrazione con il servizio S3 di AWS <br />- Tecnologie: Node.js, AWS SDK v3 - verificato nel  maggio 2024<br />- Documentazione: [AWS SDK per JavaScript](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_s3_code_examples.html) |
+| <img src="https://img.shields.io/badge/Azure-0078D4?logo=microsoftazure&logoColor=white" height=24/> | [`📁` Azure Function Books](./AzureFunctionBooks/README.md) | Esempio di backend per il progetto `AngularBookExample` usando le tecnologie del cloud Azure <br />- Tecnologie: Azure, Azure Functions, Node.js, Cosmos DB - aggiornato nel novembre 2025 <br />- Fonte: [Documentazione ufficiale Azure](https://azure.microsoft.com/en-us/products/functions) <br />*- progetto in fase di revisione perchè non funziona!*|
+| <img src="https://img.shields.io/badge/Copilot-gray?logo=githubcopilot&logoColor=white" height=24/>  <br /> <img src="https://img.shields.io/badge/Node.js-43853D?logo=node.js&logoColor=white"    height=24/> | [`📁` Copilot SDK 1 Simple](./GitHubCopilotSDK_1Simple/README.md) | Esempio di utilizzo di GitHub Copilot SDK per la chiamata agli engine di Copilot <br />- Tecnologie: Copilot SDK, Node.js - sviluppato a gennaio 2026 <br />- Fonte: [Copilot SDK - Getting Started](https://github.com/github/copilot-sdk/blob/main/docs/getting-started.md) |
+| <img src="https://img.shields.io/badge/Copilot-gray?logo=githubcopilot&logoColor=white" height=24/>  <br /> <img src="https://img.shields.io/badge/Node.js-43853D?logo=node.js&logoColor=white"    height=24/> | [`📁` Copilot SDK 2 Tools](./GitHubCopilotSDK_2Tools/README.md) | Esempio di sviluppo di tools specifici che iteragiscono con gli engine <br />- Tecnologie: Copilot SDK, Node.js - sviluppato a gennaio 2026 <br />- Fonte: [Copilot SDK - Add a custom tool](https://github.com/github/copilot-sdk/blob/main/docs/getting-started.md#step-4-add-a-custom-tool) |
+| <img src="https://img.shields.io/badge/Ionic-3880FF?logo=ionic&logoColor=white"    height=24/> <br /> <img src="https://img.shields.io/badge/React-61DBFB?logo=react&logoColor=black"    height=24/> | [`📁` Ionic PhotoGallery](./IonicReactPhotoGallery/README.md) | Photo gallery con camera integration cross-platform <br />- Tecnologie: Ionic 8, React, Capacitor 6 - verificato nel giugno 2024 <br />- Fonte: [Documentazione ufficiale Ionic](https://ionicframework.com/docs/react/your-first-app) |
+| <img src="https://img.shields.io/badge/Ionic-3880FF?logo=ionic&logoColor=white"    height=24/> <br /> <img src="https://img.shields.io/badge/Angular-DD0031?logo=angular&logoColor=angular"   height=24/>| [`📁` Ionic8 Pokemon](./Ionic8CorsoPokemon/) | Una moderna applicazione mobile sviluppata per esplorare il mondo dei Pokemon utilizzando le [pokeapi](https://pokeapi.co/) <br />- Tecnologie: Ionic 8.7, Angular20 - aggiornato nel settembre 2025 <br />- Fonte: Esempio liberamente ispirata alle guide [Building an Ionic 4 Pokédex](https://www.youtube.com/watch?v=Nc1RqvDY-B8) e [devdactic.com](https://devdactic.com/ionic-4-pokedex-search-scroll). |
+| <img src="https://img.shields.io/badge/NextJS-darkgreen?logo=nextdotjs&logoColor=white"    height=24/> | [`📁` Next14App](./Next14App/) | SSR e routing automatico per l'ottimizzazione delle performance <br />- Tecnologie: Next.js 14, React 18, TypeScript, TailwindCSS - verificato nel maggio 2024 <br />- Fonte: [Front-End Tutorials](https://www.youtube.com/watch?v=MER4bmh_s78) by Fabio Biondi |
+| <img src="https://img.shields.io/badge/Node.js-43853D?logo=node.js&logoColor=white"    height=24/> | [`📁` Node Api SqlLite](./NodeApiSqlLite/) | Esempio di creazione di API REST CRUD con database embedded<br />- Tecnologie: Node.js, Express, SQLite3 - verificato nel maggio 2024 <br />- Comando di avvio specifico: `node restwithnodejssqlite3.js` |
+| <img src="https://img.shields.io/badge/React-61DBFB?logo=react&logoColor=black"    height=24/> <br />   <img src="https://img.shields.io/badge/Redux-764abc?logo=redux&logoColor=white"    height=24/>| [`📁` React Annotazioni](./ReactAnnotazioni/README.md) | Piccola applicatione web per gestione di annotazioni <br />- Tecnologie React 19, TypeScript, Redux 9, Bootstrap 5 - verificato nel dicembre 2025<br >- Integrazione: Sviluppato come front-end della applicazione back-end [Annotazioni](https://github.com/alnao/JavaSpringBootExample)|
+| <img src="https://img.shields.io/badge/React-61DBFB?logo=react&logoColor=black"    height=24/> | [`📁` React Aws Console](./ReactAwsConsole/README.md) | Piccola console per gestione servizi AWS (per ora solo S3 e EC2) <br />- Tecnologie React 19, AWS SDK v3, TypeScript - verificato nel luglio 2025<br />- Integrazione: Sviluppato come frontend del backend disponibile nel repository [JavaExamples/AWS/Sdk](https://github.com/alnao/JavaExamples/tree/master/AWS/Sdk) |
+| <img src="https://img.shields.io/badge/React-61DBFB?logo=react&logoColor=black"    height=24/> |  [`📁` Native Pocket App](./ReactNativePocketApp/README.md) | Esempio di *Pocket-style save-for-later app* <br />- Tecnologie usate: React 19, Expo, SQLite, Reanimated, API Routes, IAP - verificato nell'inverno 2025 <br />- Fonte: video [Build Your Own Pocket Clone with React Native](https://www.youtube.com/watch?v=GSs4Dnz274k) |
 
 
 ## 🔧 Esempi in fase di revisione
-- **☁️ AzureFunctionBooks** [`📁`](./AzureFunctionBooks/) - Esempio di backend per il progetto `AngularBookExample` usando le tecnologie del cloud Azure 
-  - *progetto in fase di revisione perchè non funziona!*
+- **☁️ AzureFunctionBooks** [`📁`](./AzureFunctionBooks/) - *progetto in fase di revisione perchè non funziona!*
 - **🎓 AngularCorsoFull** [`📁`](./AngularCorsoFull/) - Corso completo Angular con esempi pratici  
 - **📁 AngularFileManager** [`📁`](./AngularFileManager/) - File manager con Angular
 - **📱 AngularSouthAfricanMobileNumbers** [`📁`](./AngularSouthAfricanMobileNumbers/) - Validazione numeri telefonici

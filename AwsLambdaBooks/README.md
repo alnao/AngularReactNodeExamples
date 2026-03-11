@@ -2,11 +2,12 @@
 
 Serverless CRUD API per la gestione di libri usando AWS Lambda, API Gateway e DynamoDB con TypeScript.
 
-Questo mini-progetto è studiato per lavorare con l'esempio disponibile nella cartella `AngularBookExample`.
+Questo mini-progetto è studiato per lavorare come backend dell'esempio disponibile nella cartella [`AngularBookExample`](../AngularBookExample/README.md).
 
 ## Prerequisiti
 - Node.js 18+
-- AWS CLI configurato con le credenziali e region di default Francoforte!
+- Essere registrati nel sito [app.serverless.com](https://app.serverless.com/)
+- AWS CLI configurato con le credenziali (in questo esempio è impostata la region Francoforte)
 - Serverless Framework `npm install serverless -g`
     ```bash
     $ npm install -g serverless
@@ -49,17 +50,30 @@ Il deploy creerà:
 - Tabella DynamoDB: `aws-lambda-books-crud-dev`
 - 5 Lambda Functions per il CRUD
 - API Gateway con endpoint REST
+Tutte le risorse saranno create tramite *AWS CloudFormation* 
 
 ## Endpoint API
 
 Dopo il deploy, otterrai un URL base come: `https://xxxxxx.execute-api.eu-west-1.amazonaws.com/dev`
 
+Se nel sistema è disponibile e configuraa la AWS-CLI è possibile eseguire i comandi
+```
+# Recupera l'output ServiceEndpoint e lo salva in una variabile
+STACK_NAME="aws-lambda-books-crud-dev"
+SERVICE_ENDPOINT=$(aws cloudformation describe-stacks \
+  --stack-name $STACK_NAME \
+  --query "Stacks[0].Outputs[?OutputKey=='ServiceEndpoint'].OutputValue" \
+  --output text)
+echo $SERVICE_ENDPOINT
+```
+
+
 ### Operazioni CRUD
 
 
 1. **Create Book** - POST `/books`
-   ```bash
-   curl -X POST https://your-api-url/dev/books \
+  ```bash
+  curl -X POST $SERVICE_ENDPOINT/books \
      -H "Content-Type: application/json" \
      -d '{
        "title": "Il nome della rosa",
@@ -69,21 +83,21 @@ Dopo il deploy, otterrai un URL base come: `https://xxxxxx.execute-api.eu-west-1
        "description": "Il nome della rosa",
        "type": "storic"
      }'
-   ```
+  ```
 
 2. **List Books** - GET `/books`
-   ```bash
-   curl https://your-api-url/dev/books
-   ```
+  ```bash
+  curl $SERVICE_ENDPOINT/books
+  ```
 
 3. **Get Book** - GET `/books/{id}`
-   ```bash
-   curl https://your-api-url/dev/books/{book-id}
-   ```
+  ```bash
+  curl $SERVICE_ENDPOINT/books/{book-id}
+  ```
 
 4. **Update Book** - PUT `/books/{id}`
    ```bash
-   curl -X PUT https://your-api-url/dev/books/{book-id} \
+   curl -X PUT $SERVICE_ENDPOINT/books/{book-id} \
      -H "Content-Type: application/json" \
      -d '{
        "title": "Updated Title",
@@ -96,9 +110,9 @@ Dopo il deploy, otterrai un URL base come: `https://xxxxxx.execute-api.eu-west-1
    ```
 
 5. **Delete Book** - DELETE `/books/{id}`
-   ```bash
-   curl -X DELETE https://your-api-url/dev/books/{book-id}
-   ```
+  ```bash
+  curl -X DELETE $SERVICE_ENDPOINT/books/{book-id}
+  ```
 
 ## Dati di esempio
 

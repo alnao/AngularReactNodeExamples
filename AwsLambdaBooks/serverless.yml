@@ -7,6 +7,12 @@ provider:
   region: ${opt:region, 'eu-central-1'} #ex eu-west-1
   profile: default #serverless-admin
   lambdaHashingVersion: 20201221
+  tags:
+    CreatedBy: AWSLambdaBooksExample
+    ENV: DEV
+  stackTags:
+    CreatedBy: AWSLambdaBooksExample
+    ENV: DEV
   environment:
     DYNAMODB_TABLE: ${self:service}-${self:provider.stage}
   iam:

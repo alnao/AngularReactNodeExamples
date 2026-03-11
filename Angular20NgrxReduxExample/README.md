@@ -1,4 +1,4 @@
-# 🚀 Angular 18 NgRx Redux Example
+# 🚀 Angular 20 NgRx Redux Example
 
 <p align="center">
   <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" />
@@ -9,7 +9,7 @@
 
 ## ✨ Panoramica
 
-**Esempio pratico e funzionale** di implementazione **NgRx** con **Angular 18+**. Questo progetto dimostra come configurare correttamente il state management reattivo utilizzando il pattern Redux in un'applicazione Angular moderna.
+**Esempio pratico e funzionale** di implementazione **NgRx** con **Angular 20+**. Questo progetto dimostra come configurare correttamente il state management reattivo utilizzando il pattern Redux in un'applicazione Angular moderna.
 
 ### 🎯 **Obiettivi del progetto**
 - **🏗️ Setup iniziale NgRx**: Configurazione completa di store, effects, selectors
@@ -35,7 +35,7 @@
 ```bash
 # 1. Clona il repository
 git clone https://github.com/alnao/AngularReactNodeExamples.git
-cd AngularReactNodeExamples/Angular18NgrxReduxExample
+cd AngularReactNodeExamples/Angular20NgrxReduxExample
 
 # 2. Installa le dipendenze
 npm install

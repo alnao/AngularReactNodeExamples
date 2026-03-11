@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  urlApiAws: 'https://uh959ksswb.execute-api.eu-central-1.amazonaws.com/dev/books',
+  urlApiAws: 'https://or7etp7jgi.execute-api.eu-central-1.amazonaws.com/dev/books',
   urlApiPhp: 'http://localhost:3000/api.php',
   urlApiStatic: 'http://localhost:3000/books',
-  tipoApi :"PHP" ,//"PHP" //"AWS" //"Static"
+  tipoApi :"AWS" ,//"PHP" //"AWS" //"Static"
 };
 
 /*

@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "book": {
@@ -53,8 +53,8 @@
             ],
             "styles": [
               "src/styles.scss",
-"node_modules/bootstrap/dist/css/bootstrap.min.css",
-"node_modules/font-awesome/css/font-awesome.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css"
             ],
             "scripts": []
           },
@@ -119,8 +119,8 @@
             ],
             "styles": [
               "src/styles.scss",
-"node_modules/bootstrap/dist/css/bootstrap.min.css",
-"node_modules/font-awesome/css/font-awesome.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css"
             ],
             "scripts": []
           }
@@ -151,6 +151,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "book"
+    }
+  },
+  "defaultProject": "book",
+  "cli": {
+    "analytics": "e501e263-2b89-4543-85b2-e52aeb9d08cc"
+  }
 }

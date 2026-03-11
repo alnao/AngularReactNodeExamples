@@ -6,27 +6,35 @@ Questo **BookExample** è una semplice applicazione Angular 9 (datato 2022) per 
 - API esposte da servizi serverless nel cloud Azure
 
 Il progetto mostra come integrare frontend moderno, API REST e backend multipli in modo flessibile.
-
 - 🖥️ Demo UI
     - Ricerca e filtro in tempo reale
     - Card e lista libri con badge prezzo, autore, azioni rapide
     - Form di inserimento/modifica integrato nella UI
-- ⚙️ Come eseguire il progetto
-    - Scegliere se eseguire quale versione backend eseguire e modificare il file `environemnts.ts` di conseguenza.
-        - nota: andrebbe fatto un `.env` nel progetto web ma per ora lasciato solo il file typescript
-    - Eseguire il frotend con il comando
-        ```
-        npm install
-        ng serve
-        ```
-        che sarà disponibile al `http://localhost:4200/`
-    - Se si è scelto la versione cloud AWS seguire le indicazioni indicate nella cartella `AWSLambdaBooks`
-    - Se si è scelto la versione cloud Azure seguire le indicazioni indicate nella cartella `AzureFunctionBooks`
-    - Se si è scelto la versione con il **json server**, per lanciare il backend, eseguire il comando
-        ```sh
-        npx jsonserver --path server-json-mock/server.json
-        ```
-        - Le API saranno disponibili su `http://localhost:3000/books`.
+Il frontend di esegue con il comando
+
+## ⚙️ Come eseguire il progetto
+Per eseguire il progetto lanciare 
+```
+npm install
+npm start
+```
+- il sito poi sarà disponibile al `http://localhost:4200/`
+
+Ma **prima** bisogna configurare il backend di riferimento nel file `src/environemnts/environemnts.ts`.
+- nota: andrebbe fatto un `.env` nel progetto web ma per ora lasciato solo il file typescript
+
+## ☁️ Selelzione del backend
+- **Json statico**
+    ```sh
+    npx jsonserver --path server-json-mock/server.json
+    ```
+    - Le API saranno disponibili su `http://localhost:3000/books`.
+- **AWS Lambda**
+    - Seguire le indicazioni indicate nella cartella [`AWSLambdaBooks`](../AWSLambdaBooks/README.md)
+- **Azure function**    
+    - Seguire le indicazioni indicate nella cartella [`AzureFunctionBooks`](../AzureFunctionBooks/README.md)
+- **Mysql on docker**
+
     - Se si è scelto la versione con il mysql server, per lanciare il backend, eseguire i passi
         - Identificare il server Mysql, oppure lanciare un server tramite docker con il comando
             ```bash
