@@ -7,6 +7,16 @@
   <img src="https://img.shields.io/badge/RxJS-B7178C?style=for-the-badge&logo=reactivex&logoColor=white" />
 </p>
 
+| Scheda | |
+|---|---|
+| **Stack** | Angular 20, NgRx, RxJS, TypeScript |
+| **Node** | 22 (vedi [`.nvmrc`](./.nvmrc), poi `nvm use`) |
+| **Avvio** | `npm install && npm start` → http://localhost:4200 |
+| **Backend** | Nessuno: API pubbliche di [pokeapi.co](https://pokeapi.co/) |
+| **Stato** | Attivo |
+| **Ultima verifica** | Settembre 2025 |
+
+
 ## ✨ Panoramica
 
 **Esempio pratico e funzionale** di implementazione **NgRx** con **Angular 20+**. Questo progetto dimostra come configurare correttamente il state management reattivo utilizzando il pattern Redux in un'applicazione Angular moderna.

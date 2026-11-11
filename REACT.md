@@ -1,12 +1,38 @@
 # Appunti REACT
 
-*Writted by AlNao*. Questo README raccoglie una selezione di articoli tecnici scritti da [alnao.it](https://www.alnao.it). Sono riproposti in formato Markdown per conservarli e renderli facilmente consultabili. Alcuni contenuti potrebbero essere datati, ma possono ancora fornire spunti e soluzioni interessanti.
+*Written by AlNao*. Questo README raccoglie una selezione di articoli tecnici scritti da [alnao.it](https://www.alnao.it). Sono riproposti in formato Markdown per conservarli e renderli facilmente consultabili. Alcuni contenuti potrebbero essere datati, ma possono ancora fornire spunti e soluzioni interessanti.
 
-
+- [Create a react project with vite](#Create-a-react-project-with-vite)
+- [React class to function](#React-class-to-function)
+  - [Utils vs hooks](#Utils-vs-hooks)
 - [React state](#React-state)
-    - [Spread operator](#Spread-operator)
+  - [Spread operator](#Spread-operator)
 - [Vite](#Vite)
 - [Tailwind](#Tailwind)
+
+## Create a react project with vite
+Creazione del progetto [ViteBase](./ViteBase/README.md) con React, TypeScript, Vite, Tailwind, Bootstrap 5 e Font Awesome.
+
+Prompt usato con l'assistente AI per generare il progetto:
+> Voglio creare un progetto "story-game-book" nella cartella "ViteBase". Voglio usare React, Vite, Tailwind, Bootstrap 5 e Font Awesome per sviluppare un grande progetto con migliaia di componenti. Ho una pagina di home con una lista di storie con grafica stile homepage di Netflix. Quando si seleziona una storia si apre un popup con il dettaglio della storia e un bottone "Inizia". Quando si inizia si mostra un componente dove sono elencati a sinistra i luoghi e a destra le azioni possibili in quel luogo. Fai tutto in una nuova cartella "ViteBase" e alla fine scrivi un README.md con tutti i dettagli tecnici e la spiegazione dei componenti. Usa react-router, TypeScript, react-bootstrap e Font Awesome.
+
+Comandi eseguiti:
+```bash
+# 1. Scheletro React + TypeScript
+mkdir -p ViteBase && cd ViteBase
+npx -y create-vite@latest ./ --template react-ts
+npm install
+
+# 2. Librerie: router, Bootstrap, Font Awesome
+npm install react-router-dom bootstrap react-bootstrap \
+  @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
+
+# 3. Tailwind 3 con PostCSS (crea tailwind.config.js e postcss.config.js)
+npm install tailwindcss@^3.4 postcss autoprefixer
+npx -y tailwindcss init -p
+```
+- Nota su Tailwind: il comando `npx tailwindcss init` esiste solo fino alla versione 3. Installando `tailwindcss` senza versione si ottiene la 4, che si configura in modo diverso: plugin `@tailwindcss/vite` in `vite.config.ts` e `@import "tailwindcss";` nel CSS, senza `tailwind.config.js`. ViteBase usa la 3.4, vedi la sezione [Tailwind](#Tailwind).
+
 
 ## React class to function
 La community di React (e il team di Meta) si è spostata totalmente verso le Function Components e i Hooks.
@@ -87,6 +113,69 @@ La community di React (e il team di Meta) si è spostata totalmente verso le Fun
     - Usa solo Funzioni: Sono più veloci e facili da testare.
     - Usa useEffect per le API: Tutto quello che deve succedere "all'avvio" o "al cambio di un filtro" va lì dentro.
     - Dimentica this: Niente più this.state o this.cambiaAnno. Solo variabili locali e funzioni.
+
+
+### Utils vs hooks
+Differenza tra Utils e Hooks — La regola d'oro:
+- Utils (funzioni pure) — file .js
+  - NON usano nessuna API di React (useState, useEffect, useContext, useNavigate...)
+  - Sono funzioni pure: dato un input, ritornano sempre lo stesso output
+  - Possono essere chiamate ovunque: in un componente, in un hook, in un service, in un test
+    ```js
+    // DateUtils.js — PURA, no React
+    export const getOggiInt = () => {
+        const d = new Date();
+        return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+    };
+
+    export const sistemaData = (valore) => {
+        return valore < 10 ? '0' + valore : '' + valore;
+    };
+    ```
+- Hooks (funzioni React) — file .js con prefisso use
+  - Negli esempi si usa `useNavigate` di React Router v6/v7; in React Router v5 l'equivalente era `useHistory` (con `history.push(...)`), rimosso dalla v6
+  - Usano almeno una API di React (useState, useEffect, useContext, useNavigate, altri hook...)
+  - Devono rispettare le Rules of Hooks: chiamati solo al top level di un componente o di un altro hook
+  - Il nome deve iniziare con use — è sia convenzione che requisito del linter
+    ```js
+    // useAgenda.js — USA React hooks
+    import { useNavigate } from 'react-router-dom';
+
+    export const useAgenda = () => {
+        const navigate = useNavigate(); // ← React hook = DEVE essere un hook
+
+        const toLinkEvento = (el) => {
+            navigate('/agenda/evento/' + el.id);
+        };
+
+        return { toLinkEvento };
+    };
+    ```
+- Schema decisionale:
+  ```
+  La mia funzione usa useState/useEffect/useContext/useNavigate/...?
+  │
+  ├── SÌ → È un HOOK → useNomeFile.js
+  │         - prefisso "use"
+  │         - chiamabile solo in componenti o altri hook
+  │
+  └── NO → È una UTILITY PURA → NomeUtils.js
+            - nessun vincolo
+            - chiamabile ovunque
+            - testabile facilmente
+  ```
+- Esempio pratico:
+  ```js
+  // ❌ SBAGLIATO — createAgendaUtils non inizia con "use" ma chiama useNavigate
+  export function createAgendaUtils() {
+      const navigate = useNavigate(); // ERRORE: viola rules-of-hooks
+  }
+
+  // ✅ CORRETTO — rinominare con prefisso "use"
+  export function useAgenda() {
+      const navigate = useNavigate(); // OK: è un custom hook
+  }
+  ```
 
 
 ## React state

@@ -86,9 +86,10 @@ switch ($method) {
         $description = $input["description"];
         $img = $input["img"];
         try {
-            $sql = "INSERT INTO book (title,author,price,isbn,description,img)
-		VALUES('$title','$author','$price' ,'$isbn','$description','$img')";
-            $dbh->exec($sql);
+            // Prepared statement: i valori non vengono mai concatenati nella query (niente SQL injection)
+            $sql = "INSERT INTO book (title,author,price,isbn,description,img) VALUES (?,?,?,?,?,?)";
+            $stmt = $dbh->prepare($sql);
+            $stmt->execute([$title, $author, $price, $isbn, $description, $img]);
         } catch (PDOException $e) {
             echo $sql . "<br/>" . $e->getMessage();
         }

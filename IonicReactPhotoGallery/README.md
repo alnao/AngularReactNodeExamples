@@ -1,4 +1,14 @@
 # Ionic React PhotoGallery
+
+| Scheda | |
+|---|---|
+| **Stack** | Ionic 8, React 18, Capacitor 6, Vite 5, TypeScript |
+| **Node** | 20 (vedi [`.nvmrc`](./.nvmrc), poi `nvm use`) |
+| **Avvio** | `npm install && npm run dev` (oppure `ionic serve`) |
+| **Backend** | Nessuno: foto salvate sul dispositivo con Capacitor |
+| **Stato** | Attivo |
+| **Ultima verifica** | Giugno 2024 |
+
 Progetto Ionic con React per la creazione di una photogallery, esempio preso dalla [documentazione ufficiale](https://ionicframework.com/docs/react/your-first-app).
 
 - Creazione del progetto

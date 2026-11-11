@@ -46,9 +46,9 @@
 ```
 src/
 ├── store/
-│   ├── index.js              # Configurazione dello store
-│   ├── authSlice.js          # Gestione autenticazione
-│   └── annotazioniSlice.js   # Gestione annotazioni
+│   ├── (store in src/app/store.ts)              # Configurazione dello store
+│   ├── authSlice.ts          # Gestione autenticazione
+│   └── annotazioniSlice.ts   # Gestione annotazioni
 ```
 
 ---
@@ -64,7 +64,7 @@ Questo progetto usa **Redux Toolkit**, che semplifica Redux con:
 
 ## Store Configurazione
 
-**File: `src/store/index.js`**
+**File: `src/app/store.ts`** (versione semplificata; nel codice reale lo store è creato da `setupStore()` ed esporta anche i tipi `RootState` e `AppDispatch`, usati dagli hook di `src/app/hooks.ts`)
 
 ```javascript
 import { configureStore } from '@reduxjs/toolkit';
@@ -99,7 +99,7 @@ export default store;
 
 ### Auth Slice
 
-**File: `src/store/authSlice.js`**
+**File: `src/store/authSlice.ts`**
 
 ```javascript
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
@@ -197,7 +197,7 @@ dispatch(login({ username, password }))
 
 ### Annotazioni Slice
 
-**File: `src/store/annotazioniSlice.js`**
+**File: `src/store/annotazioniSlice.ts`**
 
 ```javascript
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
@@ -400,7 +400,7 @@ export default annotazioniSlice.reducer;
 
 ## Utilizzo nei Componenti
 
-### Esempio completo da ElencoAnnotazioni.js
+### Esempio completo da ElencoAnnotazioni.tsx
 
 ```javascript
 import { useDispatch, useSelector } from 'react-redux';

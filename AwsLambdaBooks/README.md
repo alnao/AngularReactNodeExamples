@@ -1,5 +1,15 @@
 # AWS Lambda Books CRUD
 
+| Scheda | |
+|---|---|
+| **Stack** | TypeScript, Serverless Framework 3, AWS Lambda, API Gateway, DynamoDB |
+| **Node** | 18 (vedi [`.nvmrc`](./.nvmrc), poi `nvm use`) |
+| **Avvio** | `npm install && npm run deploy` (servono credenziali AWS, vedi sotto) |
+| **Backend** | È il backend di [AngularBookExample](../AngularBookExample/README.md); runtime Lambda `nodejs18.x` in `serverless.yml` |
+| **Stato** | Attivo |
+| **Ultima verifica** | Inverno 2026 |
+
+
 Serverless CRUD API per la gestione di libri usando AWS Lambda, API Gateway e DynamoDB con TypeScript.
 
 Questo mini-progetto è studiato per lavorare come backend dell'esempio disponibile nella cartella [`AngularBookExample`](../AngularBookExample/README.md).

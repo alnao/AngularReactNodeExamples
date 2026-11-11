@@ -1,5 +1,15 @@
 # GitHub Copilot SDK - Esempio 2 definizione di un semplice tool
 
+| Scheda | |
+|---|---|
+| **Stack** | Node.js, TypeScript (tsx), GitHub Copilot SDK |
+| **Node** | 22 (vedi [`.nvmrc`](./.nvmrc), poi `nvm use`) |
+| **Avvio** | `npm install && npx tsx index.ts` |
+| **Backend** | Servizio GitHub Copilot (serve un account GitHub con Copilot) |
+| **Stato** | Attivo |
+| **Ultima verifica** | Gennaio 2026 |
+
+
 Questo progetto mostra come utilizzare il [GitHub Copilot SDK](https://github.com/github/copilot-sdk) in un'applicazione Node.js/TypeScript per generare risposte AI tramite API.
 
 Let's give Copilot the ability to call your code by defining a custom tool. We'll create a simple weather lookup tool.

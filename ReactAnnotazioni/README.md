@@ -1,11 +1,22 @@
 # 📝 AlNaoTazioni - Sistema di Gestione Annotazioni
 
-![React](https://img.shields.io/badge/React-19.2.0-61DAFB?logo=react)
-![Redux](https://img.shields.io/badge/Redux_Toolkit-2.5.0-764ABC?logo=redux)
+![React](https://img.shields.io/badge/React-19.2-61DAFB?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6?logo=typescript)
+![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite)
+![Redux](https://img.shields.io/badge/Redux_Toolkit-2.11-764ABC?logo=redux)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.8-7952B3?logo=bootstrap)
-![Node.js](https://img.shields.io/badge/Node.js-20+-339933?logo=node.js)
+![Node.js](https://img.shields.io/badge/Node.js-22-339933?logo=node.js)
 
-Sistema completo per la gestione di annotazioni con autenticazione, cambio stato, filtri avanzati e interfaccia moderna con Bootstrap 5.
+Frontend per la gestione di annotazioni con autenticazione, cambio stato, filtri avanzati e interfaccia Bootstrap 5.
+
+| Scheda | |
+|---|---|
+| **Stack** | React 19, TypeScript, Vite 8, Redux Toolkit, React Router 7, Bootstrap 5, Axios, Vitest |
+| **Node** | 22 (vedi [`.nvmrc`](./.nvmrc), poi `nvm use`) |
+| **Avvio** | `nvm use && npm install && npm run dev` → http://localhost:3000 |
+| **Backend** | Applicazione Spring Boot [Annotazioni](https://github.com/alnao/JavaSpringBootExample), di default su `http://localhost:8082` |
+| **Stato** | Attivo |
+| **Ultima verifica** | Novembre 2026: build, lint, test unitari e prova end-to-end con backend simulato |
 
 ---
 
@@ -14,9 +25,9 @@ Sistema completo per la gestione di annotazioni con autenticazione, cambio stato
 - [Caratteristiche](#-caratteristiche)
 - [Tecnologie](#-tecnologie)
 - [Prerequisiti](#-prerequisiti)
-- [Installazione](#-installazione)
-- [Avvio del Progetto](#-avvio-del-progetto)
+- [Installazione e avvio](#-installazione-e-avvio)
 - [Struttura del Progetto](#-struttura-del-progetto)
+- [Migrazione da Create React App](#-migrazione-da-create-react-app)
 - [Funzionalità](#-funzionalità)
 - [API Backend](#-api-backend)
 - [Redux Store](#-redux-store)
@@ -38,78 +49,58 @@ Sistema completo per la gestione di annotazioni con autenticazione, cambio stato
 - 📱 **Responsive Design** ottimizzato per mobile e desktop
 - 🔔 **Notifiche Toast** eleganti al posto degli alert
 - 🎯 **React Select** con ricerca per selezione rapida annotazioni
-- ⚡ **Redux Toolkit** per gestione stato globale ottimizzata
+- ⚡ **Redux Toolkit** con hook tipizzati (`useAppDispatch`, `useAppSelector`)
 
 ---
 
 ## 🛠 Tecnologie
 
 ### Frontend
-- **React 19.2.0** - Libreria UI con functional components e hooks
-- **Redux Toolkit 2.5.0** - State management semplificato
-- **React Router 7.10.0** - Navigazione SPA
-- **Bootstrap 5.3.8** - Framework CSS responsive
-- **React Select 5.10.2** - Dropdown con ricerca avanzata
-- **Axios 1.13.2** - HTTP client con interceptor JWT
-- **Bootstrap Icons** - Set di icone moderno
+- **React 19** - Libreria UI con functional components e hooks
+- **TypeScript 6** - Tipi per payload API, store e componenti (`src/types.ts`)
+- **Vite 8** - Dev server e build (sostituisce Create React App)
+- **Redux Toolkit 2** - State management semplificato
+- **React Router 7** - Navigazione SPA
+- **Bootstrap 5.3** + **Bootstrap Icons** - Framework CSS responsive e icone
+- **React Select 5** - Dropdown con ricerca avanzata
+- **Axios 1** - HTTP client con interceptor JWT
+- **Vitest** - Test unitari dei reducer
 
 ### Backend
-- **Node.js / Express.js** - Server API RESTful
-- **Database** - (Configurabile: MySQL, PostgreSQL, MongoDB)
-- **JWT** - Autenticazione token-based
+- Applicazione Java **Spring Boot** del repository [JavaSpringBootExample](https://github.com/alnao/JavaSpringBootExample), non inclusa in questa cartella
+- Le API usate dal frontend sono descritte in [API.md](./API.md)
 
 ---
 
 ## 📦 Prerequisiti
 
-- **Node.js** 18.x o superiore
-- **npm** 9.x o superiore
-- **Backend API** in esecuzione su `http://localhost:8082`
+- **Node.js 22** (`nvm use` legge il file `.nvmrc`); Vite 8 richiede almeno Node 20.19
+- **npm** 10.x o superiore
+- **Backend API** in esecuzione su `http://localhost:8082`, oppure su un altro URL impostato in `VITE_API_BASE_URL`
 
 ---
 
-## 🚀 Installazione
-
-### 1. Clona il Repository
+## 🚀 Installazione e avvio
 
 ```bash
 git clone https://github.com/alnao/AngularReactNodeExamples.git
 cd AngularReactNodeExamples/ReactAnnotazioni
-```
-
-### 2. Installa le Dipendenze
-
-#### Frontend
-```bash
-cd frontend
+nvm use
 npm install
+cp .env.example .env      # opzionale: solo per cambiare l'URL del backend
+npm run dev               # oppure npm start
 ```
 
-#### Backend (se necessario)
-```bash
-cd backend
-npm install
-```
+L'applicazione sarà disponibile su **http://localhost:3000** (porta fissata in `vite.config.ts`, la stessa usata prima con Create React App).
 
----
-
-## ▶️ Avvio del Progetto
-
-### Frontend
-```bash
-cd frontend
-npm start
-```
-
-L'applicazione sarà disponibile su: **http://localhost:3000**
-
-### Backend
-```bash
-cd backend
-npm start
-```
-
-L'API sarà disponibile su: **http://localhost:8082**
+| Comando | Descrizione |
+|---|---|
+| `npm run dev` / `npm start` | Dev server Vite con hot reload |
+| `npm run build` | Controllo dei tipi (`tsc -b`) e build di produzione in `dist/` |
+| `npm run preview` | Serve localmente la build di `dist/` |
+| `npm run lint` | ESLint (regole TypeScript e React Hooks) |
+| `npm run typecheck` | Solo controllo dei tipi |
+| `npm test` | Test unitari con Vitest |
 
 ---
 
@@ -117,41 +108,50 @@ L'API sarà disponibile su: **http://localhost:8082**
 
 ```
 ReactAnnotazioni/
-├── frontend/
-│   ├── public/
-│   │   ├── index.html
-│   │   └── logo-alnaotazioni.png
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── Navbar.js          # Barra di navigazione
-│   │   │   └── Toast.js           # Notifiche toast
-│   │   ├── pages/
-│   │   │   ├── Login.js           # Pagina di login
-│   │   │   ├── ElencoAnnotazioni.js  # Gestione annotazioni
-│   │   │   └── CambioStato.js     # Cambio stato massivo
-│   │   ├── services/
-│   │   │   └── api.js             # Configurazione Axios
-│   │   ├── store/
-│   │   │   ├── index.js           # Configurazione Redux store
-│   │   │   ├── authSlice.js       # Slice autenticazione
-│   │   │   └── annotazioniSlice.js # Slice annotazioni
-│   │   ├── App.js                 # Componente root
-│   │   ├── index.js               # Entry point
-│   │   └── index.css              # Stili globali
-│   ├── REACT.md                   # Guida React completa
-│   ├── REDUX.md                   # Guida Redux completa
-│   ├── package.json
-│   └── README.md
-└── backend/
-    ├── src/
-    │   ├── controllers/
-    │   ├── models/
-    │   ├── routes/
-    │   └── middlewares/
-    └── package.json
+├── index.html                     # Pagina HTML di ingresso (Vite)
+├── vite.config.ts                 # Config Vite (porta 3000) e Vitest
+├── tsconfig*.json                 # Config TypeScript
+├── eslint.config.js
+├── .env.example                   # VITE_API_BASE_URL
+├── public/                        # favicon, manifest, icone
+├── src/
+│   ├── main.tsx                   # Entry point
+│   ├── App.tsx                    # Routing principale
+│   ├── types.ts                   # Tipi condivisi (Annotazione, User, stati...)
+│   ├── app/
+│   │   ├── store.ts               # Configurazione Redux store + RootState/AppDispatch
+│   │   └── hooks.ts               # useAppDispatch / useAppSelector tipizzati
+│   ├── components/
+│   │   ├── Navbar.tsx             # Barra di navigazione
+│   │   ├── PrivateRoute.tsx       # Protezione route
+│   │   └── Toast.tsx              # Notifiche toast
+│   ├── pages/
+│   │   ├── Login.tsx              # Pagina di login
+│   │   ├── ElencoAnnotazioni.tsx  # Gestione annotazioni
+│   │   └── CambioStato.tsx        # Cambio stato massivo
+│   ├── services/
+│   │   └── api.ts                 # Configurazione Axios e chiamate API
+│   └── store/
+│       ├── authSlice.ts           # Slice autenticazione (+ test)
+│       └── annotazioniSlice.ts    # Slice annotazioni (+ test)
+├── API.md                         # API del backend
+├── REACT.md                       # Guida React del progetto
+└── REDUX.md                       # Guida Redux del progetto
 ```
 
 ---
+
+## 🔁 Migrazione da Create React App
+
+Fino a dicembre 2025 il progetto usava Create React App (`react-scripts`), che è deprecato. A novembre 2026 è stato migrato a Vite + TypeScript:
+
+- `public/index.html` → `index.html` nella radice, con `<script type="module" src="/src/main.tsx">`
+- `src/index.js` → `src/main.tsx`; tutti i `.js` sono diventati `.ts`/`.tsx` con tipi espliciti
+- variabili d'ambiente: `REACT_APP_*` → `VITE_*`, lette con `import.meta.env` (prima l'URL del backend era scritto nel codice)
+- test: Jest di `react-scripts` → Vitest; rimossi i file del template CRA (counter, logo, `reportWebVitals`, test "learn react")
+- build in `dist/` invece di `build/`
+- corretto un bug: avviando la modifica con "Modifica Annotazione" il dettaglio dell'annotazione spariva, perché l'effetto di caricamento dipendeva dal timer della prenotazione (ora il timer è in un `useRef`)
+
 
 ## 🎯 Funzionalità
 
@@ -330,7 +330,7 @@ Pagina per cambio stato massivo:
 
 Il progetto include guide complete per comprendere l'architettura:
 
-### [REACT.md](frontend/REACT.md)
+### [REACT.md](./REACT.md)
 Guida completa React con:
 - Introduzione a React e componenti
 - **useState**: Spiegazione dettagliata di tutti gli 8 stati
@@ -339,7 +339,7 @@ Guida completa React con:
 - Ciclo di vita del componente
 - Pattern comuni e best practices
 
-### [REDUX.md](frontend/REDUX.md)
+### [REDUX.md](./REDUX.md)
 Guida completa Redux con:
 - Concetti base Redux (Store, Actions, Reducers)
 - Redux Toolkit e createSlice
@@ -465,10 +465,10 @@ const getBadgeColor = (stato) => {
 ## 🔧 Configurazione
 
 ### API Base URL
-Modifica in `frontend/src/services/api.js`:
+L'URL del backend si imposta con la variabile `VITE_API_BASE_URL` (file `.env`, vedi `.env.example`). Il valore viene letto in `src/services/api.ts`:
 
-```javascript
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8082';
+```typescript
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8082';
 ```
 
 ### Token JWT
@@ -477,10 +477,10 @@ Il token viene salvato automaticamente in localStorage:
 - Injected automaticamente in ogni richiesta tramite Axios interceptor
 
 ### Timeout Lock
-Modifica tempo prenotazione in `ElencoAnnotazioni.js`:
+Il tempo di prenotazione è la costante `DURATA_PRENOTAZIONE_SECONDI` in `src/pages/ElencoAnnotazioni.tsx`:
 
-```javascript
-secondi: 120  // 120 secondi = 2 minuti
+```typescript
+const DURATA_PRENOTAZIONE_SECONDI = 120; // 2 minuti
 ```
 
 ---
@@ -488,16 +488,9 @@ secondi: 120  // 120 secondi = 2 minuti
 ## 🧪 Testing
 
 ```bash
-# Frontend tests
-cd frontend
-npm test
-
-# Backend tests
-cd backend
-npm test
-
-# E2E tests
-npm run test:e2e
+npm test          # test unitari dei reducer con Vitest
+npm run lint
+npm run typecheck
 ```
 
 ---
@@ -505,20 +498,19 @@ npm run test:e2e
 ## 🚀 Build per Produzione
 
 ```bash
-# Frontend
-cd frontend
 npm run build
-
-# I file ottimizzati saranno in: frontend/build/
+# I file ottimizzati saranno in: dist/
+npm run preview   # per provarli in locale
 ```
 
 ### Deploy
 I file della build possono essere serviti da:
 - Nginx
 - Apache
-- Server Node.js con serve
 - Netlify / Vercel
 - AWS S3 + CloudFront
+
+Trattandosi di una SPA con React Router, il server deve rispondere con `index.html` anche per le route come `/annotazioni`.
 
 ---
 
@@ -533,6 +525,12 @@ I file della build possono essere serviti da:
 ---
 
 ## 📝 Changelog
+
+### v0.2.0 (2026-11)
+- 🔁 Migrazione da Create React App a Vite + TypeScript
+- ✅ URL del backend configurabile con `VITE_API_BASE_URL`
+- ✅ Test unitari dei reducer con Vitest
+- 🐛 Corretto il dettaglio che spariva avviando la modifica
 
 ### v1.0.0 (2025-12-03)
 - ✅ Sistema autenticazione JWT completo
@@ -551,7 +549,7 @@ I file della build possono essere serviti da:
 
 ## 📄 Licenza
 
-Questo progetto è rilasciato sotto licenza MIT. Vedi il file [LICENSE](../LICENSE) per maggiori dettagli.
+Questo progetto è rilasciato sotto licenza GNU GPL v3, come tutto il repository. Vedi il file [LICENSE](../LICENSE).
 
 
 

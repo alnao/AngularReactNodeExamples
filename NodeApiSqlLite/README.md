@@ -1,5 +1,15 @@
 # Node Api SqlLite
 
+| Scheda | |
+|---|---|
+| **Stack** | Node.js, Express, SQLite3 |
+| **Node** | 22 (vedi [`.nvmrc`](./.nvmrc), poi `nvm use`) |
+| **Avvio** | `npm install && node restwithnodejssqlite3.js` → http://localhost:8000/employees |
+| **Backend** | Nessuno: database SQLite incluso (`emp_database.db`) |
+| **Stato** | Attivo |
+| **Ultima verifica** | Maggio 2024; novembre 2026: `npm ci` e API `/employees` con Node 22 |
+
+
 Piccola applicazione in JS-node-express per l'esecuzione di API Crud su una tabella SqlLite interna al progetto
 ```
 const sqlite3 = require('sqlite3');

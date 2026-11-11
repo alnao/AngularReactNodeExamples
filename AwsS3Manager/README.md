@@ -1,5 +1,15 @@
 # AWSS3Manager
 
+| Scheda | |
+|---|---|
+| **Stack** | Node.js, Express, AWS SDK v3 |
+| **Node** | 22 (vedi [`.nvmrc`](./.nvmrc), poi `nvm use`) |
+| **Avvio** | `npm install && node manager.js` → http://localhost:8081 |
+| **Backend** | Servizio AWS S3 (credenziali AWS configurate in locale) |
+| **Stato** | Attivo |
+| **Ultima verifica** | Maggio 2024; novembre 2026: `npm ci` e avvio del server con Node 22 |
+
+
 Gestione semplice di bucket e oggetti S3 con Node.js ed Express
 
 ## Funzionalità principali

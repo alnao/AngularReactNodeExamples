@@ -1,4 +1,14 @@
 # ReactAWSConsole
+
+| Scheda | |
+|---|---|
+| **Stack** | React 19, JavaScript, Create React App, Bootstrap, Axios |
+| **Node** | 20 (vedi [`.nvmrc`](./.nvmrc), poi `nvm use`) |
+| **Avvio** | `npm install && npm start` → http://localhost:3000 |
+| **Backend** | Backend Java con AWS SDK: [JavaExamples/AWS/Sdk](https://github.com/alnao/JavaExamples/tree/master/AWS/Sdk), su `http://localhost:8042` |
+| **Stato** | Attivo (in sviluppo) |
+| **Ultima verifica** | Luglio 2025 |
+
 Una moderna applicazione web React per la gestione e il monitoraggio dei servizi AWS, progettata per funzionare in sinergia con il backend Java disponibile nel repository [JavaExamples/AWS/Sdk](https://github.com/alnao/JavaExamples/tree/master/AWS/Sdk)
 
 *In fase di sviluppo*

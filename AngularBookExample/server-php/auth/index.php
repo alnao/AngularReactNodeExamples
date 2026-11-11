@@ -1,86 +1,118 @@
 <?php
-/*METHOD GET AND GET WITH GET ID*/
+/*
+ * Login: verifica username/password e restituisce un JWT firmato (HS256).
+ *
+ * Richiesta:  POST /auth/index.php   body JSON {"username": "...", "password": "..."}
+ *             (accetta anche i parametri form username/password)
+ * Risposta:   200 {"token": "<jwt>", "scadenza": <secondi>}
+ *             401 {"msg": "Credenziali errate", "error": 1}
+ *
+ * Regole di sicurezza mostrate in questo esempio:
+ * - le password sono salvate solo come hash (password_hash) e verificate con password_verify;
+ * - il payload del JWT contiene solo dati non sensibili (sub, iat, exp): il payload è
+ *   leggibile da chiunque con una decodifica base64, quindi MAI inserirvi la password;
+ * - il segreto di firma (JWT_SECRET) è letto dal file .env, non è scritto nel codice;
+ * - tutte le query usano prepared statement.
+ */
 
-	header ("Access-Control-Allow-Origin: *");
-	header ("Access-Control-Expose-Headers: Content-Length, X-JSON");
-	header ("Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS");
-	header ("Access-Control-Allow-Headers: *");
-	
-	/*CONN DB*/
-	$host = 'localhost';
-	$dbname='device_db';
-	$user='root';
-	$pass='';
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Expose-Headers: Content-Length, X-JSON");
+header("Access-Control-Allow-Methods: POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Content-Type: application/json; charset=utf-8");
 
-	try{
-		$dbh = new PDO ("mysql:host = $host;dbname=$dbname", $user,$pass);
-		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	}catch (PDOException $e){
-		echo'Errore connessione al database !' .$e->getMessage();
-		die();
-	}
-	/*END CONN DB*/
-	$json = trim(file_get_contents('php://input'));
-	$input = json_decode(preg_replace('/[\x00-\x1F\x80-\xFF]/', '',$json), true);
-	//Make sure that it is a POST request.
-	
-			$username = $_REQUEST['username'];
-			$password = $_REQUEST['password'];
-			
-			if (isset($username ) AND isset($password)) {
-			
-			$fields = array('username' => $username , 'password' => $password);
-			// Create token header as a JSON string
-			$header = json_encode(['typ' => 'JWT', 'alg' => 'HS256']);
-			// Create token payload as a JSON string
-			$payload = json_encode($fields);
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+	http_response_code(204);
+	exit();
+}
 
-			// Encode Header to Base64Url String
-			$base64UrlHeader = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($header));
+function rispondi(int $status, array $body): void {
+	http_response_code($status);
+	echo json_encode($body);
+	exit();
+}
 
-			// Encode Payload to Base64Url String
-			$base64UrlPayload = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($payload));
+function base64UrlEncode(string $data): string {
+	return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');
+}
 
-			// Create Signature Hash
-			$signature = hash_hmac('sha256', $base64UrlHeader . "." . $base64UrlPayload, 'abC123!', true);
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+	header('Allow: POST, OPTIONS');
+	rispondi(405, ['msg' => 'Usare il metodo POST', 'error' => 1]);
+}
 
-			// Encode Signature to Base64Url String
-			$base64UrlSignature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($signature));
+/* CONFIGURAZIONE (stesso file .env di api.php e create.php) */
+require_once dirname(__DIR__) . '/env.php';
+loadEnv(dirname(__DIR__) . '/.env');
 
-			// Create JWT
-			$jwt = $base64UrlHeader . "." . $base64UrlPayload . "." . $base64UrlSignature;
-			}
-			else {
-				exit();
-			}
-			// echo $jwt;
-			    try{
-					$sql = "UPDATE user SET token=? WHERE username=? AND password=?";
-					$stmt= $dbh->prepare($sql);
-					$stmt->execute([$jwt, $username, $password]);
-				}catch(PDOException $e) {
-					echo $sql ."<br/>" . $e->getMessage();
-				}
-		
+$jwtSecret = $_ENV['JWT_SECRET'] ?? '';
+if (strlen($jwtSecret) < 32) {
+	// Meglio fallire che firmare token con un segreto debole o vuoto.
+	rispondi(500, ['msg' => 'JWT_SECRET mancante o troppo corto (minimo 32 caratteri) nel file .env', 'error' => 1]);
+}
 
-		
-		try{
-		$sql = 'SELECT token, scadenza FROM user WHERE username = :username AND password = :password';
-		$stmt = $dbh->prepare($sql);
-		$stmt->execute(array('username' => $username, 'password' => $password));
-		$rows = $stmt->fetch();
-		$num_rows = $stmt->rowCount();
-		} catch (PDOException $e) {
-			echo 'Errore select tabella !' . $e->getMessage();
-			die();
-		}
-		if ($num_rows == 1) {
-			echo json_encode($rows);
-		}
-		else { 
-		$response["msg"] = "Credenziali errate";
-		$response["error"] = 1;
-		echo json_encode($response);
-		}
+/* CONN DB */
+$host = $_ENV['DB_HOST'] ?? 'localhost';
+$dbname = $_ENV['DB_NAME'] ?? '';
+$user = $_ENV['DB_USER'] ?? '';
+$pass = $_ENV['DB_PASS'] ?? '';
+$port = $_ENV['DB_PORT'] ?? 3306;
 
+try {
+	$dbh = new PDO("mysql:host=$host;dbname=$dbname;port=$port", $user, $pass, [
+		PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
+	]);
+	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+	error_log('Connessione DB fallita: ' . $e->getMessage());
+	rispondi(500, ['msg' => 'Errore connessione al database', 'error' => 1]);
+}
+/* END CONN DB */
 
+/* INPUT: JSON oppure parametri form */
+$input = json_decode(file_get_contents('php://input') ?: '', true);
+if (!is_array($input)) {
+	$input = $_POST;
+}
+$username = isset($input['username']) ? trim((string) $input['username']) : '';
+$password = isset($input['password']) ? (string) $input['password'] : '';
+
+if ($username === '' || $password === '') {
+	rispondi(400, ['msg' => 'username e password sono obbligatori', 'error' => 1]);
+}
+
+/* VERIFICA CREDENZIALI */
+try {
+	$stmt = $dbh->prepare('SELECT username, password, scadenza FROM user WHERE username = :username');
+	$stmt->execute(['username' => $username]);
+	$row = $stmt->fetch(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+	error_log('Lettura utente fallita: ' . $e->getMessage());
+	rispondi(500, ['msg' => 'Errore lettura utente', 'error' => 1]);
+}
+
+// Stesso messaggio per utente inesistente e password errata: non si rivela quali username esistono.
+if (!$row || !password_verify($password, $row['password'])) {
+	rispondi(401, ['msg' => 'Credenziali errate', 'error' => 1]);
+}
+
+// Se l'algoritmo di default di PHP cambia, l'hash viene aggiornato al primo login riuscito.
+if (password_needs_rehash($row['password'], PASSWORD_DEFAULT)) {
+	$upd = $dbh->prepare('UPDATE user SET password = :hash WHERE username = :username');
+	$upd->execute(['hash' => password_hash($password, PASSWORD_DEFAULT), 'username' => $username]);
+}
+
+/* CREAZIONE JWT */
+$durata = max(60, (int) $row['scadenza']); // secondi
+$adesso = time();
+$header = base64UrlEncode(json_encode(['typ' => 'JWT', 'alg' => 'HS256']));
+$payload = base64UrlEncode(json_encode([
+	'sub' => $row['username'],
+	'iat' => $adesso,
+	'exp' => $adesso + $durata,
+]));
+$signature = base64UrlEncode(hash_hmac('sha256', "$header.$payload", $jwtSecret, true));
+$jwt = "$header.$payload.$signature";
+
+// Il token non viene salvato nel database: un JWT si verifica con la firma e il campo exp.
+rispondi(200, ['token' => $jwt, 'scadenza' => $durata]);

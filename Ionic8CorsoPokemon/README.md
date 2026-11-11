@@ -1,5 +1,15 @@
 # 🎮 Ionic 8 Pokemon App
 
+| Scheda | |
+|---|---|
+| **Stack** | Ionic 8.7, Angular 20, TypeScript |
+| **Node** | 22 (vedi [`.nvmrc`](./.nvmrc), poi `nvm use`) |
+| **Avvio** | `npm install && npm start` → http://localhost:4200 (oppure `ionic serve`) |
+| **Backend** | Nessuno: API pubbliche di [pokeapi.co](https://pokeapi.co/) |
+| **Stato** | Attivo |
+| **Ultima verifica** | Settembre 2025 |
+
+
 Una moderna applicazione mobile sviluppata con **Ionic 8** e **Angular 20** per esplorare il mondo dei Pokemon utilizzando le **PokeAPI**.
 
 Esempio liberamente ispirata alle guide [Building an Ionic 4 Pokédex](https://www.youtube.com/watch?v=Nc1RqvDY-B8) e [devdactic.com](https://devdactic.com/ionic-4-pokedex-search-scroll), esempio aggiornato alla versione 8 di Ionic nell'estate 2025.

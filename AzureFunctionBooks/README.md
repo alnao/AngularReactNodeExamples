@@ -1,5 +1,15 @@
 # Azure Function Books CRUD
 
+| Scheda | |
+|---|---|
+| **Stack** | Azure Functions v4, TypeScript, Azure Cosmos DB |
+| **Node** | 20 (vedi [`.nvmrc`](./.nvmrc), poi `nvm use`) |
+| **Avvio** | `npm install && npm start` (richiede Azure Functions Core Tools v4) |
+| **Backend** | È il backend di [AngularBookExample](../AngularBookExample/README.md) |
+| **Stato** | In revisione: non funziona |
+| **Ultima verifica** | Novembre 2025 |
+
+
 Azure Functions CRUD API per la gestione di libri usando TypeScript e Azure Cosmos DB.
 
 Questo mini-progetto è studiato per lavorare con l'esempio disponibile nella cartella `AngularBookExample`.

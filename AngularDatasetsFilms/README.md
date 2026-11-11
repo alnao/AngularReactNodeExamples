@@ -1,5 +1,15 @@
 # AngularDatasetsFilms
 
+| Scheda | |
+|---|---|
+| **Stack** | Angular 17, TypeScript, Bootstrap, ng-bootstrap, i18n |
+| **Node** | 20 (vedi [`.nvmrc`](./.nvmrc), poi `nvm use`) |
+| **Avvio** | `npm install && npm start` → http://localhost:4200 |
+| **Backend** | API AWS con Lambda Authorizer: [Esempio10lambdaAuthorizer](https://github.com/alnao/AwsCloudFormationExamples/blob/master/Esempio10lambdaAuthorizer/); endpoint in `src/environments/` |
+| **Stato** | Attivo |
+| **Ultima verifica** | Aprile 2024 |
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.3.
 
 

@@ -1,5 +1,7 @@
 # 🎉 Modifiche Completate - AlNaoTazioni
 
+> ⚠️ **Documento storico** (dicembre 2025, versione Create React App). Percorsi `.js`, porte e comandi qui sotto possono non essere più validi: il progetto ora usa Vite + TypeScript. Per installazione e avvio vedi il [README](./README.md).
+
 ## ✅ Tutte le modifiche richieste sono state implementate con successo!
 
 ### 📋 Riepilogo Modifiche

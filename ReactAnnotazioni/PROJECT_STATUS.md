@@ -1,5 +1,7 @@
 # 🚀 Progetto Completato - AlNaoTazioni Frontend
 
+> ⚠️ **Documento storico** (dicembre 2025, versione Create React App). Percorsi `.js`, porte e comandi qui sotto possono non essere più validi: il progetto ora usa Vite + TypeScript. Per installazione e avvio vedi il [README](./README.md).
+
 ## ✅ Stato del Progetto
 
 Il frontend React con Redux e Bootstrap 5 è stato creato con successo!

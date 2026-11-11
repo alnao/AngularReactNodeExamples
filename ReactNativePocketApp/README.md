@@ -1,5 +1,15 @@
 # React Native Pocket App
 
+| Scheda | |
+|---|---|
+| **Stack** | React Native, Expo 54, React 19, TypeScript, SQLite, Reanimated |
+| **Node** | 22 (vedi [`.nvmrc`](./.nvmrc), poi `nvm use`) |
+| **Avvio** | `npm install && npm start` (Expo: app Expo Go, emulatore Android o web) |
+| **Backend** | Nessuno: dati locali in SQLite e API Routes di Expo |
+| **Stato** | Attivo |
+| **Ultima verifica** | Inverno 2025 |
+
+
 Esempio/tutorial preso dal video [Build Your Own Pocket Clone with React Native (Expo, SQLite, Reanimated, API Routes, IAP)](https://www.youtube.com/watch?v=GSs4Dnz274k)
 
 I principali passi eseguiti sono stati:

@@ -1,5 +1,15 @@
 # Story-Game-Book Application
 
+| Scheda | |
+|---|---|
+| **Stack** | React 19, TypeScript, Vite 8, Tailwind CSS 3, React-Bootstrap, Font Awesome, React Router |
+| **Node** | 22 (vedi [`.nvmrc`](./.nvmrc), poi `nvm use`) |
+| **Avvio** | `npm install && npm run dev` → http://localhost:5173 |
+| **Backend** | Nessuno: dati in `src/data.ts` |
+| **Stato** | Attivo |
+| **Ultima verifica** | Marzo 2026 |
+
+
 Un'applicazione React sviluppata con Vite in cui esplorare storie interattive ispirate ai classici libri game. Il progetto include un catalogo in un bellissimo stile visivo ("Netflix Style") e una dashboard di gioco divisa a colonne per esplorare luoghi e prendere decisioni.
 
 ## Stack Tecnologico

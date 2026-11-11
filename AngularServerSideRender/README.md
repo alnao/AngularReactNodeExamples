@@ -1,4 +1,14 @@
 # AngularServerSideRender
+
+| Scheda | |
+|---|---|
+| **Stack** | Angular 17, Angular SSR (ex Universal), Express |
+| **Node** | 20 (vedi [`.nvmrc`](./.nvmrc), poi `nvm use`) |
+| **Avvio** | `npm install && npm start` → http://localhost:4200; SSR con `npm run dev:ssr` |
+| **Backend** | Nessuno |
+| **Stato** | Attivo |
+| **Ultima verifica** | Aprile 2024 |
+
 - Run `ng serve` for a dev server with Client side Render (CSR).
 - Run `npm run dev:ssr` for a server with Server Side Render (SSR).
 

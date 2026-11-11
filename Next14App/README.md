@@ -1,4 +1,14 @@
-# Next13 app
+# Next14 App
+
+| Scheda | |
+|---|---|
+| **Stack** | Next.js 14, React 18, TypeScript, Tailwind CSS |
+| **Node** | 20 (vedi [`.nvmrc`](./.nvmrc), poi `nvm use`) |
+| **Avvio** | `npm install && npm run dev` → http://localhost:3000 |
+| **Backend** | Nessuno |
+| **Stato** | Attivo |
+| **Ultima verifica** | Maggio 2024 |
+
 Progetto creato seguendo la mini-guida ['Creare un progetto con Next (v.14)'](https://www.youtube.com/watch?v=MER4bmh_s78)
 
 

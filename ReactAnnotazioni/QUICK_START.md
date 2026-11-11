@@ -1,19 +1,12 @@
 # ⚡ Quick Start Guide - AlNaoTazioni
 
-## 🎯 Server Attivo
+## 🎯 Avvio
 
-Il server di sviluppo è **ATTIVO** e raggiungibile su:
-
-- **Local**: http://localhost:3000
-- **Network**: http://192.168.1.201:3000
-
-## 🚦 Stato Attuale
-
-✅ Progetto creato
-✅ Dipendenze installate
-✅ Compilazione completata
-✅ Server di sviluppo in esecuzione
-✅ Tutti i componenti implementati
+```bash
+nvm use            # Node 22, da .nvmrc
+npm install
+npm run dev        # http://localhost:3000
+```
 
 ## 📱 Come Testare
 
@@ -50,20 +43,21 @@ Vai su http://localhost:3000
 Ctrl+C nel terminale
 
 # Riavviare il server
-cd frontend
-npm start
+npm run dev
 
-# Build produzione
+# Build produzione (in dist/)
 npm run build
 
-# Test
+# Test unitari (Vitest), lint e controllo tipi
 npm test
+npm run lint
+npm run typecheck
 ```
 
 ## 🌐 Backend API
 
 Assicurati che il backend sia attivo su:
-**http://localhost:8080**
+**http://localhost:8082** (oppure imposta `VITE_API_BASE_URL` nel file `.env`)
 
 Le API utilizzate:
 - `POST /api/auth/login` - Login
@@ -136,15 +130,15 @@ curl http://localhost:8080/api/auth/providers
 ## 🎨 Personalizzazioni
 
 ### Cambiare URL Backend
-Editare `src/services/api.js`:
-```javascript
-const API_BASE_URL = 'http://localhost:8080';
+Creare il file `.env` partendo da `.env.example`:
+```bash
+VITE_API_BASE_URL=http://localhost:8082
 ```
 
 ### Cambiare Durata Lock
-Editare `src/pages/ElencoAnnotazioni.js`:
-```javascript
-secondi: 120  // Cambia a tuo piacimento
+Editare `src/pages/ElencoAnnotazioni.tsx`:
+```typescript
+const DURATA_PRENOTAZIONE_SECONDI = 120; // Cambia a tuo piacimento
 ```
 
 ### Modificare Colori
