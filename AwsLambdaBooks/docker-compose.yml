@@ -1,0 +1,9 @@
+# DynamoDB Local per provare le Lambda senza account AWS (npm run local:db).
+# I dati restano in memoria: fermando il container si perdono.
+services:
+  dynamodb-local:
+    image: amazon/dynamodb-local:latest
+    container_name: aws-js-awslambdabooks-dynamodb
+    command: "-jar DynamoDBLocal.jar -inMemory -sharedDb"
+    ports:
+      - "8000:8000"

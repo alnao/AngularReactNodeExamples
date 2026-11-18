@@ -1,23 +1,27 @@
 import { app, HttpRequest, HttpResponseInit, InvocationContext } from '@azure/functions';
-import { getCosmosContainer } from '../utils/cosmosClient';
-import { createResponse, createErrorResponse } from '../utils/response';
+import { toBook } from '../models/Book';
+import { getContainer } from '../utils/cosmosClient';
+import { errorResponse, jsonResponse } from '../utils/response';
 
-export async function listBooks(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
+/**
+ * GET /api/books: restituisce { books: [...] }, lo stesso formato di AwsLambdaBooks.
+ * fetchAll legge tutte le pagine: va bene per un container piccolo; con molti dati
+ * servirebbe una paginazione esposta al client (continuation token).
+ */
+export async function listBooks(_request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
   try {
-    const container = getCosmosContainer();
-    const { resources: books } = await container.items.readAll().fetchAll();
-
-    context.log('Books listed:', books.length);
-    return createResponse(200, { books });
+    const { resources } = await getContainer().items.readAll<Record<string, unknown>>().fetchAll();
+    context.log('Libri letti:', resources.length);
+    return jsonResponse(200, { books: resources.map(toBook) });
   } catch (error) {
-    context.error('Error listing books:', error);
-    return createErrorResponse(500, 'Could not fetch the books');
+    context.error("Errore nella lettura dell'elenco:", error);
+    return errorResponse(500, "Impossibile leggere l'elenco dei libri");
   }
 }
 
 app.http('listBooks', {
-  methods: ['GET', 'OPTIONS'],
-  authLevel: 'anonymous',
+  methods: ['GET'],
+  authLevel: 'function',
   route: 'books',
-  handler: listBooks
+  handler: listBooks,
 });

@@ -1,0 +1,18 @@
+# File esclusi dal pacchetto pubblicato su Azure.
+# start-all.sh pubblica la cartella .deploy/ preparata da scripts/package.sh;
+# questo file vale se si lancia `func azure functionapp publish` dalla cartella del progetto.
+.git*
+.vscode
+.deploy
+src
+tests
+scripts
+*.ts
+tsconfig*.json
+local.settings*.json
+docker-compose.yml
+start-all.sh
+stop-all.sh
+.azure-config
+.nvmrc
+README.md

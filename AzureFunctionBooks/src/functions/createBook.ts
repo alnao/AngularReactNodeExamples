@@ -1,51 +1,34 @@
+import { randomUUID } from 'node:crypto';
 import { app, HttpRequest, HttpResponseInit, InvocationContext } from '@azure/functions';
-import { v4 as uuidv4 } from 'uuid';
-import { Book } from '../models/Book';
-import { getCosmosContainer } from '../utils/cosmosClient';
-import { createResponse, createErrorResponse } from '../utils/response';
+import { Book, toBook, validateBookInput } from '../models/Book';
+import { getContainer } from '../utils/cosmosClient';
+import { errorResponse, jsonResponse, parseJsonBody } from '../utils/response';
 
+/** POST /api/books: crea un libro con id generato dal backend. */
 export async function createBook(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
+  const parsed = await parseJsonBody(request);
+  if (!parsed.ok) return parsed.response;
+
+  const validation = validateBookInput(parsed.data);
+  if (!validation.ok) return errorResponse(400, validation.error);
+
+  const now = Date.now();
+  const book: Book = { id: randomUUID(), ...validation.value, createdAt: now, updatedAt: now };
+
   try {
-    const timestamp = new Date().getTime();
-    const body = await request.text();
-    
-    if (!body) {
-      return createErrorResponse(400, 'Request body is required');
-    }
-
-    const data: Partial<Book> = JSON.parse(body);
-
-    // Validation
-    if (!data.title || !data.author) {
-      return createErrorResponse(400, 'Title and author are required');
-    }
-
-    const book: Book = {
-      id: uuidv4(),
-      title: data.title,
-      author: data.author,
-      price: data.price || 0,
-      isbn: data.isbn || '',
-      description: data.description || '',
-      type: data.type || 'general',
-      createdAt: timestamp,
-      updatedAt: timestamp
-    };
-
-    const container = getCosmosContainer();
-    await container.items.create(book);
-
-    context.log('Book created:', book.id);
-    return createResponse(201, book);
+    // items.create fallisce con 409 se l'id esiste già: non sovrascrive mai un libro
+    const { resource } = await getContainer().items.create(book);
+    context.log('Libro creato:', book.id);
+    return jsonResponse(201, toBook(resource ?? book));
   } catch (error) {
-    context.error('Error creating book:', error);
-    return createErrorResponse(500, 'Could not create the book');
+    context.error('Errore nella creazione del libro:', error);
+    return errorResponse(500, 'Impossibile creare il libro');
   }
 }
 
 app.http('createBook', {
-  methods: ['POST', 'OPTIONS'],
-  authLevel: 'anonymous',
+  methods: ['POST'],
+  authLevel: 'function',
   route: 'books',
-  handler: createBook
+  handler: createBook,
 });

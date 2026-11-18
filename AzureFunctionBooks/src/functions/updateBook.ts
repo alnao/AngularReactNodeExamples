@@ -1,61 +1,50 @@
 import { app, HttpRequest, HttpResponseInit, InvocationContext } from '@azure/functions';
-import { Book } from '../models/Book';
-import { getCosmosContainer } from '../utils/cosmosClient';
-import { createResponse, createErrorResponse } from '../utils/response';
+import { Book, toBook, validateBookInput } from '../models/Book';
+import { getContainer, hasStatus } from '../utils/cosmosClient';
+import { errorResponse, jsonResponse, parseJsonBody } from '../utils/response';
 
+/**
+ * PUT /api/books/{id}: sostituisce i campi del libro (stessa validazione del POST).
+ * Legge il documento per avere createdAt e l'_etag, poi lo sostituisce solo se nel frattempo
+ * nessuno l'ha modificato (IfMatch sull'_etag); in caso contrario risponde 409.
+ */
 export async function updateBook(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
+  const id = request.params.id;
+  if (!id) return errorResponse(400, "L'id del libro è obbligatorio");
+
+  const parsed = await parseJsonBody(request);
+  if (!parsed.ok) return parsed.response;
+
+  const validation = validateBookInput(parsed.data);
+  if (!validation.ok) return errorResponse(400, validation.error);
+
   try {
-    const id = request.params.id;
-    
-    if (!id) {
-      return createErrorResponse(400, 'Book ID is required');
-    }
+    const item = getContainer().item(id, id);
+    const { resource: existing } = await item.read<Record<string, unknown>>();
+    if (!existing) return errorResponse(404, 'Libro non trovato');
 
-    const body = await request.text();
-    if (!body) {
-      return createErrorResponse(400, 'Request body is required');
-    }
-
-    const timestamp = new Date().getTime();
-    const data: Partial<Book> = JSON.parse(body);
-
-    const container = getCosmosContainer();
-    
-    // Get existing book
-    const { resource: existingBook } = await container.item(id, id).read();
-    
-    if (!existingBook) {
-      return createErrorResponse(404, 'Book not found');
-    }
-
-    // Update book
-    const updatedBook: Book = {
-      ...existingBook,
-      title: data.title || existingBook.title,
-      author: data.author || existingBook.author,
-      price: data.price !== undefined ? data.price : existingBook.price,
-      isbn: data.isbn || existingBook.isbn,
-      description: data.description || existingBook.description,
-      type: data.type || existingBook.type,
-      updatedAt: timestamp
+    const updated: Book = {
+      id,
+      ...validation.value,
+      createdAt: (existing.createdAt as number) ?? Date.now(),
+      updatedAt: Date.now(),
     };
-
-    await container.item(id, id).replace(updatedBook);
-
-    context.log('Book updated:', id);
-    return createResponse(200, updatedBook);
-  } catch (error: any) {
-    if (error.code === 404) {
-      return createErrorResponse(404, 'Book not found');
-    }
-    context.error('Error updating book:', error);
-    return createErrorResponse(500, 'Could not update the book');
+    const { resource } = await item.replace(updated, {
+      accessCondition: { type: 'IfMatch', condition: existing._etag as string },
+    });
+    context.log('Libro aggiornato:', id);
+    return jsonResponse(200, toBook(resource ?? updated));
+  } catch (error) {
+    if (hasStatus(error, 404)) return errorResponse(404, 'Libro non trovato');
+    if (hasStatus(error, 412)) return errorResponse(409, 'Il libro è stato modificato da un altro utente, ricaricarlo');
+    context.error("Errore nell'aggiornamento del libro:", error);
+    return errorResponse(500, 'Impossibile aggiornare il libro');
   }
 }
 
 app.http('updateBook', {
-  methods: ['PUT', 'OPTIONS'],
-  authLevel: 'anonymous',
+  methods: ['PUT'],
+  authLevel: 'function',
   route: 'books/{id}',
-  handler: updateBook
+  handler: updateBook,
 });

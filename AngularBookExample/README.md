@@ -3,11 +3,11 @@
 | Scheda | |
 |---|---|
 | **Stack** | Angular 9, TypeScript, Bootstrap; backend opzionale PHP + MySQL |
-| **Node** | 12 (vedi [`.nvmrc`](./.nvmrc), poi `nvm use`) |
+| **Node** | 12 (vedi [`.nvmrc`](./.nvmrc), poi `nvm use`); funziona anche con Node 22 grazie a [`scripts/ng.js`](./scripts/ng.js) |
 | **Avvio** | `npm install && npm start` → http://localhost:4200 |
 | **Backend** | A scelta: json-server (`server-json-mock`), PHP + MySQL (`server-php`), [AwsLambdaBooks](../AwsLambdaBooks/README.md), [AzureFunctionBooks](../AzureFunctionBooks/README.md) |
 | **Stato** | Attivo |
-| **Ultima verifica** | Inverno 2026 |
+| **Ultima verifica** | Novembre 2026: typecheck, `npm run build` (anche `--configuration=aws`) e `npm start` con Node 22; Node 12 non verificato |
 
 Questo **BookExample** è una semplice applicazione Angular 9 (datato 2022) per la gestione di una libreria di libri, con backend selezionabile tra:
 - Server mock con un semplice file JSON
@@ -28,6 +28,7 @@ Per eseguire il progetto lanciare
 npm install
 npm start
 ```
+Gli script `start`, `start:aws`, `build` e `test` passano da [`scripts/ng.js`](./scripts/ng.js), che avvia la Angular CLI. Angular 9 usa webpack 4, che con Node 17 o superiori fallisce con l'errore `ERR_OSSL_EVP_UNSUPPORTED` (`error:0308010C:digital envelope routines::unsupported`): con quelle versioni lo script aggiunge da solo `NODE_OPTIONS=--openssl-legacy-provider`. Con Node 12, la versione di `.nvmrc`, non aggiunge nulla. Lanciando `ng serve` direttamente, senza lo script, con Node 22 l'errore si ripresenta.
 - il sito poi sarà disponibile al `http://localhost:4200/`
 
 Ma **prima** bisogna configurare il backend di riferimento nel file `src/environments/environment.ts`.
@@ -39,10 +40,16 @@ Ma **prima** bisogna configurare il backend di riferimento nel file `src/environ
     npx json-server --watch server-json-mock/server.json
     ```
     - Le API saranno disponibili su `http://localhost:3000/books`.
-- **AWS Lambda**
-    - Seguire le indicazioni indicate nella cartella [`AWSLambdaBooks`](../AWSLambdaBooks/README.md)
-- **Azure function**    
-    - Seguire le indicazioni indicate nella cartella [`AzureFunctionBooks`](../AzureFunctionBooks/README.md)
+- **AWS Lambda** (`tipoApi: "AWS"`, il valore predefinito)
+    - Backend nella cartella [`AwsLambdaBooks`](../AwsLambdaBooks/README.md), che si può avviare in locale (porta 3001, DynamoDB Local in Docker) oppure deployare su AWS con SAM.
+    - In locale basta `npm start`: `environment.ts` punta già a `http://localhost:3001/books`.
+    - Con lo stack su AWS: copiare `src/environments/environment.aws.example.ts` in `src/environments/environment.aws.ts` (ignorato da git), inserire URL e API key, poi avviare con `npm run start:aws`. Il servizio aggiunge l'header `x-api-key` a ogni chiamata.
+    - Passi completi e checklist: sezione [Test completo con il frontend](../AwsLambdaBooks/README.md#test-completo-con-il-frontend).
+- **Azure Functions** (`tipoApi: "Azure"`)
+    - Backend nella cartella [`AzureFunctionBooks`](../AzureFunctionBooks/README.md), che si può avviare in locale (`func start` sulla porta 7071, emulatore Cosmos DB in Docker) oppure pubblicare su Azure con `start-all.sh`.
+    - In locale basta impostare `tipoApi: "Azure"` in `environment.ts`, che punta già a `http://localhost:7071/api/books`.
+    - Con le risorse su Azure: copiare `src/environments/environment.azure.example.ts` in `src/environments/environment.azure.ts` (ignorato da git), inserire URL e chiave, poi avviare con `npm run start:azure`. Il servizio aggiunge l'header `x-functions-key` a ogni chiamata.
+    - Passi completi e checklist: sezione [Test completo con il frontend](../AzureFunctionBooks/README.md#test-completo-con-il-frontend).
 - **Mysql on docker**
 
     - Se si è scelto la versione con il mysql server, per lanciare il backend, eseguire i passi
@@ -101,6 +108,17 @@ Ma **prima** bisogna configurare il backend di riferimento nel file `src/environ
             - se la tabella `user` era stata creata con la versione precedente (password in chiaro), rieseguire `php ./server-php/create.php`: allarga la colonna e salva l'hash della password di `demo`. Eventuali altri utenti con password in chiaro vanno ricreati.
 
         - Se usato Apache, è possibile rinominare htaccess.txt in .htaccess per applicare le regole sugli header.
+
+## Changelog
+
+| Data | Descrizione |
+|---|---|
+| ≤ 2026-01-13 | Versione iniziale; storico precedente non ricostruito |
+| 2026-03-11 | Test esempi books: aggiornati environment, `angular.json`, dipendenze |
+| 2026-11-11 | Revisione server PHP e configurazione `.env`; aggiunti `.nvmrc`, scheda |
+| 2026-11-18 | Backend AWS: header `x-api-key`, configurazione `aws`, id stringa |
+| 2026-11-18 | Script `ng.js`: avvio anche con Node 22 (OpenSSL legacy) |
+| 2026-11-18 | Backend Azure: `tipoApi` Azure, header `x-functions-key`, configurazione `azure` |
 
 
 # &lt; AlNao /&gt;

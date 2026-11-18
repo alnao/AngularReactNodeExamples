@@ -1,0 +1,10 @@
+# Emulatore di Azure Cosmos DB (versione Linux "vNext") per provare le funzioni senza Azure.
+# API su http://localhost:8081 (HTTP, chiave fissa dell'emulatore in local.settings.example.json),
+# Data Explorer su http://localhost:1234. I dati si perdono fermando il container.
+services:
+  cosmos-emulator:
+    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview
+    container_name: azure-js-azurefunctionbooks-cosmos
+    ports:
+      - "8081:8081"
+      - "1234:1234"

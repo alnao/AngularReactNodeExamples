@@ -112,7 +112,7 @@ export class BookComponent implements OnInit {
   
 }
 export interface Book{
-    id :number;
+    id : string | number; // numero con json-server e PHP, UUID stringa con AwsLambdaBooks
     title:string;
     author : string;
     price : number;

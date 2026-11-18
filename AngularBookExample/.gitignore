@@ -44,3 +44,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Configurazioni locali con URL e chiavi dei backend cloud (AwsLambdaBooks, AzureFunctionBooks)
+/src/environments/environment.aws.ts
+/src/environments/environment.azure.ts

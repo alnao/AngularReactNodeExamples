@@ -1,0 +1,223 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  AwsLambdaBooks - API REST CRUD dei libri (Lambda Node.js 22 + API Gateway + DynamoDB),
+  backend di AngularBookExample. Le Lambda vanno compilate prima con `npm run build` (cartella dist/).
+
+# I tag standard (Name, Environment, Project, Owner, CostCenter, ManagedBy) sono definiti
+# come tag dello stack in samconfig.toml: CloudFormation li propaga a tutte le risorse
+# dello stack che supportano i tag (Lambda, ruoli IAM, API Gateway, API key, tabella, log group).
+
+Parameters:
+  Stage:
+    Type: String
+    Default: dev
+    Description: Nome dello stage di API Gateway e suffisso della tabella
+  AllowedOrigin:
+    Type: String
+    Default: http://localhost:4200
+    Description: Origine ammessa dal CORS (il frontend Angular)
+
+Globals:
+  Function:
+    Runtime: nodejs22.x
+    Architectures:
+      - arm64
+    MemorySize: 256
+    Timeout: 10
+    Handler: index.handler
+    Environment:
+      Variables:
+        TABLE_NAME: !Ref BooksTable
+        ALLOWED_ORIGIN: !Ref AllowedOrigin
+        NODE_OPTIONS: --enable-source-maps
+
+Resources:
+  # ---------------------------------------------------------------- API Gateway (REST)
+  BooksApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: !Sub 'aws-js-AwsLambdaBooks-${Stage}'
+      StageName: !Ref Stage
+      Cors:
+        AllowMethods: "'GET,POST,PUT,DELETE,OPTIONS'"
+        AllowHeaders: "'Content-Type,x-api-key'"
+        AllowOrigin: !Sub "'${AllowedOrigin}'"
+      Auth:
+        # Ogni chiamata deve avere l'header x-api-key; la preflight OPTIONS del browser no
+        ApiKeyRequired: true
+        AddApiKeyRequiredToCorsPreflight: false
+        UsagePlan:
+          CreateUsagePlan: PER_API
+          Description: Limiti di traffico dell'esempio AwsLambdaBooks
+          Throttle:
+            RateLimit: 5
+            BurstLimit: 10
+          Quota:
+            Limit: 1000
+            Period: DAY
+      # Anche gli errori generati da API Gateway (403 senza API key, 429 oltre i limiti)
+      # devono avere gli header CORS, altrimenti il browser mostra un generico errore CORS
+      GatewayResponses:
+        DEFAULT_4XX:
+          ResponseParameters:
+            Headers:
+              Access-Control-Allow-Origin: !Sub "'${AllowedOrigin}'"
+              Access-Control-Allow-Headers: "'Content-Type,x-api-key'"
+        DEFAULT_5XX:
+          ResponseParameters:
+            Headers:
+              Access-Control-Allow-Origin: !Sub "'${AllowedOrigin}'"
+              Access-Control-Allow-Headers: "'Content-Type,x-api-key'"
+
+  # ---------------------------------------------------------------- DynamoDB
+  BooksTable:
+    Type: AWS::DynamoDB::Table
+    # Esempio didattico: `sam delete` cancella anche la tabella e i dati
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      TableName: !Sub 'aws-js-AwsLambdaBooks-${Stage}'
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+
+  # ---------------------------------------------------------------- Lambda
+  # Ogni funzione ha solo i permessi che le servono sulla tabella e un log group
+  # esplicito con retention (quello creato automaticamente da Lambda non scade mai
+  # e non riceverebbe i tag dello stack).
+  CreateBookFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/createBook/
+      LoggingConfig:
+        LogGroup: !Ref CreateBookLogGroup
+      Policies:
+        - DynamoDBWritePolicy:
+            TableName: !Ref BooksTable
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            RestApiId: !Ref BooksApi
+            Path: /books
+            Method: post
+
+  ListBooksFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/listBooks/
+      LoggingConfig:
+        LogGroup: !Ref ListBooksLogGroup
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref BooksTable
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            RestApiId: !Ref BooksApi
+            Path: /books
+            Method: get
+
+  GetBookFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/getBook/
+      LoggingConfig:
+        LogGroup: !Ref GetBookLogGroup
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref BooksTable
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            RestApiId: !Ref BooksApi
+            Path: /books/{id}
+            Method: get
+
+  UpdateBookFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/updateBook/
+      LoggingConfig:
+        LogGroup: !Ref UpdateBookLogGroup
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref BooksTable
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            RestApiId: !Ref BooksApi
+            Path: /books/{id}
+            Method: put
+
+  DeleteBookFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/deleteBook/
+      LoggingConfig:
+        LogGroup: !Ref DeleteBookLogGroup
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref BooksTable
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            RestApiId: !Ref BooksApi
+            Path: /books/{id}
+            Method: delete
+
+  # ---------------------------------------------------------------- CloudWatch Logs
+  CreateBookLogGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Delete
+    Properties:
+      LogGroupName: !Sub '/aws/lambda/aws-js-AwsLambdaBooks-${Stage}-createBook'
+      RetentionInDays: 14
+
+  ListBooksLogGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Delete
+    Properties:
+      LogGroupName: !Sub '/aws/lambda/aws-js-AwsLambdaBooks-${Stage}-listBooks'
+      RetentionInDays: 14
+
+  GetBookLogGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Delete
+    Properties:
+      LogGroupName: !Sub '/aws/lambda/aws-js-AwsLambdaBooks-${Stage}-getBook'
+      RetentionInDays: 14
+
+  UpdateBookLogGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Delete
+    Properties:
+      LogGroupName: !Sub '/aws/lambda/aws-js-AwsLambdaBooks-${Stage}-updateBook'
+      RetentionInDays: 14
+
+  DeleteBookLogGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Delete
+    Properties:
+      LogGroupName: !Sub '/aws/lambda/aws-js-AwsLambdaBooks-${Stage}-deleteBook'
+      RetentionInDays: 14
+
+Outputs:
+  BooksApiUrl:
+    Description: URL da usare come urlApiAws in AngularBookExample
+    Value: !Sub 'https://${BooksApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/${Stage}/books'
+  ApiKeyId:
+    Description: Id della API key (il valore si legge con aws apigateway get-api-key --include-value)
+    Value: !Ref BooksApiApiKey
+  TableName:
+    Description: Nome della tabella DynamoDB
+    Value: !Ref BooksTable

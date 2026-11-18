@@ -1,0 +1,25 @@
+# Configurazione di `sam deploy` / `sam delete` (lanciati da `npm run deploy` e `npm run delete`).
+# Le credenziali NON stanno qui: SAM usa il profilo AWS di default o la variabile AWS_PROFILE.
+version = 0.1
+
+#
+# Valori di default, sovrascrivibili da riga di comando (gli argomenti dopo `--` arrivano a sam):
+#   npm run deploy -- --region eu-west-1 --s3-bucket altro-bucket
+#   npm run delete -- --region eu-west-1
+
+[default.global.parameters]
+stack_name = "aws-js-AwsLambdaBooks-dev"
+# Regione dello stack: Francoforte
+region = "eu-central-1"
+
+[default.deploy.parameters]
+# Bucket S3 in cui sam deploy carica il codice delle Lambda e il template.
+# Deve esistere già ed essere nella stessa regione dello stack (vedi README, "Bucket per il codice").
+s3_bucket = "alnao-dev-cloudformation"
+s3_prefix = "aws-js-AwsLambdaBooks"
+capabilities = "CAPABILITY_IAM"
+confirm_changeset = true
+parameter_overrides = "Stage=\"dev\" AllowedOrigin=\"http://localhost:4200\""
+# Tag standard del repository (vedi CLAUDE.md, AWS Tagging convention):
+# applicati allo stack e propagati da CloudFormation a tutte le risorse
+tags = "Name=\"aws-js-AwsLambdaBooks\" Environment=\"dev\" Project=\"Development.aws.js-AwsLambdaBooks\" Owner=\"AlNao\" CostCenter=\"dev\" ManagedBy=\"CloudFormation\""

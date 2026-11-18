@@ -50,11 +50,24 @@ curl -X POST http://localhost:8081/bucket/NOME_BUCKET/upload \
   }'
 ```
 
+## Tag degli oggetti caricati
+Gli oggetti caricati con `POST /bucket/:bucketName/upload` ricevono i tag standard del repository (vedi *AWS Tagging convention* in [`CLAUDE.md`](../CLAUDE.md)):
+`Name=aws-js-AwsS3Manager`, `Environment=dev`, `Project=Development.aws.js-AwsS3Manager`, `Owner=AlNao`, `CostCenter=dev`, `ManagedBy=Manual`.
+Le credenziali usate devono avere, oltre a `s3:PutObject`, anche il permesso `s3:PutObjectTagging`, altrimenti l'upload fallisce con `AccessDenied`.
+
 ## Estensioni possibili
 - Ricerca per nome
 - Cancellazione bucket
 - Download multiplo
 
+## Changelog
+
+| Data | Descrizione |
+|---|---|
+| ≤ 2026-01-13 | Versione iniziale; storico precedente non ricostruito |
+| 2026-03-11 | Aggiornati `manager.js` e dipendenze |
+| 2026-11-11 | Aggiunti `.nvmrc` e scheda standard nel README |
+| 2026-11-18 | Tag standard AWS sugli oggetti caricati |
 
 
 # &lt; AlNao /&gt;

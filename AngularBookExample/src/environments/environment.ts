@@ -4,10 +4,19 @@
 
 export const environment = {
   production: false,
-  urlApiAws: 'https://or7etp7jgi.execute-api.eu-central-1.amazonaws.com/dev/books',
+  // Con tipoApi "AWS" questo è il server locale di AwsLambdaBooks (npm run local, porta 3001).
+  // Per usare lo stack su AWS: copiare environment.aws.example.ts in environment.aws.ts
+  // e avviare con `npm run start:aws` (vedi README).
+  urlApiAws: 'http://localhost:3001/books',
+  apiKeyAws: '', // in locale non serve
+  // Con tipoApi "Azure" questo è l'host locale di AzureFunctionBooks (npm start, porta 7071).
+  // Per usare Azure: copiare environment.azure.example.ts in environment.azure.ts
+  // e avviare con `npm run start:azure` (vedi README).
+  urlApiAzure: 'http://localhost:7071/api/books',
+  apiKeyAzure: '', // in locale non serve
   urlApiPhp: 'http://localhost:3000/api.php',
   urlApiStatic: 'http://localhost:3000/books',
-  tipoApi :"AWS" ,//"PHP" //"AWS" //"Static"
+  tipoApi :"AWS" ,//"PHP" //"AWS" //"Azure" //"Static"
 };
 
 /*

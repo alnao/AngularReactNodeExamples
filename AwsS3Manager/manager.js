@@ -55,13 +55,25 @@ app.get('/bucket/:bucketName/object/:key', async (req, res) => {
     }
 });
 
+// Tag standard del repository (vedi CLAUDE.md, AWS Tagging convention) applicati agli oggetti caricati.
+// ManagedBy = Manual: l'oggetto è creato da codice SDK, non da uno strumento di infrastruttura.
+// Nota: PutObject con Tagging richiede anche il permesso s3:PutObjectTagging.
+const STANDARD_TAGS = new URLSearchParams({
+    Name: 'aws-js-AwsS3Manager',
+    Environment: 'dev',
+    Project: 'Development.aws.js-AwsS3Manager',
+    Owner: 'AlNao',
+    CostCenter: 'dev',
+    ManagedBy: 'Manual',
+}).toString();
+
 // Upload oggetto (base64, semplice)
 app.post('/bucket/:bucketName/upload', express.json({limit: '10mb'}), async (req, res) => {
     try {
         const { bucketName } = req.params;
         const { key, content, encoding } = req.body;
         const buffer = Buffer.from(content, encoding || 'base64');
-        const command = new PutObjectCommand({ Bucket: bucketName, Key: key, Body: buffer });
+        const command = new PutObjectCommand({ Bucket: bucketName, Key: key, Body: buffer, Tagging: STANDARD_TAGS });
         await client.send(command);
         res.json({ message: 'Upload ok', key });
     } catch (err) {

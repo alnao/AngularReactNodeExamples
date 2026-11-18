@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "startnew": "concurrently --kill-others \"ng serve\" \"npm run jsonserver\"  ",
-    "build": "ng build",
-    "test": "ng test",
+    "start": "node scripts/ng.js serve",
+    "start:aws": "node scripts/ng.js serve --configuration=aws",
+    "start:azure": "node scripts/ng.js serve --configuration=azure",
+    "startnew": "concurrently --kill-others \"npm start\" \"npm run jsonserver\"",
+    "build": "node scripts/ng.js build",
+    "test": "node scripts/ng.js test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "jsonserver": "json-server --watch server-json-mock/server.json"

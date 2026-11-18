@@ -59,6 +59,22 @@
             "scripts": []
           },
           "configurations": {
+            "aws": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.aws.ts"
+                }
+              ]
+            },
+            "azure": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.azure.ts"
+                }
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -95,6 +111,12 @@
             "browserTarget": "book:build"
           },
           "configurations": {
+            "aws": {
+              "browserTarget": "book:build:aws"
+            },
+            "azure": {
+              "browserTarget": "book:build:azure"
+            },
             "production": {
               "browserTarget": "book:build:production"
             }

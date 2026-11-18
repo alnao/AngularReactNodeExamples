@@ -1,32 +1,26 @@
 import { app, HttpRequest, HttpResponseInit, InvocationContext } from '@azure/functions';
-import { getCosmosContainer } from '../utils/cosmosClient';
-import { createResponse, createErrorResponse } from '../utils/response';
+import { getContainer, hasStatus } from '../utils/cosmosClient';
+import { errorResponse, jsonResponse } from '../utils/response';
 
+/** DELETE /api/books/{id}: cancella il libro; 404 se non esiste. */
 export async function deleteBook(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
+  const id = request.params.id;
+  if (!id) return errorResponse(400, "L'id del libro è obbligatorio");
+
   try {
-    const id = request.params.id;
-    
-    if (!id) {
-      return createErrorResponse(400, 'Book ID is required');
-    }
-
-    const container = getCosmosContainer();
-    await container.item(id, id).delete();
-
-    context.log('Book deleted:', id);
-    return createResponse(200, { message: 'Book deleted successfully' });
-  } catch (error: any) {
-    if (error.code === 404) {
-      return createErrorResponse(404, 'Book not found');
-    }
-    context.error('Error deleting book:', error);
-    return createErrorResponse(500, 'Could not delete the book');
+    await getContainer().item(id, id).delete();
+    context.log('Libro cancellato:', id);
+    return jsonResponse(200, { message: 'Libro cancellato', id });
+  } catch (error) {
+    if (hasStatus(error, 404)) return errorResponse(404, 'Libro non trovato');
+    context.error('Errore nella cancellazione del libro:', error);
+    return errorResponse(500, 'Impossibile cancellare il libro');
   }
 }
 
 app.http('deleteBook', {
-  methods: ['DELETE', 'OPTIONS'],
-  authLevel: 'anonymous',
+  methods: ['DELETE'],
+  authLevel: 'function',
   route: 'books/{id}',
-  handler: deleteBook
+  handler: deleteBook,
 });

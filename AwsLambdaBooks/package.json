@@ -1,26 +1,35 @@
 {
   "name": "aws-lambda-books-crud",
-  "version": "1.0.0",
-  "description": "Serverless CRUD service for Books using TypeScript with DynamoDB",
+  "version": "2.0.0",
+  "description": "API REST CRUD dei libri con AWS SAM, Lambda in TypeScript, API Gateway e DynamoDB",
   "author": "alnao",
   "license": "GPL-3.0-only",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
-    "deploy": "serverless deploy",
-    "remove": "serverless remove",
-    "logs": "serverless logs -f",
-    "invoke": "serverless invoke -f"
+    "build": "esbuild src/handlers/*.ts --bundle --platform=node --target=node22 --outdir=dist --entry-names=[name]/index --minify --sourcemap --sources-content=false",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "local:db": "docker compose up -d dynamodb-local",
+    "local:db:stop": "docker compose down",
+    "local:seed": "tsx scripts/seed.ts",
+    "local": "tsx scripts/local-server.ts",
+    "deploy": "npm run build && sam deploy",
+    "delete": "sam delete"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.370.0",
-    "@aws-sdk/lib-dynamodb": "^3.370.0",
-    "uuid": "^9.0.0"
+    "@aws-sdk/client-dynamodb": "^3.1171.0",
+    "@aws-sdk/lib-dynamodb": "^3.1171.0"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.119",
-    "@types/node": "^20.4.2",
-    "@types/uuid": "^9.0.2",
-    "serverless": "^3.33.0",
-    "serverless-plugin-typescript": "^2.1.5",
-    "typescript": "^5.1.6"
+    "@types/node": "^22.0.0",
+    "aws-sdk-client-mock": "^4.0.0",
+    "esbuild": "^0.28.2",
+    "tsx": "^4.19.0",
+    "typescript": "^5.9.0",
+    "vitest": "^5.1.1"
   }
 }

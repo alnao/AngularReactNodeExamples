@@ -1,22 +1,29 @@
-import { APIGatewayProxyHandler } from 'aws-lambda';
-import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
-import { DynamoDBDocumentClient, ScanCommand } from '@aws-sdk/lib-dynamodb';
-import { createResponse, createErrorResponse } from '../utils/response';
+import type { APIGatewayProxyResult } from 'aws-lambda';
+import { ScanCommand, type ScanCommandOutput } from '@aws-sdk/lib-dynamodb';
+import { dynamoDb, tableName } from '../utils/db';
+import { createErrorResponse, createResponse } from '../utils/response';
 
-const client = new DynamoDBClient({});
-const dynamoDb = DynamoDBDocumentClient.from(client);
-
-export const handler: APIGatewayProxyHandler = async () => {
+/**
+ * GET /books: restituisce { books: [...] }, il formato che si aspetta AngularBookExample.
+ * Uno Scan legge al massimo 1 MB per chiamata: si continua finché c'è LastEvaluatedKey.
+ * Va bene per una tabella piccola come questa; con molti dati servirebbe una paginazione
+ * esposta al client (parametri limit/nextToken) o una Query su un indice.
+ */
+export const handler = async (): Promise<APIGatewayProxyResult> => {
   try {
-    const params = {
-      TableName: process.env.DYNAMODB_TABLE!
-    };
+    const books: Record<string, unknown>[] = [];
+    let startKey: ScanCommandOutput['LastEvaluatedKey'];
+    do {
+      const page = await dynamoDb.send(
+        new ScanCommand({ TableName: tableName(), ExclusiveStartKey: startKey }),
+      );
+      books.push(...(page.Items ?? []));
+      startKey = page.LastEvaluatedKey;
+    } while (startKey);
 
-    const result = await dynamoDb.send(new ScanCommand(params));
-
-    return createResponse(200, { books: result.Items || [] });
+    return createResponse(200, { books });
   } catch (error) {
-    console.error('Error listing books:', error);
-    return createErrorResponse(500, 'Could not fetch the books');
+    console.error("Errore nella lettura dell'elenco:", error);
+    return createErrorResponse(500, "Impossibile leggere l'elenco dei libri");
   }
 };

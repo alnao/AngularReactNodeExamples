@@ -1,28 +1,36 @@
 {
   "name": "azure-function-books-crud",
-  "version": "1.0.0",
-  "description": "Azure Functions CRUD service for Books using TypeScript",
-  "main": "dist/src/index.js",
+  "version": "2.0.0",
+  "description": "API REST CRUD dei libri con Azure Functions v4 in TypeScript e Azure Cosmos DB serverless",
+  "main": "dist/index.js",
   "author": "alnao",
   "license": "GPL-3.0-only",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc -w",
-    "clean": "rimraf dist",
-    "prestart": "npm run clean && npm run build",
-    "start": "func start",
-    "test": "echo \"No tests yet\""
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.check.json",
+    "test": "vitest run",
+    "local:settings": "node scripts/ensure-local-settings.js",
+    "local:db": "docker compose up -d cosmos-emulator",
+    "local:db:stop": "docker compose down",
+    "local:seed": "tsx scripts/seed.ts",
+    "start": "npm run local:settings && npm run build && func start",
+    "deploy": "./start-all.sh",
+    "destroy": "./stop-all.sh"
   },
   "dependencies": {
-    "@azure/cosmos": "^4.0.0",
-    "@azure/functions": "^4.0.0",
-    "uuid": "^9.0.0"
+    "@azure/cosmos": "^4.10.2",
+    "@azure/functions": "^4.17.1",
+    "@azure/identity": "^4.14.1"
   },
   "devDependencies": {
-    "@types/node": "^20.4.2",
-    "@types/uuid": "^9.0.2",
-    "azure-functions-core-tools": "^4.0.5000",
-    "rimraf": "^5.0.1",
-    "typescript": "^5.1.6"
+    "@types/node": "^22.0.0",
+    "tsx": "^4.23.0",
+    "typescript": "^5.9.0",
+    "vitest": "^5.1.1"
   }
 }
