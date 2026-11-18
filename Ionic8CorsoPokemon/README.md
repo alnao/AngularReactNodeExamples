@@ -109,6 +109,12 @@ Esempio liberamente ispirata alle guide [Building an Ionic 4 Pokédex](https://w
     ionic capacitor build android
     ```
 
+## Changelog
+
+| Data | Descrizione |
+|---|---|
+| ≤ 2026-01-13 | Versione iniziale; storico precedente non ricostruito |
+| 2026-11-11 | Aggiunti `.nvmrc` e scheda standard nel README |
 
 
 # &lt; AlNao /&gt;

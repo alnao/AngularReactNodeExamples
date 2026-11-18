@@ -71,8 +71,12 @@ Join our community of developers creating universal apps.
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
 
+## Changelog
 
-
+| Data | Descrizione |
+|---|---|
+| ≤ 2026-01-13 | Versione iniziale; storico precedente non ricostruito |
+| 2026-11-11 | Aggiunti `.nvmrc` e scheda standard nel README |
 
 
 # &lt; AlNao /&gt;

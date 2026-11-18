@@ -8,6 +8,10 @@ Raccolta di esempi didattici di AlNao (Angular, React, Ionic, Next, Node, AWS/Az
 - **Never run commands outside the workspace** `/mnt/Dati4/Workspace/AngularReactNodeExamples/`: no reading, writing or executing anything in other paths (the only exception is the session scratchpad provided by Claude Code for temporary files).
 - **Cloud commands only after explicit confirmation**: before running `aws`, `az`, `cdk`, `sam`, `serverless` (and any other tool that acts on a cloud account, e.g. `gcloud`), show the exact command, say what it does (and whether it costs money or changes resources) and wait for the user's confirmation. Each command needs its own confirmation: a previous "yes" does not cover the next one. The same applies to running scripts or apps from this repo that call real cloud APIs through an SDK (boto3, Azure SDK), e.g. starting a Manager that queries AWS.
 - **Never run git commands**, read-only ones included (`git status`, `git diff`, `git log`, ...). To know what changed, read the files; commits are made by the user.
+- Every README.md must have two last sections:
+  - changelog : add a row every time I ask you change code inside folder, the description must be max 10 worlds
+  - "alnao footer" is always the same and never change it if there are not into readme file.
+
 
 ## Struttura
 - Ogni cartella di primo livello è un **progetto indipendente**, con il proprio `package.json` e `package-lock.json`. Non è un monorepo: nella radice non ci sono `package.json`, workspace o CI. I comandi `npm` vanno lanciati sempre dentro la cartella del progetto.
@@ -37,7 +41,7 @@ Ogni `<Progetto>/README.md` inizia con il titolo H1, eventuali badge o una breve
 ```
 
 - **Ultima verifica** riporta solo verifiche fatte davvero, per esempio "Novembre 2026: `npm ci` e avvio con Node 22". Se non c'è nessuna verifica recente: "Non verificato di recente (progetto in revisione)".
-- I README nuovi o riscritti terminano con il footer breve che rimanda al README principale e alla licenza (vedi `ES6Example/README.md`).
+- I README nuovi o riscritti hanno il footer breve che rimanda al README principale e alla licenza, seguito dalle sezioni `## Changelog` e footer AlNao (vedi `archived/ES6Example/README.md`). Il changelog è una tabella `| Data | Descrizione |` con le righe in ordine cronologico.
 - Un nuovo progetto va aggiunto anche al `README.md` principale: nella tabella *Table of examples* se è attivo (colonne Section, Name, Description; nella Description la riga "Tecnologie" include `Node.js X` come nel `.nvmrc`), altrimenti nell'elenco "Esempi in fase di revisione".
 
 ## Segreti e configurazione
@@ -64,3 +68,25 @@ Ogni `<Progetto>/README.md` inizia con il titolo H1, eventuali badge o una breve
 ## Git
 - Branch principale `master`. I messaggi di commit sono in italiano, brevi e descrittivi.
 - Non versionare `node_modules/`, `dist/`, `build/`, `.env`, file di swap degli editor (già in `.gitignore`).
+
+
+
+## AWS Tagging convention (applies to every resource on AWS cloud)
+
+Every resource created/managed in AWS that supports tags carries the standard tags of its example:
+```
+Name        = "aws-js-<Descrizione>"
+Environment = "dev"
+Project     = "Development.aws.js-<Descrizione>"
+Owner       = "AlNao"
+CostCenter  = "dev"
+ManagedBy   = "Manual/Terraform/CloudFormation/Sh/CDK"
+```
+`ManagedBy` follows the tool that creates the resource: `Sh` for AWS CLI scripts/commands and Serverless Framework, `CDK` for CDK stacks, `Manual` for the console and for Python code using boto3 (AWS/SDK, AWS/Manager, scripts).
+For the CDK examples (`AWS/CDK/cdk*`) `Name` is different for every resource and equals its name, `aws-py-cdkXX-<servizio>` (see the CDK section above); `Project` and the other tags stay as above.
+
+In questo workspace i progetti sono cartelle di primo livello, quindi `Descrizione` è il nome della cartella: `AwsLambdaBooks` → `Name = aws-js-AwsLambdaBooks`, `Project = Development.aws.js-AwsLambdaBooks`.
+- Stack AWS SAM (`AwsLambdaBooks`): `ManagedBy = CloudFormation`; i tag stanno una sola volta in `samconfig.toml` come tag dello stack, che CloudFormation propaga alle risorse.
+- Regione predefinita `eu-central-1` (Francoforte), sempre parametrica. Il codice e i template di SAM/CloudFormation vanno nel bucket `alnao-dev-cloudformation` (parametrico: `s3_bucket` in `samconfig.toml`, mai `resolve_s3`), con un prefisso per progetto (`s3_prefix = "aws-js-<Descrizione>"`). Il bucket è condiviso, sta nella stessa regione dello stack e si crea una volta sola con AWS CLI (`ManagedBy = Sh`).
+- Codice Node con AWS SDK che crea risorse (upload di `AwsS3Manager`): `ManagedBy = Manual`, tag passati nella chiamata (es. `Tagging` di `PutObjectCommand`).
+- Azure (`AzureFunctionBooks`): stessi tag con `azure` al posto di `aws` (`Name = azure-js-<Descrizione>`, `Project = Development.azure.js-<Descrizione>`), `ManagedBy = Sh` per gli script Azure CLI. In Azure i tag del resource group non passano alle risorse: lo script li applica a ogni risorsa del gruppo (`az resource tag --is-incremental`), comprese quelle create in automatico.

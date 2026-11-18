@@ -62,6 +62,12 @@ npx tsx index.ts
 - [Copilot SDK su npm](https://www.npmjs.com/package/@github/copilot-sdk)
 - [add-a-custom-tool](https://github.com/github/copilot-sdk/blob/main/docs/getting-started.md#step-4-add-a-custom-tool)
 
+## Changelog
+
+| Data | Descrizione |
+|---|---|
+| 2026-01-24 | Creazione esempio Copilot SDK con tools e filesystem |
+| 2026-11-11 | Aggiunti `.nvmrc` e scheda standard nel README |
 
 
 # &lt; AlNao /&gt;

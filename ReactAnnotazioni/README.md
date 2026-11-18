@@ -524,15 +524,28 @@ Trattandosi di una SPA con React Router, il server deve rispondere con `index.ht
 
 ---
 
-## 📝 Changelog
+## 📄 Licenza
 
-### v0.2.0 (2026-11)
+Questo progetto è rilasciato sotto licenza GNU GPL v3, come tutto il repository. Vedi il file [LICENSE](../LICENSE).
+
+---
+
+## Changelog
+
+| Data | Descrizione |
+|---|---|
+| 2025-12-03 | v1.0.0: JWT, CRUD annotazioni, lock, cambio stato, Redux Toolkit |
+| 2026-11-11 | v0.2.0: migrazione da Create React App a Vite + TypeScript |
+
+### Dettaglio versioni
+
+#### v0.2.0 (2026-11)
 - 🔁 Migrazione da Create React App a Vite + TypeScript
 - ✅ URL del backend configurabile con `VITE_API_BASE_URL`
 - ✅ Test unitari dei reducer con Vitest
 - 🐛 Corretto il dettaglio che spariva avviando la modifica
 
-### v1.0.0 (2025-12-03)
+#### v1.0.0 (2025-12-03)
 - ✅ Sistema autenticazione JWT completo
 - ✅ CRUD annotazioni con validazione
 - ✅ Sistema lock per modifica esclusiva
@@ -544,13 +557,6 @@ Trattandosi di una SPA con React Router, il server deve rispondere con `index.ht
 - ✅ React Select per dropdown avanzati
 - ✅ Guide complete React e Redux
 - ✅ README completo con documentazione
-
----
-
-## 📄 Licenza
-
-Questo progetto è rilasciato sotto licenza GNU GPL v3, come tutto il repository. Vedi il file [LICENSE](../LICENSE).
-
 
 
 # &lt; AlNao /&gt;

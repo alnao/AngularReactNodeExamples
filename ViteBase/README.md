@@ -50,10 +50,12 @@ Prompt usato con Gemini 3.1:
 Abbiamo optato per uno stile UI marcatamente scuro ("Netflix Style") per immergere istantaneamente l'utente. React-Bootstrap viene usato per componenti intrinsecamente complessi (come i popup Modali) evitando l'overhead di ricreare logiche per la gestione dello scroll-lock, lasciando invece a Tailwind CSS la formattazione visuale custom.
 L'app sfrutta Typescript in Data Mocking per avere auto-completamento assicurato tra Azioni e le loro interazioni nel `PlayView`.
 
+## Changelog
 
-
-
-
+| Data | Descrizione |
+|---|---|
+| 2026-04-08 | Creazione progetto Vite + React + Tailwind |
+| 2026-11-11 | Aggiunti `.nvmrc` e scheda standard nel README |
 
 
 # &lt; AlNao /&gt;

@@ -43,6 +43,12 @@ ng serve --configuration=it
 ng build --configuration=it
 ```
 
+## Changelog
+
+| Data | Descrizione |
+|---|---|
+| ≤ 2026-01-13 | Versione iniziale; storico precedente non ricostruito |
+| 2026-11-11 | Aggiunti `.nvmrc` e scheda standard nel README |
 
 
 # &lt; AlNao /&gt;

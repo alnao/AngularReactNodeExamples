@@ -69,7 +69,12 @@ main().catch((error) => {
 - [Copilot SDK - Getting Started](https://github.com/github/copilot-sdk/blob/main/docs/getting-started.md)
 - [Copilot SDK su npm](https://www.npmjs.com/package/@github/copilot-sdk)
 
+## Changelog
 
+| Data | Descrizione |
+|---|---|
+| 2026-01-24 | Creazione primo esempio con GitHub Copilot SDK |
+| 2026-11-11 | Aggiunti `.nvmrc` e scheda standard nel README |
 
 
 # &lt; AlNao /&gt;
